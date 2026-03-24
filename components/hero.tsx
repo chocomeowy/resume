@@ -3,12 +3,12 @@
 import { motion } from "framer-motion"
 import { Button, buttonVariants } from "@/components/ui/button"
 import Link from "next/link"
-import { ArrowRight, BarChart3, Binary, ShieldCheck } from "lucide-react"
+import { ArrowRight, BarChart3, Binary, BrainCircuit } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 export function Hero() {
   return (
-    <div className="container relative pb-12 md:py-24 lg:py-32 overflow-hidden">
+    <div className="container relative pt-0 pb-12 md:pb-24 lg:pb-32 overflow-hidden px-6 md:px-10">
       <div className="flex flex-col items-center text-center space-y-4 md:space-y-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -16,7 +16,7 @@ export function Hero() {
           transition={{ duration: 0.5 }}
           className="space-y-4 max-w-[900px]"
         >
-          <div className="inline-flex items-center rounded-full px-4 py-1.5 text-sm font-semibold bg-primary/10 text-primary border border-primary/20 mb-2">
+          <div className="inline-flex items-center rounded-full px-4 py-1.5 text-sm font-semibold bg-primary/10 text-primary border border-primary/20">
             FinTech Software Engineer & Data Analyst
           </div>
           <h1 className="text-4xl font-extrabold tracking-tight sm:text-6xl md:text-7xl lg:text-8xl bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/70 leading-[1.2] pb-2">
@@ -52,14 +52,14 @@ export function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.4 }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl pt-12"
+          className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-6xl pt-4 md:pt-8"
         >
           <div className="flex flex-col items-center space-y-2 p-6 rounded-xl border bg-card text-card-foreground shadow-sm hover:shadow-md transition-shadow">
             <div className="p-3 bg-primary/10 rounded-lg text-primary">
               <BarChart3 className="h-6 w-6" />
             </div>
             <h3 className="font-bold text-lg">Fintech</h3>
-            <p className="text-sm text-muted-foreground text-center">
+            <p className="text-sm text-muted-foreground text-center line-clamp-3">
               Specializing in technical business analysis and innovative financial technology solutions with Applied AI.
             </p>
           </div>
@@ -68,8 +68,17 @@ export function Hero() {
               <Binary className="h-6 w-6" />
             </div>
             <h3 className="font-bold text-lg">Data Analytics</h3>
-            <p className="text-sm text-muted-foreground text-center">
+            <p className="text-sm text-muted-foreground text-center line-clamp-3">
               Transforming complex IoT data into actionable business insights with AI-driven Python pipelines.
+            </p>
+          </div>
+          <div className="flex flex-col items-center space-y-2 p-6 rounded-xl border bg-card text-card-foreground shadow-sm hover:shadow-md transition-shadow">
+            <div className="p-3 bg-primary/10 rounded-lg text-primary">
+              <BrainCircuit className="h-6 w-6" />
+            </div>
+            <h3 className="font-bold text-lg">Artificial Intelligence</h3>
+            <p className="text-sm text-muted-foreground text-center line-clamp-3">
+              Engineering Applied AI and LLM solutions to automate complex financial decision-making and data extraction.
             </p>
           </div>
         </motion.div>

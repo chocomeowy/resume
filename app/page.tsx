@@ -26,9 +26,6 @@ export default function Home() {
           <ResumeQR />
         </section>
       </div>
-      <footer className="py-8 border-t text-center text-sm text-muted-foreground">
-        <p>© {new Date().getFullYear()} - Professional Portfolio</p>
-      </footer>
     </main>
   );
 }
