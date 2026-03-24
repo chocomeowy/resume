@@ -8,13 +8,13 @@ import { cn } from "@/lib/utils"
 
 export function Hero() {
   return (
-    <div className="container relative pt-4 pb-12 md:py-24 lg:py-32 overflow-hidden">
+    <div className="container relative pb-12 md:py-24 lg:py-32 overflow-hidden">
       <div className="flex flex-col items-center text-center space-y-4 md:space-y-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="space-y-4 max-w-[900px] md:pt-12"
+          className="space-y-4 max-w-[900px]"
         >
           <div className="inline-flex items-center rounded-full px-4 py-1.5 text-sm font-semibold bg-primary/10 text-primary border border-primary/20 mb-2">
             FinTech Software Engineer & Data Analyst
@@ -60,7 +60,7 @@ export function Hero() {
             </div>
             <h3 className="font-bold text-lg">Fintech</h3>
             <p className="text-sm text-muted-foreground text-center">
-              Specializing in technical business analysis and innovative financial technology solutions.
+              Specializing in technical business analysis and innovative financial technology solutions with Applied AI.
             </p>
           </div>
           <div className="flex flex-col items-center space-y-2 p-6 rounded-xl border bg-card text-card-foreground shadow-sm hover:shadow-md transition-shadow">
@@ -69,7 +69,7 @@ export function Hero() {
             </div>
             <h3 className="font-bold text-lg">Data Analytics</h3>
             <p className="text-sm text-muted-foreground text-center">
-              Transforming complex IoT data into actionable business insights with Grafana and Python.
+              Transforming complex IoT data into actionable business insights with AI-driven Python pipelines.
             </p>
           </div>
         </motion.div>
