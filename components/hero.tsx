@@ -8,21 +8,21 @@ import { cn } from "@/lib/utils"
 
 export function Hero() {
   return (
-    <div className="container relative py-12 md:py-24 lg:py-32 overflow-hidden">
-      <div className="flex flex-col items-center text-center space-y-8">
+    <div className="container relative pt-4 pb-12 md:py-24 lg:py-32 overflow-hidden">
+      <div className="flex flex-col items-center text-center space-y-4 md:space-y-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="space-y-6 max-w-[900px]"
+          className="space-y-4 max-w-[900px] md:pt-12"
         >
           <div className="inline-flex items-center rounded-full px-4 py-1.5 text-sm font-semibold bg-primary/10 text-primary border border-primary/20 mb-2">
             FinTech Software Engineer & Data Analyst
           </div>
-          <h1 className="text-5xl font-extrabold tracking-tight sm:text-6xl md:text-7xl lg:text-8xl bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/70">
+          <h1 className="text-4xl font-extrabold tracking-tight sm:text-6xl md:text-7xl lg:text-8xl bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/70 leading-[1.2] pb-2">
             Yong <span className="text-primary">Fah Jin</span>
           </h1>
-          <p className="mx-auto max-w-[800px] text-muted-foreground md:text-xl lg:text-2xl leading-relaxed font-medium mt-6">
+          <p className="mx-auto max-w-[800px] text-muted-foreground md:text-xl lg:text-2xl leading-relaxed font-medium mt-2">
             Leveraging a strong business foundation and deep technical expertise in data pipelines 
             to architect data-driven financial technology solutions. Currently pursuing MSc in FinTech at NTU.
           </p>
