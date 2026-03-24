@@ -3,22 +3,60 @@
 import { motion } from "framer-motion"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Layers, Activity, Gauge, TrendingUp, Monitor, Briefcase } from "lucide-react"
+import { Layers, Activity, Gauge, TrendingUp, Monitor, Briefcase, GraduationCap, Calendar, MapPin, Cpu } from "lucide-react"
 
 const experiences = [
   {
-    title: "Technical Business Analyst / IoT Specialist",
+    title: "Remote Monitoring Analyst & Software Developer",
     company: "Terrenus Energy",
-    period: "2022 - 2024",
-    description: "Managed and optimized remote monitoring systems for a large fleet of IoT devices.",
+    period: "Oct 2023 – Present", // Added missing period
+    description: "Scaled IoT monitoring for solar assets and automated regional reporting.",
     highlights: [
-      "Remote monitoring of 40 to 500+ devices across multiple sites.",
-      "Engineered over 20+ sophisticated Grafana dashboards for real-time visualization.",
-      "Optimized data pipelines for consistent performance and 99% uptime.",
-      "Liaised between technical teams and stakeholders to deliver actionable insights.",
+      "Scaled monitoring from 40 to 500+ devices using Grafana (20+ dashboards).",
+      "Automated reporting via PostgreSQL, reducing incident detection time to < 1 hour.",
+      "Developed internal tools to optimize data pipeline performance and reliability.",
     ],
     icon: <Monitor className="h-6 w-6" />,
-    skills: ["IoT", "Grafana", "Data Analytics", "Technical BA"],
+    skills: ["IoT", "Grafana", "PostgreSQL", "Python"],
+  },
+  {
+    title: "Application Engineer (Contract)",
+    company: "Nityo Infotech / DBS Singapore",
+    period: "Jan 2023 – Sep 2023",
+    description: "Implemented service health monitoring and developed internal web interfaces.",
+    highlights: [
+      "Developed internal interfaces using ReactJS and Material-UI.",
+      "Implemented robust service health monitoring for banking applications.",
+      "Collaborated with cross-functional teams to ensure system stability.",
+    ],
+    icon: <Activity className="h-6 w-6" />,
+    skills: ["ReactJS", "Material-UI", "Monitoring"],
+  },
+  {
+    title: "Application Engineer",
+    company: "Sentient.io",
+    period: "Dec 2021 – Dec 2022",
+    description: "Built AI-driven products and full-stack applications.",
+    highlights: [
+      "Built AI recommendation engine for Toyota using specialized AI microservices.",
+      "Developed 'ScribeRabbit', a full-stack transcription product using VueJS and FastAPI.",
+      "Architected scalable microservices for diverse AI use cases.",
+    ],
+    icon: <Cpu className="h-6 w-6" />,
+    skills: ["VueJS", "FastAPI", "AI Microservices"],
+  },
+  {
+    title: "Business Support Analyst / Operation Analyst",
+    company: "Apple South Asia",
+    period: "Aug 2015 – May 2021",
+    description: "Managed regional order fulfillment and operational KPI reporting.",
+    highlights: [
+      "Managed regional order fulfillment and logistics for the SEA region.",
+      "Developed automated KPI reporting tools for leadership using Excel/SAP.",
+      "Participated in User Acceptance Testing (UAT) for internal logistics software.",
+    ],
+    icon: <Briefcase className="h-6 w-6" />,
+    skills: ["Operations", "SAP", "Excel", "Data Reporting"],
   },
 ]
 

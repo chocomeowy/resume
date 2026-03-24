@@ -3,7 +3,7 @@
 import { motion } from "framer-motion"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { GraduationCap, Calendar, MapPin } from "lucide-react"
+import { GraduationCap, Calendar, MapPin, Layers } from "lucide-react"
 
 export function Education() {
   return (
@@ -65,31 +65,47 @@ export function Education() {
         whileInView={{ opacity: 1, x: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5, delay: 0.2 }}
-        className="mt-8"
+        className="mt-12"
       >
-        <Card className="border-none bg-transparent shadow-none">
-          <CardHeader className="px-0">
-            <CardTitle className="text-xl">Earlier Academic Background</CardTitle>
-          </CardHeader>
-          <CardContent className="px-0">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className="p-4 rounded-lg border bg-card/50">
-                <h4 className="font-bold">Engineering Foundation</h4>
-                <p className="text-sm text-muted-foreground mt-1">
-                  Background in engineering providing a strong analytical and problem-solving mindset 
-                  essential for IoT and Data Analytics.
-                </p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <Card className="border-2 border-primary/5 hover:border-primary/20 transition-all duration-300 shadow-sm">
+            <div className="p-6">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="p-2 bg-primary/10 rounded-lg text-primary">
+                  <GraduationCap className="h-6 w-6" />
+                </div>
+                <h3 className="text-xl font-bold">BSc Business</h3>
               </div>
-              <div className="p-4 rounded-lg border bg-card/50">
-                <h4 className="font-bold">Specialized Certifications</h4>
-                <p className="text-sm text-muted-foreground mt-1">
-                  Continuous learning in Data Analytics, Technical Business Analysis, and Fintech 
-                  through various professional development programs.
-                </p>
-              </div>
+              <p className="text-lg font-semibold text-foreground/80">SIM, University of London</p>
+              <Badge variant="outline" className="mt-2 text-primary border-primary/20">Second Upper Honours</Badge>
+              <p className="mt-4 text-muted-foreground leading-relaxed">
+                Foundational business education providing strong analytical and managerial skills applied across 
+                various operational and technical roles.
+              </p>
             </div>
-          </CardContent>
-        </Card>
+          </Card>
+
+          <Card className="border-2 border-primary/5 hover:border-primary/20 transition-all duration-300 shadow-sm">
+            <div className="p-6 h-full flex flex-col">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="p-2 bg-primary/10 rounded-lg text-primary">
+                   <Layers className="h-6 w-6" />
+                </div>
+                <h3 className="text-xl font-bold">Professional Certifications</h3>
+              </div>
+              <ul className="space-y-3 text-muted-foreground flex-grow">
+                <li className="flex gap-2 items-start">
+                  <div className="h-1.5 w-1.5 rounded-full bg-primary shrink-0 mt-2" />
+                  <span>Advanced Diploma in Python & ML (SMU Academy)</span>
+                </li>
+                <li className="flex gap-2 items-start">
+                  <div className="h-1.5 w-1.5 rounded-full bg-primary shrink-0 mt-2" />
+                  <span>Software Engineering Immersive (General Assembly)</span>
+                </li>
+              </ul>
+            </div>
+          </Card>
+        </div>
       </motion.div>
     </div>
   )

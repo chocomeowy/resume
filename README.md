@@ -56,9 +56,9 @@ A modern, responsive, and professional portfolio website built with **Next.js (A
 
 ### 📱 Quick Access QR Code
 
-Scan the code below to visit the live site:
+Scan the code below to visit **Yong Fah Jin's** live portfolio:
 
-![Portfolio QR Code](https://chart.googleapis.com/chart?cht=qr&chs=200x200&chl=https://fahjin.vercel.app)
+![Portfolio QR Code](https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=https://fahjin.vercel.app)
 
 ## 📄 License
 
