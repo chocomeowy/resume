@@ -14,16 +14,18 @@ export function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="space-y-4 max-w-[800px]"
+          className="space-y-6 max-w-[900px]"
         >
-          <div className="inline-flex items-center rounded-full px-3 py-1 text-sm font-medium bg-primary/10 text-primary ring-1 ring-inset ring-primary/20 mb-4">
-            Technical Business Analyst & Data Enthusiast
+          <div className="inline-flex items-center rounded-full px-4 py-1.5 text-sm font-semibold bg-primary/10 text-primary border border-primary/20 mb-2">
+            Technical Business Analyst & Data Specialist
           </div>
-          <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl lg:text-7xl">
-            Driving Innovation in <span className="text-primary">Fintech</span> & Data Analytics
+          <h1 className="text-5xl font-extrabold tracking-tight sm:text-6xl md:text-7xl lg:text-8xl bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/70">
+            Driving Innovation in <br/>
+            <span className="text-primary">Fintech</span> & Data Analytics
           </h1>
-          <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl lg:text-2xl leading-relaxed">
-            Expertise in Technical Business Analysis with a strong foundation in IoT, Data Analytics, and Quantitative Risk Modeling. Currently pursuing MSc in Fintech at NTU.
+          <p className="mx-auto max-w-[750px] text-muted-foreground md:text-xl lg:text-2xl leading-relaxed font-medium">
+            Bridging the gap between technical complexity and business value. 
+            Currently pursuing MSc in Fintech at NTU with a strong engineering background.
           </p>
         </motion.div>
 

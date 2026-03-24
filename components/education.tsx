@@ -14,47 +14,48 @@ export function Education() {
       </div>
 
       <motion.div
-        initial={{ opacity: 0, x: -20 }}
-        whileInView={{ opacity: 1, x: 0 }}
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
       >
-        <Card className="overflow-hidden border-2 border-primary/10 hover:border-primary/20 transition-colors">
-          <div className="md:grid md:grid-cols-[200px_1fr]">
-            <div className="bg-primary/5 p-6 flex flex-col items-center justify-center text-primary border-b md:border-b-0 md:border-r">
-              <GraduationCap className="h-12 w-12 mb-2" />
-              <span className="font-bold text-sm text-center">Master of Science</span>
-            </div>
-            <CardHeader className="p-6">
-              <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <Card className="overflow-hidden border-2 border-primary/10 hover:border-primary/20 transition-all duration-300 shadow-sm hover:shadow-md">
+          <div className="p-8">
+            <div className="flex flex-col md:flex-row md:items-start justify-between gap-6">
+              <div className="flex gap-4 items-start">
+                <div className="bg-primary/10 p-4 rounded-2xl text-primary shrink-0">
+                  <GraduationCap className="h-8 w-8" />
+                </div>
                 <div>
-                  <CardTitle className="text-2xl">MSc in Financial Technology (Fintech)</CardTitle>
-                  <CardDescription className="text-lg font-medium text-foreground/80 mt-1">
+                  <CardTitle className="text-2xl md:text-3xl font-bold">MSc in Financial Technology (Fintech)</CardTitle>
+                  <CardDescription className="text-xl font-semibold text-foreground/80 mt-2">
                     Nanyang Technological University (NTU)
                   </CardDescription>
                 </div>
-                <Badge variant="secondary" className="w-fit h-fit px-3 py-1">
-                  Current Pursuit
-                </Badge>
               </div>
-              <div className="flex flex-wrap gap-4 mt-4 text-sm text-muted-foreground">
-                <div className="flex items-center gap-1">
-                  <Calendar className="h-4 w-4" />
-                  <span>2024 - Present</span>
-                </div>
-                <div className="flex items-center gap-1">
-                  <MapPin className="h-4 w-4" />
-                  <span>Singapore</span>
-                </div>
+              <Badge variant="secondary" className="w-fit h-fit px-4 py-2 text-sm font-semibold rounded-full bg-primary/10 text-primary border-primary/20">
+                Current Pursuit
+              </Badge>
+            </div>
+
+            <div className="flex flex-wrap gap-6 mt-6 text-sm md:text-base font-medium text-muted-foreground border-y py-4 my-6">
+              <div className="flex items-center gap-2">
+                <Calendar className="h-5 w-5 text-primary/60" />
+                <span>2024 - Present</span>
               </div>
-              <CardContent className="p-0 mt-6 text-muted-foreground leading-relaxed">
-                <p>
-                  Focused on the intersection of finance and technology, covering areas such as blockchain, 
-                  algorithmic trading, financial data science, and quantitative risk management. 
-                  Gaining hands-on experience with modern financial systems and data-driven decision making.
-                </p>
-              </CardContent>
-            </CardHeader>
+              <div className="flex items-center gap-2">
+                <MapPin className="h-5 w-5 text-primary/60" />
+                <span>Singapore</span>
+              </div>
+            </div>
+
+            <CardContent className="p-0 text-muted-foreground lg:text-lg leading-relaxed max-w-4xl">
+              <p>
+                Focused on the intersection of finance and technology, covering areas such as blockchain, 
+                algorithmic trading, financial data science, and quantitative risk management. 
+                Gaining hands-on experience with modern financial systems and data-driven decision making.
+              </p>
+            </CardContent>
           </div>
         </Card>
       </motion.div>

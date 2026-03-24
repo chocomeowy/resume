@@ -61,38 +61,40 @@ export function Projects() {
       >
         {experiences.map((exp, index) => (
           <motion.div key={index} variants={item}>
-            <Card className="h-full flex flex-col border-2 hover:border-primary/30 transition-all group overflow-hidden">
-              <CardHeader className="relative pb-0">
-                <div className="absolute top-0 right-0 p-6 opacity-10 group-hover:opacity-20 transition-opacity">
+            <Card className="h-full flex flex-col border-2 border-primary/5 bg-card/50 hover:bg-card hover:border-primary/20 transition-all duration-300 group overflow-hidden shadow-sm hover:shadow-xl">
+              <CardHeader className="p-8 relative">
+                <div className="absolute top-8 right-8 p-3 bg-primary/10 rounded-xl text-primary opacity-20 group-hover:opacity-100 transition-all duration-500 scale-100 group-hover:scale-110">
                   {exp.icon}
                 </div>
-                <div className="flex items-center gap-3 text-primary mb-2">
-                  <div className="p-2 bg-primary/10 rounded-lg">
-                    {exp.icon}
-                  </div>
-                  <span className="text-sm font-bold tracking-wider uppercase">{exp.period}</span>
+                <div className="flex items-center gap-3 text-primary/70 font-bold tracking-widest uppercase text-xs mb-4">
+                  <span className="px-3 py-1 bg-primary/10 rounded-full border border-primary/20">{exp.period}</span>
                 </div>
-                <CardTitle className="text-2xl mt-2">{exp.title}</CardTitle>
-                <CardDescription className="text-lg font-medium text-foreground/80">
+                <CardTitle className="text-3xl font-extrabold tracking-tight group-hover:text-primary transition-colors duration-300">{exp.title}</CardTitle>
+                <CardDescription className="text-lg font-semibold text-foreground/70 mt-2">
                   {exp.company}
                 </CardDescription>
               </CardHeader>
-              <CardContent className="flex-grow pt-6">
-                <p className="text-muted-foreground mb-6 font-medium italic">
-                  "{exp.description}"
+              <CardContent className="flex-grow px-8 pb-8 pt-0">
+                <div className="h-px w-12 bg-primary/20 mb-6 group-hover:w-24 transition-all duration-500" />
+                <p className="text-muted-foreground mb-8 text-lg leading-relaxed font-medium italic border-l-4 border-primary/10 pl-4 py-1">
+                  {exp.description}
                 </p>
-                <ul className="space-y-3">
+                <ul className="space-y-4">
                   {exp.highlights.map((highlight, hIndex) => (
-                    <li key={hIndex} className="flex gap-3 text-sm text-muted-foreground">
-                      <div className="h-1.5 w-1.5 rounded-full bg-primary shrink-0 mt-1.5" />
+                    <li key={hIndex} className="flex gap-4 text-base text-muted-foreground/90 font-medium">
+                      <div className="h-2 w-2 rounded-full bg-primary/40 shrink-0 mt-2 group-hover:bg-primary transition-colors" />
                       {highlight}
                     </li>
                   ))}
                 </ul>
               </CardContent>
-              <CardFooter className="pt-2 flex flex-wrap gap-2 border-t mt-4 bg-muted/20">
+              <CardFooter className="px-8 py-6 flex flex-wrap gap-2.5 bg-primary/5 border-t border-primary/10">
                 {exp.skills.map((skill) => (
-                  <Badge key={skill} variant="outline" className="bg-background/50">
+                  <Badge 
+                    key={skill} 
+                    variant="secondary" 
+                    className="bg-background/80 hover:bg-primary hover:text-primary-foreground transition-all duration-300 font-bold px-3 py-1 rounded-lg"
+                  >
                     {skill}
                   </Badge>
                 ))}
