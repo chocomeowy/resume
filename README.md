@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Professional Portfolio & Resume Website
 
-## Getting Started
+A modern, responsive, and professional portfolio website built with **Next.js (App Router)**, **Tailwind CSS**, **Framer Motion**, and **shadcn/ui**.
 
-First, run the development server:
+## 🚀 Tech Stack
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Framework**: [Next.js 15+](https://nextjs.org/) (App Router)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Components**: [shadcn/ui](https://ui.shadcn.com/)
+- **Animations**: [Framer Motion](https://www.framer.com/motion/)
+- **Icons**: [Lucide React](https://lucide.dev/)
+- **QR Code**: [react-qr-code](https://github.com/rossinek/react-qr-code)
+- **Theme**: [next-themes](https://github.com/pacocoursey/next-themes) (Dark/Light Mode)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## ✨ Features
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Fintech Aesthetic**: Professional blue-gray color palette tailored for the financial technology sector.
+- **Hero Section**: High-impact introduction focusing on Fintech, Data Analytics, and Technical Business Analysis.
+- **Education**: Detailed highlight of MSc in Fintech at Nanyang Technological University (NTU).
+- **Experience Grid**: Showcase of IoT specializing, remote monitoring (40-500 devices), and 20+ Grafana dashboards.
+- **Interactive Skills**: Categorized skills with focus highlights for Python and JavaScript.
+- **Resume Download**: Direct link to `/resume.pdf` for quick access.
+- **Dynamic QR Code**: Mobile-friendly access point for your digital resume.
+- **Dark Mode**: Fully supported with a smooth toggle.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🛠️ Getting Started
 
-## Learn More
+### Prerequisites
 
-To learn more about Next.js, take a look at the following resources:
+- Node.js 18.17 or later
+- npm or yarn
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Installation
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/chocomeowy/resume.git
+   cd resume
+   ```
 
-## Deploy on Vercel
+2. **Install dependencies**:
+   ```bash
+   npm install
+   ```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+3. **Run the development server**:
+   ```bash
+   npm run dev
+   ```
+   Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### 📄 Updating Your Resume
+
+1. Place your `resume.pdf` file in the `public/` folder.
+2. The website will automatically update the download link and QR code.
+
+## 📄 License
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
+---
+
+Built with ❤️ for a professional showcase.
