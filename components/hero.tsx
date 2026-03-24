@@ -17,14 +17,14 @@ export function Hero() {
           className="space-y-6 max-w-[900px]"
         >
           <div className="inline-flex items-center rounded-full px-4 py-1.5 text-sm font-semibold bg-primary/10 text-primary border border-primary/20 mb-2">
-            Business & Data Analyst | FinTech | Applied AI
+            FinTech Software Engineer & Data Analyst
           </div>
           <h1 className="text-5xl font-extrabold tracking-tight sm:text-6xl md:text-7xl lg:text-8xl bg-clip-text text-transparent bg-gradient-to-b from-foreground to-foreground/70">
             Yong <span className="text-primary">Fah Jin</span>
           </h1>
           <p className="mx-auto max-w-[800px] text-muted-foreground md:text-xl lg:text-2xl leading-relaxed font-medium mt-6">
-            4+ years of experience building production monitoring systems and automating reporting. 
-            Scaling IoT at Terrenus Energy and currently pursuing MSc in FinTech at NTU.
+            Leveraging a strong business foundation and deep technical expertise in data pipelines 
+            to architect data-driven financial technology solutions. Currently pursuing MSc in FinTech at NTU.
           </p>
         </motion.div>
 

@@ -4,7 +4,8 @@ import { motion } from "framer-motion"
 import { buttonVariants } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import QRCode from "react-qr-code"
-import { Download, QrCode, ExternalLink, FileText } from "lucide-react"
+import { Download, QrCode, ExternalLink, FileText, Code, Mail, MessageCircle } from "lucide-react"
+import Link from "next/link"
 import { cn } from "@/lib/utils"
 
 export function ResumeQR() {
@@ -60,6 +61,37 @@ export function ResumeQR() {
                 <Download className="h-5 w-5" />
                 Download PDF Resume
               </a>
+              <div className="flex flex-wrap justify-center gap-6 pt-8 border-t border-primary/10 w-full mt-4">
+                <Link 
+                  href="https://github.com/chocomeowy" 
+                  target="_blank"
+                  className="flex flex-col items-center gap-2 group"
+                >
+                  <div className="p-3 rounded-full bg-muted group-hover:bg-primary group-hover:text-primary-foreground transition-all">
+                    <Code className="h-6 w-6" />
+                  </div>
+                  <span className="text-xs font-bold text-muted-foreground group-hover:text-foreground">GitHub</span>
+                </Link>
+                <Link 
+                  href="mailto:yongfahjin@hotmail.com" 
+                  className="flex flex-col items-center gap-2 group"
+                >
+                  <div className="p-3 rounded-full bg-muted group-hover:bg-primary group-hover:text-primary-foreground transition-all">
+                    <Mail className="h-6 w-6" />
+                  </div>
+                  <span className="text-xs font-bold text-muted-foreground group-hover:text-foreground">Email</span>
+                </Link>
+                <Link 
+                  href="https://wa.me/6596201881" 
+                  target="_blank"
+                  className="flex flex-col items-center gap-2 group"
+                >
+                  <div className="p-3 rounded-full bg-muted group-hover:bg-primary group-hover:text-primary-foreground transition-all">
+                    <MessageCircle className="h-6 w-6" />
+                  </div>
+                  <span className="text-xs font-bold text-muted-foreground group-hover:text-foreground">WhatsApp</span>
+                </Link>
+              </div>
             </CardContent>
           </Card>
         </motion.div>

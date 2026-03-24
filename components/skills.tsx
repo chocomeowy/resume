@@ -12,8 +12,8 @@ const skillCategories = [
     icon: <Code2 className="h-4 w-4" />,
     skills: [
       { name: "Python", level: "Expert", highlight: true },
-      { name: "JavaScript", level: "Advanced", highlight: true },
-      { name: "SQL", level: "Expert" },
+      { name: "SQL", level: "Expert", highlight: true },
+      { name: "JavaScript", level: "Advanced" },
       { name: "TypeScript", level: "Advanced" },
     ],
   },
