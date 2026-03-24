@@ -15,7 +15,6 @@ const skillCategories = [
       { name: "JavaScript", level: "Advanced", highlight: true },
       { name: "SQL", level: "Expert" },
       { name: "TypeScript", level: "Intermediate" },
-      { name: "R", level: "Intermediate" },
     ],
   },
   {
@@ -25,33 +24,19 @@ const skillCategories = [
     skills: [
       { name: "Grafana", level: "Expert", highlight: true },
       { name: "Pandas/NumPy", level: "Expert" },
-      { name: "Tableau", level: "Advanced" },
-      { name: "Power BI", level: "Advanced" },
       { name: "Statistical Modeling", level: "Advanced" },
     ],
   },
   {
     id: "fintech",
-    label: "Fintech & Risk",
+    label: "Fintech",
     icon: <LineChart className="h-4 w-4" />,
     skills: [
-      { name: "Risk Modeling", level: "Advanced", highlight: true },
-      { name: "Monte Carlo", level: "Expert" },
+      { name: "Algorithmic Trading", level: "Advanced" },
+      { name: "Blockchain", level: "Intermediate" },
       { name: "Fixed Income", level: "Intermediate" },
       { name: "Derivatives", level: "Intermediate" },
       { name: "Time Series", level: "Advanced" },
-    ],
-  },
-  {
-    id: "iot",
-    label: "IoT & Systems",
-    icon: <Cpu className="h-4 w-4" />,
-    skills: [
-      { name: "Remote Monitoring", level: "Expert", highlight: true },
-      { name: "Data Pipelines", level: "Advanced" },
-      { name: "System Integration", level: "Advanced" },
-      { name: "MQTT/HTTP", level: "Advanced" },
-      { name: "Infrastructure", level: "Intermediate" },
     ],
   },
 ]

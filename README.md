@@ -52,7 +52,13 @@ A modern, responsive, and professional portfolio website built with **Next.js (A
 ### 📄 Updating Your Resume
 
 1. Place your `resume.pdf` file in the `public/` folder.
-2. The website will automatically update the download link and QR code.
+2. The website (hosted at [fahjin.vercel.app](https://fahjin.vercel.app)) will automatically update the download link and QR code.
+
+### 📱 Quick Access QR Code
+
+Scan the code below to visit the live site:
+
+![Portfolio QR Code](https://chart.googleapis.com/chart?cht=qr&chs=200x200&chl=https://fahjin.vercel.app)
 
 ## 📄 License
 

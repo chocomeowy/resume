@@ -8,7 +8,7 @@ import { Download, QrCode, ExternalLink, FileText } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 export function ResumeQR() {
-  const websiteUrl = typeof window !== 'undefined' ? window.location.origin : 'https://portfolio.example.com';
+  const websiteUrl = 'https://fahjin.vercel.app';
   const resumeUrl = `${websiteUrl}/resume.pdf`;
 
   return (

@@ -51,7 +51,7 @@ export function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.4 }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full max-w-5xl pt-12"
+          className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl pt-12"
         >
           <div className="flex flex-col items-center space-y-2 p-6 rounded-xl border bg-card text-card-foreground shadow-sm hover:shadow-md transition-shadow">
             <div className="p-3 bg-primary/10 rounded-lg text-primary">
@@ -59,7 +59,7 @@ export function Hero() {
             </div>
             <h3 className="font-bold text-lg">Fintech</h3>
             <p className="text-sm text-muted-foreground text-center">
-              Specializing in quantitative risk modeling and financial technology solutions.
+              Specializing in technical business analysis and innovative financial technology solutions.
             </p>
           </div>
           <div className="flex flex-col items-center space-y-2 p-6 rounded-xl border bg-card text-card-foreground shadow-sm hover:shadow-md transition-shadow">
@@ -69,15 +69,6 @@ export function Hero() {
             <h3 className="font-bold text-lg">Data Analytics</h3>
             <p className="text-sm text-muted-foreground text-center">
               Transforming complex IoT data into actionable business insights with Grafana and Python.
-            </p>
-          </div>
-          <div className="flex flex-col items-center space-y-2 p-6 rounded-xl border bg-card text-card-foreground shadow-sm hover:shadow-md transition-shadow">
-            <div className="p-3 bg-primary/10 rounded-lg text-primary">
-              <ShieldCheck className="h-6 w-6" />
-            </div>
-            <h3 className="font-bold text-lg">Risk Modeling</h3>
-            <p className="text-sm text-muted-foreground text-center">
-              Utilizing Monte Carlo simulations and advanced statistics for robust risk assessment.
             </p>
           </div>
         </motion.div>

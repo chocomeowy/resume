@@ -20,20 +20,6 @@ const experiences = [
     icon: <Monitor className="h-6 w-6" />,
     skills: ["IoT", "Grafana", "Data Analytics", "Technical BA"],
   },
-  {
-    title: "Quantitative Risk Modeling",
-    company: "Academic Project / Fintech Research",
-    period: "2024 - Present",
-    description: "Developed robust risk assessment models for financial applications.",
-    highlights: [
-      "Implemented Monte Carlo simulations for market risk forecasting.",
-      "Analyzed historical volatility and correlation matrices for portfolio optimization.",
-      "Utilized Python for complex statistical modeling and data validation.",
-      "Integrated risk parameters into automated decision-making frameworks.",
-    ],
-    icon: <TrendingUp className="h-6 w-6" />,
-    skills: ["Python", "Risk Modeling", "Monte Carlo", "Statistics"],
-  },
 ]
 
 const container = {
