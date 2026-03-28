@@ -1,0 +1,105 @@
+YONG FAH JIN
+Business & Data Analyst | IoT Monitoring | FinTech & Applied AI
+Singapore | +65 9620 1881 | yongfahjin@hotmail.com | linkedin.com/in/yongfahjin
+PROFESSIONAL SUMMARY
+Business & Data Analyst with 4+ years of experience building production monitoring systems, automating
+reporting workflows, and delivering data-driven insights across energy, banking, and AI-enabled platforms.
+Expanded IoT monitoring coverage from 40 to 500 devices, reduced incident detection time from days to under an
+hour, and developed 20+ client and internal dashboards. Adept at translating operational complexity into clear
+dashboards, actionable KPIs, and stakeholder-ready reporting. Currently completing an MSc in Financial
+Technology at NTU, deepening expertise in financial systems, digital banking, and platform analytics.
+AREAS OF EXPERTISE
+Data Analysis & KPI Design IoT / Production Monitoring
+Dashboard Development (Grafana) Reporting Automation
+Agile Delivery & Requirements FinTech & Digital Banking
+Cross-functional Stakeholder Management UAT, SOP & Documentation
+TECHNICAL SKILLS
+Languages Python, JavaScript, SQL
+Frameworks ReactJS, NextJS, VueJS, NodeJS/Express, FastAPI, Flask
+Data & Analytics PostgreSQL, BigQuery, Grafana, Google Analytics, Google Tag Manager, Hotjar
+AI & ML Machine Learning, Artificial Intelligence, Collaborative Filtering, REST API Integration
+Cloud / DevOps Azure (Kubernetes), Git/GitHub, Linux
+Tools Excel, SAP, Microsoft Office, Power BI (exposure), Tableau (exposure)
+EDUCATION
+Master of Science in Financial Technology (FinTech) Expected Jun 2027
+Nanyang Technological University (NTU) | Part-time | Focus: digital banking, financial data & platform risk
+BSc Business, Second Upper Honours Completed
+SIM, University of London
+Advanced Diploma in Python & ML | Certificate in Mobile App Development
+Singapore Management University (SMU) Academy
+Certificate in Software Engineering Immersive (480 hours)
+General Assembly
+PROFESSIONAL EXPERIENCE
+Remote Monitoring Analyst & Software Developer | Terrenus Energy Jan 2024 to Dec 2025
+• Expanded IoT monitoring coverage from 40 to 500 devices across solar energy assets, designing, implementing,
+and maintaining 20+ Grafana dashboards to provide operations and finance teams with real-time visibility into
+asset availability, alert volumes, and incident resolution times.
+• Reduced incident detection time from several days to under one hour by developing proactive offline-device
+alerting, directly decreasing revenue-impacting downtime across the solar portfolio.
+• Automated monthly reporting by building a PostgreSQL-connected report generation system, eliminating manual
+copy-paste work and saving the team multiple hours per reporting cycle.
+• Standardised alert definitions and KPI formulas to reduce alert noise and ensure focus on business-critical
+incidents and performance metrics.
+• Collaborated with O&M and finance stakeholders to translate technical monitoring signals into weekly summaries
+and actionable escalations.
+• Supported Azure and Kubernetes cloud deployment activities to enhance platform scalability, reliability, and
+operational robustness.
+• Created standardised monitoring SOPs and handover documentation to reduce reliance on tribal knowledge and
+enable smoother team transitions and onboarding.
+Application Engineer (Contract) | Nityo Infotech, Client: DBS Singapore Jan 2023 to Sep 2023
+
+-- 1 of 2 --
+
+• Implemented production monitoring solutions using Python and observability tools to surface service health
+indicators and accelerate incident response for DBS engineering teams.
+• Executed monitoring host upgrades to maintain operational stability and ensure alignment with established
+environment standards.
+• Developed responsive internal web interfaces using ReactJS and Material-UI to support reporting needs and day-
+to-day operational activities.
+• Collaborated with cross-functional stakeholders to translate operational requirements into measurable metrics,
+alerts, and dashboards.
+Application Engineer | Sentient.io Dec 2021 to Dec 2022
+• Developed a B2B parts recommendation engine for Toyota using collaborative filtering and REST API
+microservices to surface items viewed by similar customers, enhancing product discovery and cross-sell
+opportunities.
+• Created data-driven interactive dashboards using BigQuery SQL, enabling stakeholder teams to make faster,
+evidence-based decisions.
+• Implemented end-to-end analytics tracking across the platform using Google Tag Manager, Google Analytics, and
+Hotjar, delivering behavioural insights to product and business teams.
+• Built and maintained ScribeRabbit, a full-stack AI video transcription and translation product using VueJS, Python
+FastAPI, and GCP integrated with the company's AI APIs.
+• Collaborated in sprint-based development cycles, translating direct client feedback into backlog items and
+delivering iterative feature enhancements.
+Business Support Analyst | Apple South Asia Pte Ltd Aug 2015 to May 2021
+• Processed high volumes of enterprise order fulfilments, coordinating daily with Retail, Logistics, Sales, Finance,
+Planning, and external carrier partners including DHL and CNPL.
+• Provided backup reporting support in 2016, generating ticket volume insights that directly informed leadership
+headcount and resourcing decisions.
+• Delivered surge support across the JAPAC region during high-volume New Product Introduction (NPI) periods,
+ensuring timely order delivery at scale.
+• Participated in multiple UAT cycles for internal tools including logistics stock allocation systems and a sales CRM,
+identifying functional gaps prior to rollout.
+• Maintained and updated end-to-end SOPs through multiple team restructures, reducing onboarding friction and
+improving process consistency across cross-regional teams.
+Operation Analyst | Apple South Asia Pte Ltd Jun 2020 to Dec 2020
+• Generated service level, staffing, and KPI reports that enhanced leadership visibility and supported resourcing
+decisions across the JAPAC region.
+• Supported the JAPAC region in troubleshooting schedule changes and resolving operational tickets within the
+Regional Operations Center.
+• Managed on- and off-boarding processes for roles and role changes within the contact centre, including
+coordination with external vendors.
+KEY PROJECTS
+B2B Recommendation Engine — Toyota (Sentient.io)
+Built a collaborative filtering recommendation engine surfacing relevant parts to B2B customers based on similar buying
+behaviour, integrated via REST API microservices. Delivered measurable uplift in product discovery and cross-sell
+conversion.
+ScribeRabbit — AI Video Transcription & Translation Platform (Sentient.io)
+Full-stack AI product built with VueJS, Python FastAPI, and GCP, integrating the company's AI APIs to transcribe and
+translate uploaded videos. Developed end-to-end from requirements to deployment in sprint-based cycles.
+ADDITIONAL INFORMATION
+Citizenship Singapore Citizen
+Languages English (fluent), Chinese (fluent)
+Availability Available immediately
+
+-- 2 of 2 --
+

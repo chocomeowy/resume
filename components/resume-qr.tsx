@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils"
 
 export function ResumeQR() {
   const websiteUrl = 'https://fahjin.vercel.app';
-  const resumeUrl = `${websiteUrl}/resume.pdf`;
+  const resumeUrl = `${websiteUrl}/Yong_Fah_Jin_CV.pdf`;
 
   return (
     <div className="container max-w-5xl mx-auto">
@@ -54,7 +54,7 @@ export function ResumeQR() {
                 </li>
               </ul>
               <a 
-                href="/resume.pdf" 
+                href="/Yong_Fah_Jin_CV.pdf" 
                 download
                 className={cn(buttonVariants({ size: "lg" }), "w-full h-14 text-lg font-bold gap-2")}
               >
