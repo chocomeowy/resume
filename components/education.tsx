@@ -15,11 +15,12 @@ interface TimelineItemProps {
 
 function TimelineItem({ period, title, company, description, bullets, tags, isLast }: TimelineItemProps) {
   return (
-    <div className="relative pl-12 pb-16 last:pb-0 group">
+    <div className="relative pl-12 pb-16 group">
       {/* Vertical Line with Gradient */}
-      {!isLast && (
-        <div className="absolute left-[7px] top-[28px] bottom-0 w-[2.5px] bg-gradient-to-b from-accent via-accent/20 to-transparent z-0" />
-      )}
+      <div className={cn(
+        "absolute left-[7px] top-[28px] bottom-0 w-[2.5px] bg-gradient-to-b from-accent/60 via-accent/20 to-transparent z-0",
+        isLast && "h-16"
+      )} />
       
       {/* Premium Indicator: Glowing Pulsing Dot */}
       <div className="absolute left-0 top-[8px] flex items-center justify-center -translate-x-1/2 ml-[8px]">
