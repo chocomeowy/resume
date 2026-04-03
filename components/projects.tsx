@@ -1,166 +1,93 @@
 "use client"
 
-import { motion } from "framer-motion"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Layers, Activity, Gauge, TrendingUp, Monitor, Briefcase, GraduationCap, Calendar, MapPin, Cpu } from "lucide-react"
+import * as React from "react"
+import Image from "next/image"
 
-const experiences = [
+const projects = [
   {
-    title: "Remote Monitoring Analyst & Software Developer",
-    company: "Terrenus Energy",
-    period: "Jan 2024 – Dec 2025",
-    description: "Expanded IoT monitoring from 40 to 500+ devices across solar assets, creating a real-time monitoring and alerting ecosystem.",
-    highlights: [
-      "Designed and maintained 20+ Grafana dashboards for operations and finance teams.",
-      "Developed proactive offline-device alerting, reducing incident detection time to < 1 hour.",
-      "Automated monthly reporting with a PostgreSQL system, saving hours per cycle.",
-      "Supported Azure and Kubernetes deployments for enhanced platform scalability.",
-    ],
-    icon: <Monitor className="h-6 w-6" />,
-    skills: ["PostgreSQL", "Grafana", "Python", "Azure", "Kubernetes"],
+    title: "OCR PWA Utility",
+    description: "A versatile Progressive Web App that extracts text from images using advanced OCR technology. Built with a focus on speed and offline accessibility.",
+    category: "Productivity",
+    image: "/images/ocr_live.png",
+    tags: ["Next.js", "Tesseract.js", "PWA"],
+    link: "https://ocrpwa.vercel.app/"
   },
   {
-    title: "Application Engineer (Contract)",
-    company: "Nityo Infotech / DBS Singapore",
-    period: "Jan 2023 – Sep 2023",
-    description: "Implemented production monitoring solutions and internal web interfaces for core banking infrastructure.",
-    highlights: [
-      "Built responsive internal dashboards using ReactJS and Material-UI.",
-      "Developed Python-based production monitoring for faster incident response.",
-      "Translated operational requirements into actionable metrics and alerts.",
-    ],
-    icon: <Activity className="h-6 w-6" />,
-    skills: ["ReactJS", "Python", "System Monitoring", "Observability"],
+    title: "Causeway Cameras",
+    description: "Real-time border traffic monitoring. Integrates LTA DataMall live feeds for cross-border commuter planning.",
+    category: "Public Utility",
+    image: "/images/causeway_live.png",
+    tags: ["React", "LTA API", "Leaflet"],
+    link: "https://causeway.vercel.app/"
   },
   {
-    title: "Application Engineer",
-    company: "Sentient.io",
-    period: "Dec 2021 – Dec 2022",
-    description: "Designed and implemented AI microservices, interactive dashboards, and full-stack AI products.",
-    highlights: [
-      "Built a B2B parts recommendation engine for Toyota with collaborative filtering.",
-      "Created ScribeRabbit, a full-stack AI platform using VueJS, FastAPI, and GCP.",
-      "Developed interactive dashboards using BigQuery SQL for evidence-based decisions.",
-    ],
-    icon: <Cpu className="h-6 w-6" />,
-    skills: ["VueJS", "FastAPI", "BigQuery", "Microservices", "GCP"],
+    title: "Currency Analytics",
+    description: "High-precision currency converter with real-time sync and full PWA service worker support for travelers.",
+    category: "FinTech",
+    image: "/images/currency_live.png",
+    tags: ["React", "API Integration", "Data viz"],
+    link: "https://currency-henna-delta.vercel.app/"
   },
   {
-    title: "Business Support Analyst / Operation Analyst",
-    company: "Apple South Asia",
-    period: "Aug 2015 – May 2021",
-    description: "Managed high-volume order fulfillments and generated KPI reports to support regional operational decisions.",
-    highlights: [
-      "Coordinated enterprise order fulfillments across cross-regional logistics partners.",
-      "Generated service level and KPI reports to inform leadership resourcing decisions.",
-      "Conducted UAT for internal tools and managed comprehensive SOPs.",
-    ],
-    icon: <Briefcase className="h-6 w-6" />,
-    skills: ["KPI Reporting", "Operations", "SOP Management", "UAT"],
-  },
+    title: "BusTime SG",
+    description: "Minimalist Singapore bus arrival tracker. Save favorite stops and view live ETAs with a clean, low-latency UI.",
+    category: "Commute",
+    image: "/images/bus_live.png",
+    tags: ["Next.js", "Geolocation", "Transit API"],
+    link: "https://bustime-eta.vercel.app/"
+  }
 ]
-
-const container = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.2,
-    },
-  },
-}
-
-const item = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0 },
-}
 
 export function Projects() {
   return (
-    <div className="container max-w-6xl mx-auto">
-      <div className="flex flex-col items-center text-center mb-16">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
-          <Briefcase className="h-4 w-4" />
-          Professional Experience
-        </div>
-        <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Experience & Projects</h2>
-        <p className="mt-4 text-muted-foreground max-w-2xl">
-          Bridging the gap between engineering and finance through data-driven technical analysis 
-          and IoT management.
-        </p>
-      </div>
-
-      <motion.div
-        variants={container}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true }}
-        className="grid grid-cols-1 md:grid-cols-2 gap-8"
-      >
-        {experiences.map((exp, index) => (
-          <motion.div key={index} variants={item}>
-            <Card className="h-full flex flex-col border-2 border-primary/5 bg-card/50 hover:bg-card hover:border-primary/20 transition-all duration-300 group overflow-hidden shadow-sm hover:shadow-xl">
-              <CardHeader className="p-8 relative">
-                <div className="absolute top-8 right-8 p-3 bg-primary/10 rounded-xl text-primary opacity-20 group-hover:opacity-100 transition-all duration-500 scale-100 group-hover:scale-110">
-                  {exp.icon}
-                </div>
-                <div className="flex items-center gap-3 text-primary/70 font-bold tracking-widest uppercase text-xs mb-4">
-                  <span className="px-3 py-1 bg-primary/10 rounded-full border border-primary/20">{exp.period}</span>
-                </div>
-                <CardTitle className="text-3xl font-extrabold tracking-tight group-hover:text-primary transition-colors duration-300">{exp.title}</CardTitle>
-                <CardDescription className="text-lg font-semibold text-foreground/70 mt-2">
-                  {exp.company}
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="flex-grow px-8 pb-8 pt-0">
-                <div className="h-px w-12 bg-primary/20 mb-6 group-hover:w-24 transition-all duration-500" />
-                <p className="text-muted-foreground mb-8 text-lg leading-relaxed font-medium italic border-l-4 border-primary/10 pl-4 py-1">
-                  {exp.description}
-                </p>
-                <ul className="space-y-4">
-                  {exp.highlights.map((highlight, hIndex) => (
-                    <li key={hIndex} className="flex gap-4 text-base text-muted-foreground/90 font-medium">
-                      <div className="h-2 w-2 rounded-full bg-primary/40 shrink-0 mt-2 group-hover:bg-primary transition-colors" />
-                      {highlight}
-                    </li>
-                  ))}
-                </ul>
-              </CardContent>
-              <CardFooter className="px-8 py-6 flex flex-wrap gap-2.5 bg-primary/5 border-t border-primary/10">
-                {exp.skills.map((skill) => (
-                  <Badge 
-                    key={skill} 
-                    variant="secondary" 
-                    className="bg-background/80 hover:bg-primary hover:text-primary-foreground transition-all duration-300 font-bold px-3 py-1 rounded-lg"
-                  >
-                    {skill}
-                  </Badge>
-                ))}
-              </CardFooter>
-            </Card>
-          </motion.div>
-        ))}
-      </motion.div>
-
-      <div className="mt-20 p-8 rounded-2xl bg-primary/5 border border-primary/10 relative overflow-hidden">
-        <div className="absolute -right-8 -bottom-8 opacity-5">
-          <Activity className="h-64 w-64" />
-        </div>
-        <div className="flex flex-col md:flex-row items-center gap-8 relative z-10">
-          <div className="p-4 bg-primary text-primary-foreground rounded-2xl shadow-xl shadow-primary/20">
-            <Gauge className="h-12 w-12" />
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      {projects.map((project, index) => (
+        <a 
+          key={index} 
+          href={project.link} 
+          target="_blank" 
+          rel="noopener"
+          className="group block relative rounded-2xl overflow-hidden bg-bg-card border border-border/40 hover:border-accent/40 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(0,0,0,0.3)]"
+        >
+          {/* Image Container */}
+          <div className="relative aspect-[16/10] overflow-hidden border-b border-border/20">
+            <Image 
+              src={project.image} 
+              alt={project.title}
+              fill
+              className="object-cover transition-transform duration-700 group-hover:scale-110"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-bg-surface/80 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-500" />
+            
+            {/* View Project Overlay */}
+            <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              <div className="px-6 py-2.5 bg-accent text-accent-foreground rounded-full text-xs font-bold uppercase tracking-widest translate-y-4 group-hover:translate-y-0 transition-transform duration-500 shadow-[0_0_20px_var(--accent-glow)]">
+                View Live Site
+              </div>
+            </div>
           </div>
-          <div>
-            <h3 className="text-2xl font-bold">IoT Infrastructure Specialist</h3>
-            <p className="mt-2 text-muted-foreground lg:text-lg">
-              Extensive background in managing 40 to 500 devices concurrently, 
-              leveraging technical expertise to ensure robust and scalable monitoring 
-              ecosystems for industrial energy applications.
+
+          {/* Content */}
+          <div className="p-6">
+            <div className="flex items-center justify-between mb-3">
+              <span className="text-[10px] font-mono text-accent uppercase tracking-widest">{project.category}</span>
+              <div className="flex gap-1.5">
+                {project.tags.map(tag => (
+                  <span key={tag} className="text-[9px] font-mono text-muted-foreground bg-white/5 border border-white/10 px-1.5 py-0.5 rounded uppercase transition-colors group-hover:text-foreground group-hover:border-accent/20">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+            <h3 className="font-display font-bold text-lg text-foreground group-hover:text-accent transition-colors duration-300 mb-2">
+              {project.title}
+            </h3>
+            <p className="text-sm text-muted-foreground leading-relaxed transition-colors group-hover:text-foreground/80 line-clamp-2">
+              {project.description}
             </p>
           </div>
-        </div>
-      </div>
+        </a>
+      ))}
     </div>
   )
 }

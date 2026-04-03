@@ -1,112 +1,205 @@
 "use client"
 
-import { motion } from "framer-motion"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { GraduationCap, Calendar, MapPin, Layers } from "lucide-react"
+import * as React from "react"
+import { cn } from "@/lib/utils"
+
+interface TimelineItemProps {
+  period: string
+  title: string
+  company: string
+  description?: string
+  bullets?: string[]
+  tags?: string[]
+  isLast?: boolean
+}
+
+function TimelineItem({ period, title, company, description, bullets, tags, isLast }: TimelineItemProps) {
+  return (
+    <div className="relative pl-12 pb-16 last:pb-0 group">
+      {/* Vertical Line with Gradient */}
+      {!isLast && (
+        <div className="absolute left-[7px] top-[28px] bottom-0 w-[2.5px] bg-gradient-to-b from-accent via-accent/20 to-transparent z-0" />
+      )}
+      
+      {/* Premium Indicator: Glowing Pulsing Dot */}
+      <div className="absolute left-0 top-[8px] flex items-center justify-center -translate-x-1/2 ml-[8px]">
+        <div className="relative flex items-center justify-center">
+          {/* Inner solid dot */}
+          <div className="w-4 h-4 rounded-full bg-accent shadow-[0_0_12px_var(--accent)] z-20 transition-transform duration-500 group-hover:scale-125" />
+          {/* Outer glowing ring */}
+          <div className="absolute w-8 h-8 rounded-full border border-accent/30 animate-ping opacity-20" />
+          <div className="absolute w-10 h-10 rounded-full border border-accent/10 opacity-10" />
+        </div>
+      </div>
+
+      {/* Card Content with Glassmorphism */}
+      <div className="relative p-6 rounded-2xl bg-bg-card/40 border border-border/40 backdrop-blur-md hover:bg-bg-hover/50 hover:border-accent/40 transition-all duration-500 shadow-sm hover:shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
+          <div>
+            <h3 className="text-xl font-bold text-foreground font-display tracking-tight group-hover:text-accent transition-colors duration-300">
+              {title}
+            </h3>
+            <div className="text-accent/90 font-bold text-sm tracking-wide mt-1 uppercase">{company}</div>
+          </div>
+          <div className="shrink-0 font-mono text-[11px] uppercase tracking-widest text-accent bg-accent/10 px-3 py-1.5 rounded-full border border-accent/20 h-fit">
+            {period}
+          </div>
+        </div>
+
+        {description && (
+          <p className="text-sm text-muted-foreground leading-relaxed mb-4 italic">
+            {description}
+          </p>
+        )}
+
+        {bullets && (
+          <ul className="space-y-3">
+            {bullets.map((bullet, i) => (
+              <li key={i} className="text-sm text-muted-foreground flex gap-4 leading-relaxed group/bullet">
+                <span className="mt-2 w-1.5 h-1.5 rounded-full bg-accent/40 group-hover/bullet:bg-accent transition-colors duration-300 flex-shrink-0" />
+                {bullet}
+              </li>
+            ))}
+          </ul>
+        )}
+
+        {tags && (
+          <div className="flex flex-wrap gap-2 pt-6">
+            {tags.map((tag) => (
+              <span 
+                key={tag} 
+                className="text-[10px] font-mono uppercase tracking-wider px-2.5 py-1 rounded-md bg-accent/5 border border-accent/10 text-muted-foreground hover:text-accent hover:border-accent/30 transition-all duration-300"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+        )}
+      </div>
+    </div>
+  )
+}
+
+const experiences = [
+  {
+    period: "Jan 2024 — Dec 2025",
+    title: "Remote Monitoring Analyst & Software Developer",
+    company: "Terrenus Energy",
+    bullets: [
+      "Scaled IoT monitoring from 40 to 500+ devices across solar assets, building a real-time alerting ecosystem.",
+      "Designed and maintained 20+ Grafana dashboards to monitor cross-regional operations and financial performance.",
+      "Reduced incident detection time to < 1 hour via proactive offline-device alerting and automated diagnostics.",
+      "Automated monthly reporting with a custom PostgreSQL/Python system, eliminating manual data entry."
+    ],
+    tags: ["PostgreSQL", "Grafana", "Python", "Azure", "Kubernetes"]
+  },
+  {
+    period: "Jan 2023 — Sep 2023",
+    title: "Application Engineer (Contract)",
+    company: "DBS Singapore",
+    bullets: [
+      "Built responsive internal dashboards using ReactJS and Material-UI for core banking infrastructure monitoring.",
+      "Developed Python-based production monitoring solutions to enhance incident response speed.",
+      "Collaborated with SRE teams to translate operational requirements into actionable observability metrics."
+    ],
+    tags: ["ReactJS", "Python", "SRE", "Banking Tech"]
+  },
+  {
+    period: "Dec 2021 — Dec 2022",
+    title: "Application Engineer",
+    company: "Sentient.io",
+    bullets: [
+      "Built a B2B parts recommendation engine for Toyota using collaborative filtering and item-based similarity.",
+      "Developed ScribeRabbit, a full-stack AI transcription platform using VueJS, FastAPI, and GCP services.",
+      "Optimized data pipelines for interactive analytics dashboards using BigQuery SQL and automated ETL."
+    ],
+    tags: ["VueJS", "FastAPI", "BigQuery", "GCP", "MLOps"]
+  },
+  {
+    period: "Aug 2015 — May 2021",
+    title: "Business Support Analyst",
+    company: "Apple South Asia",
+    bullets: [
+      "Managed multi-million dollar enterprise order fulfilments across cross-regional logistics partners.",
+      "Generated service level and KPI reports to inform leadership resourcing and operational strategy.",
+      "Conducted UAT for internal supply chain tools and maintained comprehensive SOPs for regional teams."
+    ],
+    tags: ["Business Analytics", "Logistics", "UAT", "Operations"]
+  }
+]
+
+const education = [
+  {
+    period: "2024 — Present",
+    title: "MSc in Financial Technology (FinTech)",
+    company: "Nanyang Technological University (NTU)",
+    description: "Specialising in ML in finance, blockchain, and DeFi. Coursework: Quantitative Risk Modelling, Time-series Forecasting, and Quantitative Trading.",
+    tags: ["Machine Learning", "Quant Finance", "Blockchain"]
+  },
+  {
+    period: "Completed",
+    title: "BSc Business — Second Upper Honours",
+    company: "SIM / University of London",
+    description: "Foundational business education underpinning analytical thinking and operations management."
+  }
+]
 
 export function Education() {
   return (
-    <div className="container max-w-5xl mx-auto">
-      <div className="flex flex-col items-center text-center mb-12">
-        <h2 className="text-3xl font-bold tracking-tight sm:text-4xl">Education</h2>
-        <p className="mt-4 text-muted-foreground">Academic foundation and specialized training.</p>
+    <div className="space-y-24">
+      {/* Experience Section */}
+      <div className="relative">
+        <div className="space-y-2">
+          {experiences.map((exp, i) => (
+            <TimelineItem 
+              key={i}
+              {...exp}
+              isLast={i === experiences.length - 1}
+            />
+          ))}
+        </div>
       </div>
 
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-      >
-        <Card className="overflow-hidden border-2 border-primary/10 hover:border-primary/20 transition-all duration-300 shadow-sm hover:shadow-md">
-          <div className="p-8">
-            <div className="flex flex-col md:flex-row md:items-start justify-between gap-6">
-              <div className="flex gap-4 items-start">
-                <div className="bg-primary/10 p-4 rounded-2xl text-primary shrink-0">
-                  <GraduationCap className="h-8 w-8" />
-                </div>
-                <div>
-                  <CardTitle className="text-2xl md:text-3xl font-bold">MSc in Financial Technology (Fintech)</CardTitle>
-                  <CardDescription className="text-xl font-semibold text-foreground/80 mt-2">
-                    Nanyang Technological University (NTU)
-                  </CardDescription>
-                </div>
-              </div>
-              <Badge variant="secondary" className="w-fit h-fit px-4 py-2 text-sm font-semibold rounded-full bg-primary/10 text-primary border-primary/20">
-                Current Pursuit
-              </Badge>
-            </div>
-
-            <div className="flex flex-wrap gap-6 mt-6 text-sm md:text-base font-medium text-muted-foreground border-y py-4 my-6">
-              <div className="flex items-center gap-2">
-                <Calendar className="h-5 w-5 text-primary/60" />
-                <span>2024 - Present</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <MapPin className="h-5 w-5 text-primary/60" />
-                <span>Singapore</span>
-              </div>
-            </div>
-
-            <CardContent className="p-0 text-muted-foreground lg:text-lg leading-relaxed max-w-4xl">
-              <p>
-                Focused on the intersection of finance and technology, covering areas such as blockchain, 
-                algorithmic trading, financial data science, and quantitative risk management. 
-                Gaining hands-on experience with modern financial systems and data-driven decision making.
-              </p>
-            </CardContent>
-          </div>
-        </Card>
-      </motion.div>
-      
-      <motion.div
-        initial={{ opacity: 0, x: 20 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5, delay: 0.2 }}
-        className="mt-12"
-      >
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <Card className="border-2 border-primary/5 hover:border-primary/20 transition-all duration-300 shadow-sm">
-            <div className="p-6">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="p-2 bg-primary/10 rounded-lg text-primary">
-                  <GraduationCap className="h-6 w-6" />
-                </div>
-                <h3 className="text-xl font-bold">BSc Business</h3>
-              </div>
-              <p className="text-lg font-semibold text-foreground/80">SIM, University of London</p>
-              <Badge variant="outline" className="mt-2 text-primary border-primary/20">Second Upper Honours</Badge>
-              <p className="mt-4 text-muted-foreground leading-relaxed">
-                Foundational business education providing strong analytical and managerial skills applied across 
-                various operational and technical roles.
-              </p>
-            </div>
-          </Card>
-
-          <Card className="border-2 border-primary/5 hover:border-primary/20 transition-all duration-300 shadow-sm">
-            <div className="p-6 h-full flex flex-col">
-              <div className="flex items-center gap-3 mb-4">
-                <div className="p-2 bg-primary/10 rounded-lg text-primary">
-                   <Layers className="h-6 w-6" />
-                </div>
-                <h3 className="text-xl font-bold">Professional Certifications</h3>
-              </div>
-              <ul className="space-y-3 text-muted-foreground flex-grow">
-                <li className="flex gap-2 items-start">
-                  <div className="h-1.5 w-1.5 rounded-full bg-primary shrink-0 mt-2" />
-                  <span>Advanced Diploma in Python & ML (SMU Academy)</span>
-                </li>
-                <li className="flex gap-2 items-start">
-                  <div className="h-1.5 w-1.5 rounded-full bg-primary shrink-0 mt-2" />
-                  <span>Software Engineering Immersive (General Assembly)</span>
-                </li>
-              </ul>
-            </div>
-          </Card>
+      {/* Academic Profile */}
+      <div className="pt-20 border-t border-border/40">
+        <div className="font-mono text-[11px] text-accent tracking-[0.2em] uppercase mb-12 flex items-center gap-4">
+          Academic Profile
+          <div className="h-px flex-1 bg-gradient-to-r from-accent/30 to-transparent" />
         </div>
-      </motion.div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {education.map((edu, i) => (
+            <div key={i} className="group p-8 rounded-2xl bg-bg-card/40 border border-border/40 backdrop-blur-md hover:border-accent/40 transition-all duration-500 flex flex-col justify-between">
+              <div>
+                <div className="flex items-center justify-between gap-4 mb-4">
+                  <span className="font-mono text-[10px] uppercase tracking-widest text-accent/70 bg-accent/5 px-2 py-1 rounded">
+                    {edu.period}
+                  </span>
+                </div>
+                <h3 className="text-lg font-bold text-foreground font-display mb-2 group-hover:text-accent transition-colors duration-300">{edu.title}</h3>
+                <div className="text-sm font-semibold text-accent/80 mb-4">{edu.company}</div>
+                {edu.description && (
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-6">
+                    {edu.description}
+                  </p>
+                )}
+              </div>
+              {edu.tags && (
+                <div className="flex flex-wrap gap-2 pt-4">
+                  {edu.tags.map((tag) => (
+                    <span 
+                      key={tag} 
+                      className="text-[9px] font-mono uppercase tracking-widest px-2 py-0.5 rounded border border-border/60 text-muted-foreground group-hover:border-accent/30 transition-all duration-300"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   )
 }
