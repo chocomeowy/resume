@@ -86,6 +86,11 @@
 
     --font-display: 'Syne', sans-serif;
     --font-mono: 'DM Mono', monospace;
+
+    /* Mesh orb colors — light mode */
+    --orb-1: rgba(37, 99, 235, 0.08);
+    --orb-2: rgba(139, 92, 246, 0.06);
+    --orb-3: rgba(14, 165, 233, 0.05);
   }
 
   .dark {
@@ -116,6 +121,11 @@
     --bg-card: rgba(15, 23, 42, 0.5);
     --glass-bg: rgba(2, 6, 23, 0.75);
     --glass-border: rgba(255, 255, 255, 0.08);
+
+    /* Mesh orb colors — dark mode */
+    --orb-1: rgba(14, 165, 233, 0.12);
+    --orb-2: rgba(139, 92, 246, 0.08);
+    --orb-3: rgba(56, 189, 248, 0.06);
   }
 }
 
@@ -131,23 +141,142 @@
   }
 }
 
-@keyframes pulse {
-  0% { opacity: 1; }
-  50% { opacity: 0.4; }
-  100% { opacity: 1; }
+/* ─── Ambient Background Orbs ──────────────────────────────── */
+.bg-orbs {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
 }
 
-.animate-pulse-glow {
-  animation: pulse 2s infinite;
+.bg-orbs::before,
+.bg-orbs::after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  will-change: transform;
 }
 
-.glass {
-  background: var(--glass-bg);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--glass-border);
+.bg-orbs::before {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, var(--orb-1), transparent 70%);
+  top: -100px;
+  left: -150px;
+  animation: orb-drift-1 18s ease-in-out infinite alternate;
 }
 
+.bg-orbs::after {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, var(--orb-2), transparent 70%);
+  bottom: 5%;
+  right: -100px;
+  animation: orb-drift-2 22s ease-in-out infinite alternate;
+}
+
+.bg-orb-3 {
+  position: fixed;
+  pointer-events: none;
+  z-index: 0;
+  border-radius: 50%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, var(--orb-3), transparent 70%);
+  filter: blur(80px);
+  top: 45%;
+  left: 35%;
+  animation: orb-drift-3 26s ease-in-out infinite alternate;
+}
+
+@keyframes orb-drift-1 {
+  0%   { transform: translate(0, 0) scale(1); }
+  50%  { transform: translate(80px, 60px) scale(1.1); }
+  100% { transform: translate(40px, 120px) scale(0.95); }
+}
+
+@keyframes orb-drift-2 {
+  0%   { transform: translate(0, 0) scale(1); }
+  50%  { transform: translate(-60px, -80px) scale(1.12); }
+  100% { transform: translate(-30px, -50px) scale(0.98); }
+}
+
+@keyframes orb-drift-3 {
+  0%   { transform: translate(0, 0) scale(1); }
+  50%  { transform: translate(50px, -40px) scale(1.08); }
+  100% { transform: translate(-40px, 30px) scale(1.02); }
+}
+
+/* ─── Shimmer Sweep ─────────────────────────────────────────── */
+@keyframes shimmer {
+  0%   { transform: translateX(-100%) skewX(-12deg); }
+  100% { transform: translateX(250%) skewX(-12deg); }
+}
+
+.shimmer-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.06) 50%,
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.shimmer-card:hover::after {
+  opacity: 1;
+  animation: shimmer 0.7s ease forwards;
+}
+
+/* ─── Gradient Name Text ────────────────────────────────────── */
+.gradient-name {
+  background: linear-gradient(
+    135deg,
+    var(--foreground) 0%,
+    var(--accent) 60%,
+    var(--foreground) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: text-shine 6s linear infinite;
+}
+
+@keyframes text-shine {
+  0%   { background-position: 0% center; }
+  100% { background-position: 200% center; }
+}
+
+/* ─── Skill Bar Animation ────────────────────────────────────── */
+@keyframes skill-fill {
+  from { width: 0%; }
+  to   { width: var(--skill-width); }
+}
+
+.skill-bar-fill {
+  animation: skill-fill 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation-play-state: paused;
+  width: 0%;
+}
+
+.skill-bar-fill.animate {
+  animation-play-state: running;
+}
+
+/* ─── Section Reveal ─────────────────────────────────────────── */
 .section-reveal {
   opacity: 0;
   transform: translateY(20px);
@@ -159,6 +288,38 @@
   transform: translateY(0);
 }
 
+/* ─── Staggered Hero Text ────────────────────────────────────── */
+.hero-stagger {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.hero-stagger.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── Pulse / Glow ───────────────────────────────────────────── */
+@keyframes pulse {
+  0%   { opacity: 1; }
+  50%  { opacity: 0.4; }
+  100% { opacity: 1; }
+}
+
+.animate-pulse-glow {
+  animation: pulse 2s infinite;
+}
+
+/* ─── Glass ──────────────────────────────────────────────────── */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+}
+
+/* ─── Glow Button ────────────────────────────────────────────── */
 .glow-button {
   position: relative;
   transition: all 0.3s ease;
@@ -166,6 +327,12 @@
 }
 
 .glow-button:hover {
-  box-shadow: 0 0 25px var(--accent-glow);
+  box-shadow: 0 0 30px var(--accent-glow), 0 0 60px var(--accent-glow);
   transform: translateY(-2px);
+}
+
+/* ─── Nav Pill Active ────────────────────────────────────────── */
+.nav-pill-active {
+  background: linear-gradient(90deg, var(--accent-glow), transparent);
+  border-left: 2px solid var(--accent);
 }

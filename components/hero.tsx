@@ -1,26 +1,40 @@
 "use client"
 
 import * as React from "react"
-import { Button, buttonVariants } from "@/components/ui/button"
+import { buttonVariants } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
 
 export function Hero() {
   return (
-    <div className="flex flex-col gap-8">
+    <div className="flex flex-col gap-10">
       <div className="about-text space-y-6 text-base lg:text-lg text-muted-foreground leading-relaxed max-w-2xl">
-        <p>
-          I'm a <span className="text-foreground font-semibold italic">Business & Data Analyst</span> dedicated to building high-performance, data-driven systems. Currently completing my <span className="text-foreground">MSc in Financial Technology at NTU</span>, I bridge the gap between complex engineering and actionable business intelligence.
+        <p className="hero-stagger">
+          I'm a <span className="text-foreground font-semibold italic">Business &amp; Data Analyst</span> dedicated to building high-performance, data-driven systems. Currently completing my <span className="text-foreground">MSc in Financial Technology at NTU</span>, I bridge the gap between complex engineering and actionable business intelligence.
         </p>
-        <p>
+        <p className="hero-stagger">
           My background in <span className="text-foreground">IoT Infrastructure</span> and <span className="text-foreground">Technical Business Analysis</span> allows me to approach problems with both a systems-thinking mindset and a focus on user-centric outcomes.
         </p>
-        <p>
+        <p className="hero-stagger">
           From optimizing cross-border traffic monitoring to architecting AI-powered microservices, I specialize in <span className="text-foreground font-semibold">building tools that transform messy signals into decisions that matter</span>.
         </p>
       </div>
 
-      <div className="flex flex-wrap gap-4 pt-4">
-        <a 
+      {/* Stat row */}
+      <div className="hero-stagger flex flex-wrap gap-6 py-2">
+        {[
+          { value: "6+", label: "Years Experience" },
+          { value: "500+", label: "IoT Devices Scaled" },
+          { value: "20+", label: "Dashboards Built" },
+        ].map((stat) => (
+          <div key={stat.label} className="flex flex-col">
+            <span className="font-display font-extrabold text-2xl text-foreground tracking-tight">{stat.value}</span>
+            <span className="text-[11px] font-mono text-muted-foreground uppercase tracking-widest">{stat.label}</span>
+          </div>
+        ))}
+      </div>
+
+      <div className="hero-stagger flex flex-wrap gap-4">
+        <a
           href="#projects"
           className={cn(
             buttonVariants({ variant: "default" }),
@@ -29,11 +43,11 @@ export function Hero() {
         >
           View Projects
         </a>
-        <a 
+        <a
           href="#connect"
           className={cn(
             buttonVariants({ variant: "outline" }),
-            "rounded-full px-8 py-6 border-border/60 hover:bg-bg-hover hover:border-accent/40 text-sm font-semibold transition-all hover:scale-[1.02] active:scale-95 h-auto whitespace-nowrap"
+            "rounded-full px-8 py-6 border-border/60 hover:bg-accent/5 hover:border-accent/40 text-sm font-semibold transition-all hover:scale-[1.02] active:scale-95 h-auto whitespace-nowrap"
           )}
         >
           Get in Touch

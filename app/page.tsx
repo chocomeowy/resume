@@ -16,7 +16,8 @@ export default function Home() {
       rootMargin: "0px 0px -50px 0px"
     }
 
-    const observer = new IntersectionObserver((entries) => {
+    // Section reveal
+    const sectionObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.classList.add("visible")
@@ -24,16 +25,38 @@ export default function Home() {
       })
     }, observerOptions)
 
-    const sections = document.querySelectorAll(".section-reveal")
-    sections.forEach((section) => observer.observe(section))
+    document.querySelectorAll(".section-reveal").forEach((el) => sectionObserver.observe(el))
 
-    return () => observer.disconnect()
+    // Hero stagger
+    const staggerObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const items = entry.target.querySelectorAll(".hero-stagger")
+          items.forEach((item, i) => {
+            setTimeout(() => item.classList.add("visible"), i * 120)
+          })
+          staggerObserver.unobserve(entry.target)
+        }
+      })
+    }, { threshold: 0.1 })
+
+    const heroSection = document.querySelector("#about")
+    if (heroSection) staggerObserver.observe(heroSection)
+
+    return () => {
+      sectionObserver.disconnect()
+      staggerObserver.disconnect()
+    }
   }, [])
 
   return (
     <>
+      {/* Ambient background orbs */}
+      <div className="bg-orbs" aria-hidden="true" />
+      <div className="bg-orb-3" aria-hidden="true" />
+
       <MobileHeader />
-      <div className="max-w-[1200px] mx-auto px-6 lg:px-12">
+      <div className="relative z-10 max-w-[1200px] mx-auto px-6 lg:px-12">
         <div className="flex flex-col lg:flex-row gap-0 min-h-screen relative">
           <aside className="lg:w-[380px] lg:sticky lg:top-0 h-fit lg:h-screen pt-12 lg:pt-24 pb-12 lg:pb-24 lg:pr-12 z-20">
             <Sidebar />
@@ -77,7 +100,7 @@ export default function Home() {
             </section>
 
             <footer className="pt-24 pb-12 mt-12 border-t border-border/40 text-[11px] font-mono text-muted-foreground uppercase tracking-widest text-center lg:text-left">
-              Designed & Built by Yong Fah Jin &bull; 2026
+              Designed &bull; Built by Yong Fah Jin &bull; 2026
             </footer>
           </main>
         </div>
