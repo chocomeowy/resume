@@ -103,7 +103,7 @@ export function Connect() {
       {/* CTA row */}
       <div className="flex flex-wrap gap-4 items-center">
         <a
-          href="/images/Yong_Fah_Jin_CV.pdf"
+          href="/Yong_Fah_Jin_CV.pdf"
           target="_blank"
           rel="noopener"
           className={cn(

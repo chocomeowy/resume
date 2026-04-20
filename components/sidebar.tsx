@@ -72,7 +72,7 @@ export function Sidebar() {
         {/* Persistent Desktop CV Button */}
         <div className="mt-8 hidden lg:block">
           <a 
-            href="/images/Yong_Fah_Jin_CV.pdf" 
+            href="/Yong_Fah_Jin_CV.pdf" 
             target="_blank" 
             rel="noopener"
             className="group/cv relative inline-flex items-center gap-3 px-6 py-3 bg-accent text-accent-foreground rounded-xl font-bold text-sm tracking-wide transition-all duration-300 hover:scale-[1.02] active:scale-95 shadow-[0_0_20px_var(--accent-glow)] hover:shadow-[0_0_30px_var(--accent-glow)]"
