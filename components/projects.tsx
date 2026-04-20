@@ -8,16 +8,18 @@ const categoryColors: Record<string, string> = {
   "Public Utility": "text-emerald-400 bg-emerald-400/10 border-emerald-400/20",
   FinTech:        "text-amber-400 bg-amber-400/10  border-amber-400/20",
   Commute:        "text-sky-400   bg-sky-400/10    border-sky-400/20",
+  Travel:         "text-rose-400  bg-rose-400/10   border-rose-400/20",
+  Entertainment:  "text-fuchsia-400 bg-fuchsia-400/10 border-fuchsia-400/20",
 }
 
 const projects = [
   {
-    title: "OCR PWA Utility",
-    description: "A versatile Progressive Web App that extracts text from images using advanced OCR technology. Built with a focus on speed and offline accessibility.",
-    category: "Productivity",
-    image: "/images/ocr_live.png",
-    tags: ["Next.js", "Tesseract.js", "PWA"],
-    link: "https://ocrpwa.vercel.app/"
+    title: "LayoverSG",
+    description: "Singapore Changi Airport transit itinerary planner. Curated, time-aware guides for travelers on stopovers.",
+    category: "Public Utility",
+    image: "/images/layover_live.png",
+    tags: ["Next.js", "SEO", "Transit API"],
+    link: "https://layoversg.com/"
   },
   {
     title: "Causeway Cameras",
@@ -28,12 +30,12 @@ const projects = [
     link: "https://causeway.vercel.app/"
   },
   {
-    title: "Currency Analytics",
-    description: "High-precision currency converter with real-time sync and full PWA service worker support for travelers.",
-    category: "FinTech",
-    image: "/images/currency_live.png",
-    tags: ["React", "API Integration", "Data viz"],
-    link: "https://currency-henna-delta.vercel.app/"
+    title: "Sakura Cards",
+    description: "Lore-faithful digital tarot reading application. Features interactive Clow and Sakura card spreads with dynamic mystical effects.",
+    category: "Entertainment",
+    image: "/images/sakura_live.png",
+    tags: ["React", "Framer Motion", "Lore-driven"],
+    link: "https://sakuracards.vercel.app/"
   },
   {
     title: "BusTime SG",

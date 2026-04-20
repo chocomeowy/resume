@@ -9,7 +9,7 @@ export function Hero() {
     <div className="flex flex-col gap-10">
       <div className="about-text space-y-6 text-base lg:text-lg text-muted-foreground leading-relaxed max-w-2xl">
         <p className="hero-stagger">
-          I'm a <span className="text-foreground font-semibold italic">Business &amp; Data Analyst</span> dedicated to building high-performance, data-driven systems. Currently completing my <span className="text-foreground">MSc in Financial Technology at NTU</span>, I bridge the gap between complex engineering and actionable business intelligence.
+          I'm a <span className="text-foreground font-semibold italic">Business &amp; Data Analyst</span> with a <span className="text-foreground font-semibold">software developer background</span>, dedicated to building high-performance, data-driven systems. Currently completing my <span className="text-foreground">MSc in Financial Technology at NTU</span>, I bridge the gap between complex engineering and actionable business intelligence.
         </p>
         <p className="hero-stagger">
           My background in <span className="text-foreground">IoT Infrastructure</span> and <span className="text-foreground">Technical Business Analysis</span> allows me to approach problems with both a systems-thinking mindset and a focus on user-centric outcomes.
