@@ -69,6 +69,19 @@ export function Sidebar() {
           Architecting data-driven FinTech systems at the intersection of AI, analytics, and financial infrastructure.
         </p>
 
+        {/* Persistent Desktop CV Button */}
+        <div className="mt-8 hidden lg:block">
+          <a 
+            href="/images/Yong_Fah_Jin_CV.pdf" 
+            target="_blank" 
+            rel="noopener"
+            className="group/cv relative inline-flex items-center gap-3 px-6 py-3 bg-accent text-accent-foreground rounded-xl font-bold text-sm tracking-wide transition-all duration-300 hover:scale-[1.02] active:scale-95 shadow-[0_0_20px_var(--accent-glow)] hover:shadow-[0_0_30px_var(--accent-glow)]"
+          >
+            <svg className="w-4 h-4 transition-transform group-hover/cv:-translate-y-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download Full CV
+          </a>
+        </div>
+
         {/* Nav with pill-style active indicator */}
         <nav className="mt-12 flex flex-col gap-1">
           {navItems.map((item) => {

@@ -14,22 +14,30 @@ const skillLevelMap: Record<string, number> = {
 
 const skillCategories = [
   {
-    title: "Core Expertise",
+    title: "Data & AI",
     skills: [
-      { name: "FinTech Engineering",          level: "Expert"    },
-      { name: "Technical Business Analysis",  level: "Expert"    },
-      { name: "Data Analytics & ML",          level: "Advanced"  },
-      { name: "IoT Infrastructure",           level: "Advanced"  },
+      { name: "Python / Pandas / TensorFlow", level: "Expert" },
+      { name: "BigQuery / SQL",               level: "Advanced" },
+      { name: "ML Pipelines & Automation",     level: "Technical" },
+      { name: "Data Analytics & ML",          level: "Advanced" },
     ]
   },
   {
-    title: "Engineering & Tooling",
+    title: "FinTech & Quant",
     skills: [
-      { name: "Python / Pandas / TF",  level: "Technical" },
-      { name: "React / Next.js / TS",  level: "Dev"       },
-      { name: "Power BI / Tableau",    level: "Analysis"  },
-      { name: "SQL / NoSQL",           level: "Data"      },
-      { name: "Docker / AWS",          level: "Cloud"     },
+      { name: "Financial Modeling",           level: "Expert" },
+      { name: "Time-series Forecasting",      level: "Advanced" },
+      { name: "Quantitative Analytics",       level: "Technical" },
+      { name: "Technical Business Analysis",  level: "Expert" },
+    ]
+  },
+  {
+    title: "Software Engineering",
+    skills: [
+      { name: "Next.js / React / TypeScript", level: "Advanced" },
+      { name: "FastAPI / Node.js",            level: "Technical" },
+      { name: "Docker / AWS / Infrastructure", level: "Cloud" },
+      { name: "IoT Infrastructure",           level: "Advanced" },
     ]
   }
 ]
@@ -85,7 +93,7 @@ function SkillBar({ name, level, index }: { name: string; level: string; index: 
 
 export function Skills() {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
       {skillCategories.map((category, idx) => (
         <div key={idx} className="space-y-4">
           <h3 className="font-display font-bold text-lg text-foreground flex items-center gap-3 mb-6">
