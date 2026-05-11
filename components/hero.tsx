@@ -12,7 +12,7 @@ export function Hero() {
           Portfolio
         </p>
         <h2 className="hero-stagger font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight text-foreground">
-          Business &amp; Data Analyst | FinTech &amp; Applied AI
+          AI Application Developer &amp; Data Analyst
         </h2>
         <p className="hero-stagger text-base lg:text-lg text-muted-foreground leading-relaxed max-w-2xl">
           I build data-driven systems across FinTech, AI, and operational analytics, turning complex signals into dashboards, KPIs, and actionable business decisions.
