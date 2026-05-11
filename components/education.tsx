@@ -88,7 +88,7 @@ function TimelineItem({ period, title, company, companyIcon, description, bullet
 
 const experiences = [
   {
-    period: "Jan 2024 — Dec 2025",
+    period: "Jan 2024 - Dec 2025",
     title: "Remote Monitoring Analyst & Software Developer",
     company: "Terrenus Energy",
     companyIcon: "⚡",
@@ -101,7 +101,7 @@ const experiences = [
     tags: ["PostgreSQL", "Grafana", "Python", "Azure", "Kubernetes"]
   },
   {
-    period: "Jan 2023 — Sep 2023",
+    period: "Jan 2023 - Sep 2023",
     title: "Application Engineer (Contract)",
     company: "DBS Singapore",
     companyIcon: "🏦",
@@ -113,7 +113,7 @@ const experiences = [
     tags: ["ReactJS", "Python", "SRE", "Banking Tech"]
   },
   {
-    period: "Dec 2021 — Dec 2022",
+    period: "Dec 2021 - Dec 2022",
     title: "Application Engineer",
     company: "Sentient.io",
     companyIcon: "🤖",
@@ -125,7 +125,7 @@ const experiences = [
     tags: ["VueJS", "FastAPI", "BigQuery", "GCP", "MLOps"]
   },
   {
-    period: "Aug 2015 — May 2021",
+    period: "Aug 2015 - May 2021",
     title: "Business Support Analyst",
     company: "Apple South Asia",
     companyIcon: "🍎",
@@ -140,7 +140,7 @@ const experiences = [
 
 const education = [
   {
-    period: "2024 — Present",
+    period: "2024 - Present",
     title: "MSc in Financial Technology (FinTech)",
     company: "Nanyang Technological University (NTU)",
     companyIcon: "🎓",
@@ -149,7 +149,7 @@ const education = [
   },
   {
     period: "Completed",
-    title: "BSc Business — Second Upper Honours",
+    title: "BSc Business, Second Upper Honours",
     company: "SIM / University of London",
     companyIcon: "📚",
     description: "Foundational business education underpinning analytical thinking and operations management."

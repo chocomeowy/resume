@@ -77,7 +77,7 @@ export default function Home() {
             
             <section id="projects" className="section-reveal">
               <div className="font-mono text-[11px] text-accent tracking-[0.2em] uppercase mb-12 flex items-center gap-4">
-                Selected Projects
+                Projects
                 <div className="h-px flex-1 bg-gradient-to-r from-accent/30 to-transparent" />
               </div>
               <Projects />

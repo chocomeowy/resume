@@ -66,7 +66,7 @@ export function Sidebar() {
         </h2>
         
         <p className="tagline text-sm text-muted-foreground leading-relaxed max-w-[280px]">
-          Architecting data-driven FinTech systems at the intersection of AI, analytics, and financial infrastructure.
+          FinTech, applied AI, and operational analytics, with a focus on dashboards, KPIs, and stakeholder-ready insights.
         </p>
 
         {/* Persistent Desktop CV Button */}

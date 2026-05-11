@@ -7,24 +7,24 @@ import { cn } from "@/lib/utils"
 export function Hero() {
   return (
     <div className="flex flex-col gap-10">
-      <div className="about-text space-y-6 text-base lg:text-lg text-muted-foreground leading-relaxed max-w-2xl">
-        <p className="hero-stagger">
-          I'm a <span className="text-foreground font-semibold italic">Business &amp; Data Analyst</span> with a <span className="text-foreground font-semibold">software developer background</span>, dedicated to building high-performance, data-driven systems. Currently completing my <span className="text-foreground">MSc in Financial Technology at NTU</span>, I bridge the gap between complex engineering and actionable business intelligence.
+      <div className="space-y-5 max-w-3xl">
+        <p className="hero-stagger font-mono text-[11px] text-accent tracking-[0.2em] uppercase">
+          Portfolio
         </p>
-        <p className="hero-stagger">
-          My background in <span className="text-foreground">IoT Infrastructure</span> and <span className="text-foreground">Technical Business Analysis</span> allows me to approach problems with both a systems-thinking mindset and a focus on user-centric outcomes.
-        </p>
-        <p className="hero-stagger">
-          From optimizing cross-border traffic monitoring to architecting AI-powered microservices, I specialize in <span className="text-foreground font-semibold">building tools that transform messy signals into decisions that matter</span>.
+        <h2 className="hero-stagger font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight text-foreground">
+          Business &amp; Data Analyst | FinTech &amp; Applied AI
+        </h2>
+        <p className="hero-stagger text-base lg:text-lg text-muted-foreground leading-relaxed max-w-2xl">
+          I build data-driven systems across FinTech, AI, and operational analytics, turning complex signals into dashboards, KPIs, and actionable business decisions.
         </p>
       </div>
 
       {/* Stat row */}
       <div className="hero-stagger flex flex-wrap gap-6 py-2">
         {[
-          { value: "6+", label: "Years Experience" },
           { value: "500+", label: "IoT Devices Scaled" },
           { value: "20+", label: "Dashboards Built" },
+          { value: "NTU", label: "MSc FinTech" },
         ].map((stat) => (
           <div key={stat.label} className="flex flex-col">
             <span className="font-display font-extrabold text-2xl text-foreground tracking-tight">{stat.value}</span>
@@ -50,8 +50,17 @@ export function Hero() {
             "rounded-full px-8 py-6 border-border/60 hover:bg-accent/5 hover:border-accent/40 text-sm font-semibold transition-all hover:scale-[1.02] active:scale-95 h-auto whitespace-nowrap"
           )}
         >
-          Get in Touch
+          Contact Me
         </a>
+      </div>
+
+      <div className="about-text hero-stagger space-y-5 text-base text-muted-foreground leading-relaxed max-w-2xl border-t border-border/40 pt-8">
+        <p>
+          I am a <span className="text-foreground font-semibold">Business &amp; Data Analyst</span> with a technical background in software development, production monitoring, and analytics. My experience spans energy, banking, AI-enabled platforms, and large-scale operations. I have built dashboards, automated reporting workflows, supported production monitoring, and translated operational complexity into actionable insights for business and technical stakeholders.
+        </p>
+        <p>
+          I am currently pursuing an <span className="text-foreground font-semibold">MSc in Financial Technology at NTU</span> part-time, with a focus on digital banking, financial data, platform risk, and applied AI.
+        </p>
       </div>
     </div>
   )
