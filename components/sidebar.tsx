@@ -62,11 +62,11 @@ export function Sidebar() {
         </h1>
         
         <h2 className="title text-lg font-semibold text-foreground/90 mb-4 font-display tracking-tight">
-          AI Application Developer &amp; Data Analyst
+          Applied AI Engineer | Data Analytics &amp; Automation &amp; FinTech
         </h2>
         
         <p className="tagline text-sm text-muted-foreground leading-relaxed max-w-[280px]">
-          Building AI-enabled products, dashboards, and analytics workflows across FinTech, operations, and applied data systems.
+          Building AI-assisted tools, dashboards, and research workflows across FinTech, automation, and applied data systems.
         </p>
 
         {/* Persistent Desktop CV Button */}

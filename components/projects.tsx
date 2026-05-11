@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import Image from "next/image"
+import { ExternalLink } from "lucide-react"
 
 const categoryColors: Record<string, string> = {
   Productivity:   "text-violet-400 bg-violet-400/10 border-violet-400/20",
@@ -14,32 +15,66 @@ const categoryColors: Record<string, string> = {
   "Applied AI / Full-Stack Product": "text-violet-400 bg-violet-400/10 border-violet-400/20",
   "Machine Learning / Product Analytics": "text-emerald-400 bg-emerald-400/10 border-emerald-400/20",
   "AI Product Prototype / Hackathon": "text-amber-400 bg-amber-400/10 border-amber-400/20",
+  "Applied AI / Trend Intelligence / Market Analytics": "text-cyan-400 bg-cyan-400/10 border-cyan-400/20",
+  "FinTech / Applied AI / Market Analytics": "text-amber-400 bg-amber-400/10 border-amber-400/20",
+  "AI-Assisted Research / Location Intelligence / Product Prototype": "text-emerald-400 bg-emerald-400/10 border-emerald-400/20",
 }
 
 const featuredProjects = [
   {
-    title: "IoT Monitoring & Revenue Impact Dashboard",
-    category: "Data Analytics / Monitoring / KPI Design",
-    description: "Scaled monitoring coverage from 40 to 500 IoT devices across solar energy assets. Built 20+ Grafana dashboards to help operations and finance teams track availability, alert volumes, incident response, and revenue-impacting downtime.",
-    skills: ["Grafana", "PostgreSQL", "KPI Design", "Monitoring", "Data Analysis", "Stakeholder Reporting"],
+    title: "Narrative Velocity Tracker",
+    category: "Applied AI / Trend Intelligence / Market Analytics",
+    description: "AI-assisted trend intelligence dashboard that tracks emerging narratives, market signals, and momentum shifts. It converts fragmented information into structured summaries, scoring logic, and decision-ready insights for faster analysis.",
+    points: [
+      "Tracks emerging narratives and signal changes",
+      "Uses structured scoring and summaries",
+      "Demonstrates AI-assisted market intelligence and data analysis",
+      "Relevant to FinTech, product analytics, business intelligence, and decision support",
+    ],
+    skills: ["Applied AI", "Market Intelligence", "Data Analytics", "Signal Scoring", "Dashboards", "Automation"],
+    cta: "View Project",
+    link: "https://chocomeowy.github.io/narrative-tracker/",
   },
   {
-    title: "AI Transcription & Translation Platform",
-    category: "Applied AI / Full-Stack Product",
-    description: "Built and maintained an AI-enabled transcription and translation product using VueJS, FastAPI, and cloud-based AI APIs. Supported backend integration, product iteration, and client-driven feature delivery.",
-    skills: ["VueJS", "FastAPI", "AI APIs", "Product Delivery", "API Integration"],
+    title: "AI Market Signal Intelligence Dashboard",
+    category: "FinTech / Applied AI / Market Analytics",
+    description: "Market intelligence dashboard concept that combines momentum indicators, valuation context, options activity, technical signals, and AI-generated reasoning into a structured signal watchlist. Designed to support faster market scanning and research workflows, not to provide investment advice.",
+    points: [
+      "Converts financial market signals into a structured watchlist",
+      "Includes AI-generated explanation of signal context",
+      "Combines momentum, valuation, trend, and options activity",
+      "Demonstrates FinTech analytics, dashboard design, and AI reasoning",
+      "For demonstration and research only",
+    ],
+    skills: ["Python", "SQL", "Applied AI", "Financial Analytics", "Signal Dashboard", "Data Visualisation", "Research Automation"],
+    cta: "Case Study Coming Soon",
   },
   {
-    title: "B2B Recommendation Engine",
-    category: "Machine Learning / Product Analytics",
-    description: "Developed a collaborative filtering recommendation engine to support product discovery and cross-sell opportunities for B2B users. Combined behavioural signals, similarity logic, and REST API delivery to generate next-action recommendations.",
-    skills: ["Python", "Collaborative Filtering", "BigQuery", "REST API", "Product Analytics"],
-  },
-  {
-    title: "Morning Kaki, AI Hackathon Prototype",
+    title: "Morning Kaki",
     category: "AI Product Prototype / Hackathon",
-    description: "Rapidly prototyped an AI-powered daily companion concept during an AI hackathon, combining LLM workflows, voice, image, and notification features into a mobile-first product experience.",
+    description: "Rapidly prototyped an AI-powered daily companion concept during an AI hackathon, combining LLM workflows, voice, image, reminders, and notification features into a mobile-first product experience.",
+    points: [
+      "Explores AI-assisted daily planning and caregiver-friendly workflows",
+      "Combines voice, image, reminders, and notification concepts",
+      "Shows rapid product prototyping across applied AI features",
+    ],
     skills: ["LLM APIs", "Rapid Prototyping", "Product Thinking", "Vercel", "AI Workflows"],
+    cta: "View Project",
+    link: "https://morning-kaki.vercel.app/",
+  },
+  {
+    title: "SG Food Guide by Manus",
+    category: "AI-Assisted Research / Location Intelligence / Product Prototype",
+    description: "AI-assisted Singapore food discovery prototype that organises local dishes, stalls, locations, filters, and map-based exploration into a structured consumer guide. Demonstrates rapid AI-assisted research, information structuring, and product prototyping.",
+    points: [
+      "AI-assisted research and content structuring",
+      "Converts fragmented food recommendations into a searchable guide",
+      "Includes map-based exploration and filtering",
+      "Good example of rapid AI product prototyping",
+    ],
+    skills: ["AI-Assisted Research", "Product Prototyping", "Location Intelligence", "Information Architecture", "UX"],
+    cta: "View Project",
+    link: "https://sgfoodguide.manus.space/",
   },
 ]
 
@@ -83,16 +118,16 @@ export function Projects() {
     <div className="space-y-14">
       <div>
         <h3 className="font-display font-bold text-2xl text-foreground mb-3">
-          Featured FinTech, AI &amp; Data Projects
+          Featured AI, Data &amp; FinTech Projects
         </h3>
         <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl mb-6">
-          Selected work across monitoring, analytics, applied AI, and product-facing data systems.
+          Practical projects that turn messy information into structured insights, signal views, dashboards, and decision-ready workflows.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {featuredProjects.map((project) => (
             <article
               key={project.title}
-              className="shimmer-card group relative rounded-2xl overflow-hidden bg-bg-card border border-border/40 p-6 hover:border-accent/40 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_18px_45px_rgba(0,0,0,0.22)]"
+              className="shimmer-card group relative flex h-full flex-col rounded-2xl overflow-hidden bg-bg-card border border-border/40 p-6 hover:border-accent/40 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_18px_45px_rgba(0,0,0,0.22)]"
             >
               <span className={`inline-flex text-[10px] font-mono uppercase tracking-widest px-2 py-0.5 rounded-full border font-semibold mb-4 ${categoryColors[project.category] ?? "text-accent bg-accent/10 border-accent/20"}`}>
                 {project.category}
@@ -103,12 +138,37 @@ export function Projects() {
               <p className="text-sm text-muted-foreground leading-relaxed transition-colors group-hover:text-foreground/80 mb-5">
                 {project.description}
               </p>
-              <div className="flex flex-wrap gap-2">
+              <ul className="space-y-2 mb-5 text-sm text-muted-foreground">
+                {project.points.map((point) => (
+                  <li key={point} className="flex gap-2 leading-relaxed">
+                    <span className="mt-2 h-1.5 w-1.5 flex-none rounded-full bg-accent/70" />
+                    <span>{point}</span>
+                  </li>
+                ))}
+              </ul>
+              <div className="flex flex-wrap gap-2 mb-5">
                 {project.skills.map((skill) => (
                   <span key={skill} className="text-[9px] font-mono text-muted-foreground bg-white/5 border border-white/10 px-2 py-1 rounded uppercase transition-colors group-hover:text-foreground group-hover:border-accent/20">
                     {skill}
                   </span>
                 ))}
+              </div>
+              <div className="mt-auto pt-1">
+                {project.link ? (
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-accent transition-colors hover:text-foreground"
+                  >
+                    {project.cta}
+                    <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
+                  </a>
+                ) : (
+                  <span className="inline-flex text-xs font-bold uppercase tracking-widest text-muted-foreground">
+                    {project.cta}
+                  </span>
+                )}
               </div>
             </article>
           ))}

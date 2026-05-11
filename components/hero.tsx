@@ -12,10 +12,10 @@ export function Hero() {
           Portfolio
         </p>
         <h2 className="hero-stagger font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight text-foreground">
-          AI Application Developer &amp; Data Analyst
+          Applied AI Engineer, Data Analytics &amp; Automation
         </h2>
         <p className="hero-stagger text-base lg:text-lg text-muted-foreground leading-relaxed max-w-2xl">
-          I build data-driven systems across FinTech, AI, and operational analytics, turning complex signals into dashboards, KPIs, and actionable business decisions.
+          I build practical AI, data, and automation tools that turn messy information into structured insights, dashboards, and decision-ready workflows.
         </p>
       </div>
 
@@ -56,7 +56,7 @@ export function Hero() {
 
       <div className="about-text hero-stagger space-y-5 text-base text-muted-foreground leading-relaxed max-w-2xl border-t border-border/40 pt-8">
         <p>
-          I am a <span className="text-foreground font-semibold">Business &amp; Data Analyst</span> with a technical background in software development, production monitoring, and analytics. My experience spans energy, banking, AI-enabled platforms, and large-scale operations. I have built dashboards, automated reporting workflows, supported production monitoring, and translated operational complexity into actionable insights for business and technical stakeholders.
+          I am a <span className="text-foreground font-semibold">Singapore-based Applied AI, Data Analytics, and Automation practitioner</span> with a technical background in software development, production monitoring, and analytics. My experience spans energy, banking, AI-enabled platforms, and large-scale operations. I have built dashboards, automated reporting workflows, supported production monitoring, and translated operational complexity into actionable insights for business and technical stakeholders.
         </p>
         <p>
           I am currently pursuing an <span className="text-foreground font-semibold">MSc in Financial Technology at NTU</span> part-time, with a focus on digital banking, financial data, platform risk, and applied AI.

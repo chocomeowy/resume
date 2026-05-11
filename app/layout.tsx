@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Syne, DM_Sans, DM_Mono } from "next/font/google";
+import { Syne, DM_Sans, DM_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 
@@ -19,19 +19,9 @@ const dmMono = DM_Mono({
   subsets: ["latin"],
 });
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
 export const metadata: Metadata = {
-  title: "Professional Portfolio | Fintech & Data Analytics",
-  description: "MSc Fintech student at NTU, Engineering background in IoT, Technical Business Analyst.",
+  title: "Yong Fah Jin | Applied AI, Data Analytics & FinTech",
+  description: "Singapore-based portfolio for applied AI engineering, data analytics, automation, market intelligence, and FinTech product analytics.",
 };
 
 export default function RootLayout({
