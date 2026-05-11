@@ -47,7 +47,8 @@ const featuredProjects = [
       "For demonstration and research only",
     ],
     skills: ["Python", "SQL", "Applied AI", "Financial Analytics", "Signal Dashboard", "Data Visualisation", "Research Automation"],
-    cta: "Case Study Coming Soon",
+    cta: "View Project",
+    link: "https://stock-alerts-nine.vercel.app/",
   },
   {
     title: "Morning Kaki",
