@@ -41,7 +41,7 @@ const featuredProjects = [
     title: "Morning Kaki",
     description: "AI-powered daily companion concept combining LLM workflows, voice, reminders, and caregiver notification features.",
     category: "AI Product Prototype / Hackathon",
-    image: "/images/morning_live.png",
+    image: "/images/morning_live.jpg",
     tags: ["LLM APIs", "Voice AI", "Product Mockup"],
     link: "https://morning-kaki.vercel.app/"
   },
