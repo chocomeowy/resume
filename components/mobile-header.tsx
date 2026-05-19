@@ -4,7 +4,7 @@ import * as React from "react"
 import { ModeToggle } from "@/components/mode-toggle"
 import { buttonVariants } from "@/components/ui/button"
 import { MagneticLink } from "@/components/magnetic-link"
-import { motion } from "framer-motion"
+import { motion, useScroll, useSpring } from "framer-motion"
 import { cn } from "@/lib/utils"
 
 const navItems = [
@@ -18,6 +18,13 @@ const navItems = [
 export function MobileHeader() {
   const [activeSection, setActiveSection] = React.useState("about")
   const [hoveredIndex, setHoveredIndex] = React.useState<number | null>(null)
+
+  const { scrollYProgress } = useScroll()
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  })
 
   React.useEffect(() => {
     const observerOptions = {
@@ -41,9 +48,14 @@ export function MobileHeader() {
 
   return (
     <header className="lg:hidden sticky top-0 z-50 w-full border-b border-border/40 bg-background/80 backdrop-blur-md">
+      {/* Top Scroll Progress Indicator */}
+      <motion.div
+        className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-accent via-accent to-violet-500 origin-left z-50 shadow-[0_0_8px_var(--accent)]"
+        style={{ scaleX }}
+      />
       <div className="container flex h-14 items-center justify-between px-6">
         <div className="flex items-center gap-4">
-          <span className="font-display font-extrabold text-sm tracking-tight">Fah Jin</span>
+          <span className="font-display font-extrabold text-sm tracking-tight gradient-name">Fah Jin</span>
           <div className="h-4 w-px bg-border/40" />
           <div className="flex items-center gap-3">
             <a href="https://github.com/chocomeowy" target="_blank" rel="noopener" className="text-muted-foreground hover:text-accent transition-colors">

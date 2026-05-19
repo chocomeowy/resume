@@ -137,8 +137,33 @@ const cardVariants = {
 }
 
 export function Projects() {
+  const [featuredActiveIdx, setFeaturedActiveIdx] = React.useState(0)
+  const [softwareActiveIdx, setSoftwareActiveIdx] = React.useState(0)
+
+  const featuredRef = React.useRef<HTMLDivElement>(null)
+  const softwareRef = React.useRef<HTMLDivElement>(null)
+
+  const handleScrollFeatured = () => {
+    const el = featuredRef.current
+    if (!el) return
+    const cardWidth = el.offsetWidth * 0.82
+    const scrollLeft = el.scrollLeft
+    const index = Math.round(scrollLeft / (cardWidth + 20))
+    setFeaturedActiveIdx(index)
+  }
+
+  const handleScrollSoftware = () => {
+    const el = softwareRef.current
+    if (!el) return
+    const cardWidth = el.offsetWidth * 0.82
+    const scrollLeft = el.scrollLeft
+    const index = Math.round(scrollLeft / (cardWidth + 20))
+    setSoftwareActiveIdx(index)
+  }
+
   return (
     <div className="space-y-14">
+      {/* ─── Featured Projects Section ─── */}
       <div>
         <h3 className="font-display font-bold text-2xl text-foreground mb-3">
           Featured AI, Data &amp; FinTech Projects
@@ -146,7 +171,9 @@ export function Projects() {
         <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl mb-6">
           Practical projects that turn messy information into structured insights, signal views, dashboards, and decision-ready workflows.
         </p>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+        {/* Desktop View: Standard Grid with Spring Staggered Reveal */}
+        <div className="hidden md:grid grid-cols-1 md:grid-cols-2 gap-6">
           {featuredProjects.map((project, idx) => (
             <motion.article
               key={project.title}
@@ -201,8 +228,97 @@ export function Projects() {
             </motion.article>
           ))}
         </div>
+
+        {/* Mobile View: High-Fidelity Swipable Carousel with Liquid Dot Indicator */}
+        <div className="md:hidden flex flex-col gap-4 relative">
+          <div
+            ref={featuredRef}
+            onScroll={handleScrollFeatured}
+            className="flex gap-5 overflow-x-auto snap-x snap-mandatory scrollbar-none pb-4 -mx-6 px-6"
+          >
+            {featuredProjects.map((project) => (
+              <div
+                key={project.title}
+                className="w-[82vw] sm:w-[60vw] flex-shrink-0 snap-center select-none"
+              >
+                <div className="shimmer-card relative flex h-full flex-col rounded-2xl overflow-hidden bg-bg-card border border-border/40 p-5 hover:border-accent/40 transition-all duration-300">
+                  <span className={`inline-flex text-[9px] font-mono uppercase tracking-widest px-2 py-0.5 rounded-full border font-semibold mb-3 w-fit ${categoryColors[project.category] ?? "text-accent bg-accent/10 border-accent/20"}`}>
+                    {project.category}
+                  </span>
+                  <h4 className="font-display font-bold text-lg text-foreground mb-2">
+                    {project.title}
+                  </h4>
+                  <p className="text-xs text-muted-foreground leading-relaxed mb-4">
+                    {project.description}
+                  </p>
+                  <ul className="space-y-1.5 mb-4 text-xs text-muted-foreground">
+                    {project.points.map((point) => (
+                      <li key={point} className="flex gap-2 leading-relaxed">
+                        <span className="mt-1.5 h-1.5 w-1.5 flex-none rounded-full bg-accent/70" />
+                        <span>{point}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="flex flex-wrap gap-1.5 mb-4">
+                    {project.skills.map((skill) => (
+                      <span key={skill} className="text-[8px] font-mono text-muted-foreground bg-white/5 border border-white/10 px-1.5 py-0.5 rounded uppercase">
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="mt-auto pt-1">
+                    {project.link ? (
+                      <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-accent hover:text-foreground"
+                      >
+                        {project.cta}
+                        <ExternalLink className="h-3 w-3" aria-hidden="true" />
+                      </a>
+                    ) : (
+                      <span className="inline-flex text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
+                        {project.cta}
+                      </span>
+                    )}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Liquid Dots Indicator */}
+          <div className="flex justify-center items-center gap-2.5 mt-1">
+            {featuredProjects.map((_, idx) => {
+              const isActive = featuredActiveIdx === idx
+              return (
+                <div
+                  key={idx}
+                  className="relative w-2.5 h-2.5 flex items-center justify-center cursor-pointer"
+                  onClick={() => {
+                    const el = featuredRef.current
+                    if (!el) return
+                    const cardWidth = el.offsetWidth * 0.82
+                    el.scrollTo({ left: idx * (cardWidth + 20), behavior: "smooth" })
+                  }}
+                >
+                  {isActive && (
+                    <motion.div
+                      layoutId="activeFeaturedDot"
+                      className="absolute w-5 h-2.5 rounded-full bg-accent shadow-[0_0_8px_var(--accent)]"
+                      transition={{ type: "spring", stiffness: 300, damping: 25 }}
+                    />
+                  )}
+                  <div className={`w-2 h-2 rounded-full transition-colors duration-300 ${isActive ? "bg-accent-foreground z-10 scale-[0.5]" : "bg-muted-foreground/30"}`} />
+                </div>
+              )
+            })}
+          </div>
+        </div>
       </div>
 
+      {/* ─── Other Software Projects Section ─── */}
       <div>
         <h3 className="font-display font-bold text-2xl text-foreground mb-3">
           Other Software Projects
@@ -210,7 +326,9 @@ export function Projects() {
         <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl mb-6">
           Public applications that show product thinking, API integration, and practical delivery.
         </p>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+        {/* Desktop View: Standard Grid with Spring Staggered Reveal */}
+        <div className="hidden md:grid grid-cols-1 md:grid-cols-2 gap-6">
           {softwareProjects.map((project, idx) => (
             <motion.a
               key={idx}
@@ -269,6 +387,81 @@ export function Projects() {
               <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-accent/0 via-accent to-accent/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             </motion.a>
           ))}
+        </div>
+
+        {/* Mobile View: High-Fidelity Swipable Carousel with Liquid Dot Indicator */}
+        <div className="md:hidden flex flex-col gap-4 relative">
+          <div
+            ref={softwareRef}
+            onScroll={handleScrollSoftware}
+            className="flex gap-5 overflow-x-auto snap-x snap-mandatory scrollbar-none pb-4 -mx-6 px-6"
+          >
+            {softwareProjects.map((project, idx) => (
+              <div
+                key={idx}
+                className="w-[82vw] sm:w-[60vw] flex-shrink-0 snap-center select-none"
+              >
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="shimmer-card block relative rounded-2xl overflow-hidden bg-bg-card border border-border/40 hover:border-accent/40 transition-all duration-300"
+                >
+                  <div className="relative aspect-[16/10] overflow-hidden border-b border-border/20">
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      fill
+                      sizes="(max-width: 768px) 80vw, 50vw"
+                      className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-bg-surface/80 via-transparent to-transparent opacity-60" />
+                  </div>
+                  <div className="p-5">
+                    <div className="flex items-start justify-between gap-3 mb-2">
+                      <span className={`text-[9px] font-mono uppercase tracking-widest px-2 py-0.5 rounded-full border font-semibold ${categoryColors[project.category] ?? "text-accent bg-accent/10 border-accent/20"}`}>
+                        {project.category}
+                      </span>
+                    </div>
+                    <h4 className="font-display font-bold text-base text-foreground mb-1">
+                      {project.title}
+                    </h4>
+                    <p className="text-xs text-muted-foreground leading-relaxed line-clamp-2">
+                      {project.description}
+                    </p>
+                  </div>
+                </a>
+              </div>
+            ))}
+          </div>
+
+          {/* Liquid Dots Indicator */}
+          <div className="flex justify-center items-center gap-2.5 mt-1">
+            {softwareProjects.map((_, idx) => {
+              const isActive = softwareActiveIdx === idx
+              return (
+                <div
+                  key={idx}
+                  className="relative w-2.5 h-2.5 flex items-center justify-center cursor-pointer"
+                  onClick={() => {
+                    const el = softwareRef.current
+                    if (!el) return
+                    const cardWidth = el.offsetWidth * 0.82
+                    el.scrollTo({ left: idx * (cardWidth + 20), behavior: "smooth" })
+                  }}
+                >
+                  {isActive && (
+                    <motion.div
+                      layoutId="activeSoftwareDot"
+                      className="absolute w-5 h-2.5 rounded-full bg-accent shadow-[0_0_8px_var(--accent)]"
+                      transition={{ type: "spring", stiffness: 300, damping: 25 }}
+                    />
+                  )}
+                  <div className={`w-2 h-2 rounded-full transition-colors duration-300 ${isActive ? "bg-accent-foreground z-10 scale-[0.5]" : "bg-muted-foreground/30"}`} />
+                </div>
+              )
+            })}
+          </div>
         </div>
       </div>
     </div>
