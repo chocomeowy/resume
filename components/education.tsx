@@ -147,7 +147,7 @@ const education: Array<{
   tags?: string[]
 }> = [
   {
-    period: "Completed",
+    period: "Ongoing",
     title: "MSc in Financial Technology (FinTech)",
     company: "Nanyang Technological University (NTU)",
     companyIcon: "🎓",
