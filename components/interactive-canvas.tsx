@@ -145,14 +145,14 @@ export function InteractiveCanvas() {
     window.addEventListener("touchmove", handleTouchMove)
 
     // Animation Loop variables
-    let clock = new THREE.Clock()
+    const startTime = performance.now()
     let animationFrameId: number
 
     // Render loop
     const animate = () => {
       animationFrameId = requestAnimationFrame(animate)
 
-      const time = clock.getElapsedTime()
+      const time = (performance.now() - startTime) * 0.001
       const positionsAttr = geometry.attributes.position as THREE.BufferAttribute
       const currentPositions = positionsAttr.array as Float32Array
 
