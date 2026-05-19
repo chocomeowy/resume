@@ -8,6 +8,7 @@ import { Projects } from "@/components/projects"
 import { Skills } from "@/components/skills"
 import { Connect } from "@/components/connect"
 import { MobileHeader } from "@/components/mobile-header"
+import { InteractiveCanvas } from "@/components/interactive-canvas"
 
 export default function Home() {
   React.useEffect(() => {
@@ -55,10 +56,15 @@ export default function Home() {
       <div className="bg-orbs" aria-hidden="true" />
       <div className="bg-orb-3" aria-hidden="true" />
 
+      {/* Interactive 3D WebGL Constellation Asset */}
+      <div className="fixed inset-0 w-full h-full pointer-events-none z-0 opacity-20 dark:opacity-15 mix-blend-normal dark:mix-blend-screen overflow-hidden">
+        <InteractiveCanvas />
+      </div>
+
       <MobileHeader />
       <div className="relative z-10 max-w-[1200px] mx-auto px-6 lg:px-12">
         <div className="flex flex-col lg:flex-row gap-0 min-h-screen relative">
-          <aside className="lg:w-[380px] lg:sticky lg:top-0 h-fit lg:h-screen pt-12 lg:pt-16 xl:pt-20 pb-12 lg:pb-8 lg:pr-12 z-20">
+          <aside className="lg:w-[380px] lg:sticky lg:top-0 h-fit lg:h-screen pt-8 lg:pt-10 xl:pt-12 pb-6 lg:pb-6 lg:pr-12 z-20 lg:overflow-y-auto scrollbar-none">
             <Sidebar />
           </aside>
           

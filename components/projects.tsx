@@ -3,6 +3,7 @@
 import * as React from "react"
 import Image from "next/image"
 import { ExternalLink } from "lucide-react"
+import { motion } from "framer-motion"
 
 const categoryColors: Record<string, string> = {
   Productivity:   "text-violet-400 bg-violet-400/10 border-violet-400/20",
@@ -114,6 +115,27 @@ const softwareProjects = [
   }
 ]
 
+// Spring transition values for a high-end elastic motion
+const cardVariants = {
+  hidden: { 
+    opacity: 0, 
+    y: 50, 
+    scale: 0.96 
+  },
+  visible: (idx: number) => ({
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      type: "spring" as const,
+      stiffness: 70, // soft spring
+      damping: 14,   // elegant damping
+      mass: 0.8,
+      delay: (idx % 2) * 0.15, // Grid-based stagger effect
+    }
+  })
+}
+
 export function Projects() {
   return (
     <div className="space-y-14">
@@ -125,12 +147,17 @@ export function Projects() {
           Practical projects that turn messy information into structured insights, signal views, dashboards, and decision-ready workflows.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {featuredProjects.map((project) => (
-            <article
+          {featuredProjects.map((project, idx) => (
+            <motion.article
               key={project.title}
-              className="shimmer-card group relative flex h-full flex-col rounded-2xl overflow-hidden bg-bg-card border border-border/40 p-6 hover:border-accent/40 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_18px_45px_rgba(0,0,0,0.22)]"
+              custom={idx}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-60px" }}
+              variants={cardVariants}
+              className="shimmer-card group relative flex h-full flex-col rounded-2xl overflow-hidden bg-bg-card border border-border/40 p-6 hover:border-accent/40 transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_18px_45px_rgba(0,0,0,0.22)]"
             >
-              <span className={`inline-flex text-[10px] font-mono uppercase tracking-widest px-2 py-0.5 rounded-full border font-semibold mb-4 ${categoryColors[project.category] ?? "text-accent bg-accent/10 border-accent/20"}`}>
+              <span className={`inline-flex text-[10px] font-mono uppercase tracking-widest px-2 py-0.5 rounded-full border font-semibold mb-4 w-fit ${categoryColors[project.category] ?? "text-accent bg-accent/10 border-accent/20"}`}>
                 {project.category}
               </span>
               <h4 className="font-display font-bold text-xl text-foreground group-hover:text-accent transition-colors duration-300 mb-3">
@@ -171,7 +198,7 @@ export function Projects() {
                   </span>
                 )}
               </div>
-            </article>
+            </motion.article>
           ))}
         </div>
       </div>
@@ -184,12 +211,17 @@ export function Projects() {
           Public applications that show product thinking, API integration, and practical delivery.
         </p>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {softwareProjects.map((project, index) => (
-            <a
-              key={index}
+          {softwareProjects.map((project, idx) => (
+            <motion.a
+              key={idx}
               href={project.link}
               target="_blank"
               rel="noopener"
+              custom={idx}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-60px" }}
+              variants={cardVariants}
               className="shimmer-card group block relative rounded-2xl overflow-hidden bg-bg-card border border-border/40 hover:border-accent/40 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_24px_60px_rgba(0,0,0,0.35)]"
             >
               {/* Image Container */}
@@ -235,7 +267,7 @@ export function Projects() {
 
               {/* Bottom accent bar on hover */}
               <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-accent/0 via-accent to-accent/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            </a>
+            </motion.a>
           ))}
         </div>
       </div>
