@@ -162,7 +162,154 @@ export function Projects() {
   }
 
   return (
-    <div className="space-y-14">
+    <div className="space-y-16">
+      {/* ─── Software Projects Section ─── */}
+      <div>
+        <h3 className="font-display font-bold text-2xl text-foreground mb-3">
+          Software Projects
+        </h3>
+        <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl mb-6">
+          Public applications that show product thinking, API integration, and practical delivery.
+        </p>
+
+        {/* Desktop View: Standard Grid with Spring Staggered Reveal */}
+        <div className="hidden md:grid grid-cols-1 md:grid-cols-2 gap-6">
+          {softwareProjects.map((project, idx) => (
+            <motion.a
+              key={idx}
+              href={project.link}
+              target="_blank"
+              rel="noopener"
+              custom={idx}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-60px" }}
+              variants={cardVariants}
+              className="shimmer-card group block relative rounded-2xl overflow-hidden bg-bg-card border border-border/40 hover:border-accent/40 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_24px_60px_rgba(0,0,0,0.35)]"
+            >
+              {/* Image Container */}
+              <div className="relative aspect-[16/10] overflow-hidden border-b border-border/20">
+                <Image
+                  src={project.image}
+                  alt={project.title}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-bg-surface/80 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-500" />
+
+                {/* View Project Overlay */}
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                  <div className="px-6 py-2.5 bg-accent text-accent-foreground rounded-full text-xs font-bold uppercase tracking-widest translate-y-4 group-hover:translate-y-0 transition-transform duration-500 shadow-[0_0_20px_var(--accent-glow)]">
+                    View Live Site
+                  </div>
+                </div>
+              </div>
+
+              {/* Content */}
+              <div className="p-6">
+                <div className="flex items-start justify-between gap-3 mb-3">
+                  <span className={`text-[10px] font-mono uppercase tracking-widest px-2 py-0.5 rounded-full border font-semibold ${categoryColors[project.category] ?? "text-accent bg-accent/10 border-accent/20"}`}>
+                    {project.category}
+                  </span>
+                  <div className="flex flex-wrap justify-end gap-1.5">
+                    {project.tags.map(tag => (
+                      <span key={tag} className="text-[9px] font-mono text-muted-foreground bg-white/5 border border-white/10 px-1.5 py-0.5 rounded uppercase transition-colors group-hover:text-foreground group-hover:border-accent/20">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+                <h4 className="font-display font-bold text-lg text-foreground group-hover:text-accent transition-colors duration-300 mb-2">
+                  {project.title}
+                </h4>
+                <p className="text-sm text-muted-foreground leading-relaxed transition-colors group-hover:text-foreground/80 line-clamp-2">
+                  {project.description}
+                </p>
+              </div>
+
+              {/* Bottom accent bar on hover */}
+              <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-accent/0 via-accent to-accent/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            </motion.a>
+          ))}
+        </div>
+
+        {/* Mobile View: High-Fidelity Swipable Carousel with Liquid Dot Indicator */}
+        <div className="md:hidden flex flex-col gap-4 relative">
+          <div
+            ref={softwareRef}
+            onScroll={handleScrollSoftware}
+            className="flex gap-5 overflow-x-auto snap-x snap-mandatory scrollbar-none pb-4 -mx-6 px-6"
+          >
+            {softwareProjects.map((project, idx) => (
+              <div
+                key={idx}
+                className="w-[82vw] sm:w-[60vw] flex-shrink-0 snap-center select-none"
+              >
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="shimmer-card block relative rounded-2xl overflow-hidden bg-bg-card border border-border/40 hover:border-accent/40 transition-all duration-300"
+                >
+                  <div className="relative aspect-[16/10] overflow-hidden border-b border-border/20">
+                    <Image
+                      src={project.image}
+                      alt={project.title}
+                      fill
+                      sizes="(max-width: 768px) 80vw, 50vw"
+                      className="object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-bg-surface/80 via-transparent to-transparent opacity-60" />
+                  </div>
+                  <div className="p-5">
+                    <div className="flex items-start justify-between gap-3 mb-2">
+                      <span className={`text-[9px] font-mono uppercase tracking-widest px-2 py-0.5 rounded-full border font-semibold ${categoryColors[project.category] ?? "text-accent bg-accent/10 border-accent/20"}`}>
+                        {project.category}
+                      </span>
+                    </div>
+                    <h4 className="font-display font-bold text-base text-foreground mb-1">
+                      {project.title}
+                    </h4>
+                    <p className="text-xs text-muted-foreground leading-relaxed line-clamp-2">
+                      {project.description}
+                    </p>
+                  </div>
+                </a>
+              </div>
+            ))}
+          </div>
+
+          {/* Liquid Dots Indicator */}
+          <div className="flex justify-center items-center gap-2.5 mt-1">
+            {softwareProjects.map((_, idx) => {
+              const isActive = softwareActiveIdx === idx
+              return (
+                <div
+                  key={idx}
+                  className="relative w-2.5 h-2.5 flex items-center justify-center cursor-pointer"
+                  onClick={() => {
+                    const el = softwareRef.current
+                    if (!el) return
+                    const cardWidth = el.offsetWidth * 0.82
+                    el.scrollTo({ left: idx * (cardWidth + 20), behavior: "smooth" })
+                  }}
+                >
+                  {isActive && (
+                    <motion.div
+                      layoutId="activeSoftwareDot"
+                      className="absolute w-5 h-2.5 rounded-full bg-accent shadow-[0_0_8px_var(--accent)]"
+                      transition={{ type: "spring", stiffness: 300, damping: 25 }}
+                    />
+                  )}
+                  <div className={`w-2 h-2 rounded-full transition-colors duration-300 ${isActive ? "bg-accent-foreground z-10 scale-[0.5]" : "bg-muted-foreground/30"}`} />
+                </div>
+              )
+            })}
+          </div>
+        </div>
+      </div>
+
       {/* ─── Featured Projects Section ─── */}
       <div>
         <h3 className="font-display font-bold text-2xl text-foreground mb-3">
@@ -306,153 +453,6 @@ export function Projects() {
                   {isActive && (
                     <motion.div
                       layoutId="activeFeaturedDot"
-                      className="absolute w-5 h-2.5 rounded-full bg-accent shadow-[0_0_8px_var(--accent)]"
-                      transition={{ type: "spring", stiffness: 300, damping: 25 }}
-                    />
-                  )}
-                  <div className={`w-2 h-2 rounded-full transition-colors duration-300 ${isActive ? "bg-accent-foreground z-10 scale-[0.5]" : "bg-muted-foreground/30"}`} />
-                </div>
-              )
-            })}
-          </div>
-        </div>
-      </div>
-
-      {/* ─── Other Software Projects Section ─── */}
-      <div>
-        <h3 className="font-display font-bold text-2xl text-foreground mb-3">
-          Other Software Projects
-        </h3>
-        <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl mb-6">
-          Public applications that show product thinking, API integration, and practical delivery.
-        </p>
-
-        {/* Desktop View: Standard Grid with Spring Staggered Reveal */}
-        <div className="hidden md:grid grid-cols-1 md:grid-cols-2 gap-6">
-          {softwareProjects.map((project, idx) => (
-            <motion.a
-              key={idx}
-              href={project.link}
-              target="_blank"
-              rel="noopener"
-              custom={idx}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-60px" }}
-              variants={cardVariants}
-              className="shimmer-card group block relative rounded-2xl overflow-hidden bg-bg-card border border-border/40 hover:border-accent/40 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_24px_60px_rgba(0,0,0,0.35)]"
-            >
-              {/* Image Container */}
-              <div className="relative aspect-[16/10] overflow-hidden border-b border-border/20">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-bg-surface/80 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-500" />
-
-                {/* View Project Overlay */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  <div className="px-6 py-2.5 bg-accent text-accent-foreground rounded-full text-xs font-bold uppercase tracking-widest translate-y-4 group-hover:translate-y-0 transition-transform duration-500 shadow-[0_0_20px_var(--accent-glow)]">
-                    View Live Site
-                  </div>
-                </div>
-              </div>
-
-              {/* Content */}
-              <div className="p-6">
-                <div className="flex items-start justify-between gap-3 mb-3">
-                  <span className={`text-[10px] font-mono uppercase tracking-widest px-2 py-0.5 rounded-full border font-semibold ${categoryColors[project.category] ?? "text-accent bg-accent/10 border-accent/20"}`}>
-                    {project.category}
-                  </span>
-                  <div className="flex flex-wrap justify-end gap-1.5">
-                    {project.tags.map(tag => (
-                      <span key={tag} className="text-[9px] font-mono text-muted-foreground bg-white/5 border border-white/10 px-1.5 py-0.5 rounded uppercase transition-colors group-hover:text-foreground group-hover:border-accent/20">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-                <h4 className="font-display font-bold text-lg text-foreground group-hover:text-accent transition-colors duration-300 mb-2">
-                  {project.title}
-                </h4>
-                <p className="text-sm text-muted-foreground leading-relaxed transition-colors group-hover:text-foreground/80 line-clamp-2">
-                  {project.description}
-                </p>
-              </div>
-
-              {/* Bottom accent bar on hover */}
-              <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-accent/0 via-accent to-accent/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            </motion.a>
-          ))}
-        </div>
-
-        {/* Mobile View: High-Fidelity Swipable Carousel with Liquid Dot Indicator */}
-        <div className="md:hidden flex flex-col gap-4 relative">
-          <div
-            ref={softwareRef}
-            onScroll={handleScrollSoftware}
-            className="flex gap-5 overflow-x-auto snap-x snap-mandatory scrollbar-none pb-4 -mx-6 px-6"
-          >
-            {softwareProjects.map((project, idx) => (
-              <div
-                key={idx}
-                className="w-[82vw] sm:w-[60vw] flex-shrink-0 snap-center select-none"
-              >
-                <a
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="shimmer-card block relative rounded-2xl overflow-hidden bg-bg-card border border-border/40 hover:border-accent/40 transition-all duration-300"
-                >
-                  <div className="relative aspect-[16/10] overflow-hidden border-b border-border/20">
-                    <Image
-                      src={project.image}
-                      alt={project.title}
-                      fill
-                      sizes="(max-width: 768px) 80vw, 50vw"
-                      className="object-cover"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-bg-surface/80 via-transparent to-transparent opacity-60" />
-                  </div>
-                  <div className="p-5">
-                    <div className="flex items-start justify-between gap-3 mb-2">
-                      <span className={`text-[9px] font-mono uppercase tracking-widest px-2 py-0.5 rounded-full border font-semibold ${categoryColors[project.category] ?? "text-accent bg-accent/10 border-accent/20"}`}>
-                        {project.category}
-                      </span>
-                    </div>
-                    <h4 className="font-display font-bold text-base text-foreground mb-1">
-                      {project.title}
-                    </h4>
-                    <p className="text-xs text-muted-foreground leading-relaxed line-clamp-2">
-                      {project.description}
-                    </p>
-                  </div>
-                </a>
-              </div>
-            ))}
-          </div>
-
-          {/* Liquid Dots Indicator */}
-          <div className="flex justify-center items-center gap-2.5 mt-1">
-            {softwareProjects.map((_, idx) => {
-              const isActive = softwareActiveIdx === idx
-              return (
-                <div
-                  key={idx}
-                  className="relative w-2.5 h-2.5 flex items-center justify-center cursor-pointer"
-                  onClick={() => {
-                    const el = softwareRef.current
-                    if (!el) return
-                    const cardWidth = el.offsetWidth * 0.82
-                    el.scrollTo({ left: idx * (cardWidth + 20), behavior: "smooth" })
-                  }}
-                >
-                  {isActive && (
-                    <motion.div
-                      layoutId="activeSoftwareDot"
                       className="absolute w-5 h-2.5 rounded-full bg-accent shadow-[0_0_8px_var(--accent)]"
                       transition={{ type: "spring", stiffness: 300, damping: 25 }}
                     />
