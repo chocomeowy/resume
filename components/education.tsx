@@ -156,6 +156,27 @@ const education = [
   }
 ]
 
+const credentials = [
+  {
+    title: "Advanced Diploma in Python Programming and Machine Learning",
+    issuer: "Singapore Management University (SMU)",
+    icon: "🐍",
+    description: "Rigorous post-graduate program covering core data structures, algorithms, and practical machine learning engineering implementations."
+  },
+  {
+    title: "Generative AI (GenAI)",
+    issuer: "Heicoders Academy",
+    icon: "✨",
+    description: "Focused engineering certification covering LLM pipelines, prompt engineering, agent orchestration, and full-stack GenAI application deployment."
+  },
+  {
+    title: "Software Engineering Immersive",
+    issuer: "General Assembly",
+    icon: "💻",
+    description: "Full-stack software engineering certification focused on modern web architectures, API design, relational/non-relational databases, and agile delivery."
+  }
+]
+
 export function Education() {
   return (
     <div className="space-y-24">
@@ -211,6 +232,43 @@ export function Education() {
                   ))}
                 </div>
               )}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Professional Credentials & Certifications */}
+      <div className="pt-20 border-t border-border/40">
+        <div className="font-mono text-[11px] text-accent tracking-[0.2em] uppercase mb-12 flex items-center gap-4">
+          Professional Credentials
+          <div className="h-px flex-1 bg-gradient-to-r from-accent/30 to-transparent" />
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {credentials.map((cred, i) => (
+            <div
+              key={i}
+              className="shimmer-card group p-6 rounded-2xl bg-bg-card/40 border border-border/40 backdrop-blur-md hover:border-accent/40 hover:shadow-[0_12px_40px_rgba(0,0,0,0.15)] hover:-translate-y-0.5 transition-all duration-500 flex flex-col justify-between"
+            >
+              <div>
+                <div className="flex items-center justify-between gap-4 mb-4">
+                  <div className="w-10 h-10 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center text-lg shadow-[0_0_10px_var(--accent-glow)]">
+                    {cred.icon}
+                  </div>
+                  <span className="font-mono text-[9px] uppercase tracking-widest text-accent/70 bg-accent/5 px-2 py-0.5 rounded">
+                    Certified
+                  </span>
+                </div>
+                <h4 className="text-base font-bold text-foreground font-display mb-1.5 group-hover:text-accent transition-colors duration-300">
+                  {cred.title}
+                </h4>
+                <div className="text-xs font-semibold text-accent/80 mb-3">{cred.issuer}</div>
+                {cred.description && (
+                  <p className="text-xs text-muted-foreground leading-relaxed">
+                    {cred.description}
+                  </p>
+                )}
+              </div>
             </div>
           ))}
         </div>
