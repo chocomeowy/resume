@@ -9,8 +9,8 @@ import { cn } from "@/lib/utils"
 
 const navItems = [
   { name: "About", href: "#about" },
-  { name: "Experience", href: "#experience" },
   { name: "Projects", href: "#projects" },
+  { name: "Experience", href: "#experience" },
   { name: "Skills", href: "#skills" },
   { name: "Connect", href: "#connect" },
 ]
@@ -58,10 +58,14 @@ export function Sidebar() {
           </div>
         </div>
 
-        {/* Title with gradient shimmer */}
-        <h1 className="name text-4.5xl xl:text-5xl font-extrabold tracking-tighter leading-[0.95] mb-4 font-display">
-          <span className="gradient-name">Forward <br />Deployed <br />AI Engineer</span>
+        {/* Name with gradient shimmer */}
+        <h1 className="name text-5xl xl:text-6xl font-extrabold tracking-tighter leading-[0.95] mb-3 font-display">
+          <span className="gradient-name">Yong <br />Fah Jin</span>
         </h1>
+        
+        <h2 className="title text-lg font-semibold text-foreground/90 mb-3 font-display tracking-tight leading-tight">
+          Forward Deployed AI Engineer, Software Developer &amp; Data Analyst
+        </h2>
         
         <p className="tagline text-sm text-muted-foreground leading-relaxed max-w-[280px] mb-4">
           Building AI-assisted tools, dashboards, and research workflows across FinTech, automation, and applied data systems.

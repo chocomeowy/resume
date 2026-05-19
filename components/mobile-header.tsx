@@ -9,8 +9,8 @@ import { cn } from "@/lib/utils"
 
 const navItems = [
   { name: "About", href: "#about" },
-  { name: "Experience", href: "#experience" },
   { name: "Projects", href: "#projects" },
+  { name: "Experience", href: "#experience" },
   { name: "Skills", href: "#skills" },
   { name: "Connect", href: "#connect" },
 ]
@@ -55,7 +55,7 @@ export function MobileHeader() {
       />
       <div className="container flex h-14 items-center justify-between px-6">
         <div className="flex items-center gap-4">
-          <span className="font-display font-extrabold text-sm tracking-tight gradient-name">YFJ</span>
+          <span className="font-display font-extrabold text-sm tracking-tight gradient-name">Fah Jin</span>
           <div className="h-4 w-px bg-border/40" />
           <div className="flex items-center gap-3">
             <a href="https://github.com/chocomeowy" target="_blank" rel="noopener" className="text-muted-foreground hover:text-accent transition-colors">

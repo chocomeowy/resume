@@ -73,20 +73,20 @@ export default function Home() {
               <Hero />
             </section>
             
-            <section id="experience" className="section-reveal">
-              <div className="font-mono text-[11px] text-accent tracking-[0.2em] uppercase mb-12 flex items-center gap-4">
-                Experience
-                <div className="h-px flex-1 bg-gradient-to-r from-accent/30 to-transparent" />
-              </div>
-              <Education />
-            </section>
-            
             <section id="projects" className="section-reveal">
               <div className="font-mono text-[11px] text-accent tracking-[0.2em] uppercase mb-12 flex items-center gap-4">
                 Projects
                 <div className="h-px flex-1 bg-gradient-to-r from-accent/30 to-transparent" />
               </div>
               <Projects />
+            </section>
+            
+            <section id="experience" className="section-reveal">
+              <div className="font-mono text-[11px] text-accent tracking-[0.2em] uppercase mb-12 flex items-center gap-4">
+                Experience
+                <div className="h-px flex-1 bg-gradient-to-r from-accent/30 to-transparent" />
+              </div>
+              <Education />
             </section>
             
             <section id="skills" className="section-reveal">
