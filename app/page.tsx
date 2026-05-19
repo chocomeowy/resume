@@ -64,7 +64,7 @@ export default function Home() {
       <MobileHeader />
       <div className="relative z-10 max-w-[1200px] mx-auto px-6 lg:px-12">
         <div className="flex flex-col lg:flex-row gap-0 min-h-screen relative">
-          <aside className="lg:w-[380px] lg:sticky lg:top-0 h-fit lg:h-screen pt-8 lg:pt-10 xl:pt-12 pb-6 lg:pb-6 lg:pr-12 z-20 lg:overflow-y-auto scrollbar-none">
+          <aside className="hidden lg:block lg:w-[380px] lg:sticky lg:top-0 h-fit lg:h-screen pt-8 lg:pt-10 xl:pt-12 pb-6 lg:pb-6 lg:pr-12 z-20 lg:overflow-y-auto scrollbar-none">
             <Sidebar />
           </aside>
           

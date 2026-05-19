@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils"
 
 export function Hero() {
   return (
-    <div className="flex flex-col gap-10">
+    <div className="flex flex-col gap-8">
       <div className="space-y-5 max-w-3xl">
         <p className="hero-stagger font-mono text-[11px] text-accent tracking-[0.2em] uppercase">
           Portfolio
@@ -14,9 +14,17 @@ export function Hero() {
         <h2 className="hero-stagger font-display text-2xl sm:text-3xl lg:text-4.5xl font-extrabold tracking-tight leading-tight text-foreground">
           Applied AI Engineer, Software Developer &amp; Data Analyst
         </h2>
-        <p className="hero-stagger text-base lg:text-lg text-muted-foreground leading-relaxed max-w-2xl">
-          I build practical systems that connect data, software, and AI. My focus is on turning noisy operational signals, messy workflows, and emerging AI capabilities into tools that are useful, scalable, and easy for people to adopt.
-        </p>
+        <div className="hero-stagger space-y-4 text-base lg:text-lg text-muted-foreground leading-relaxed max-w-2xl">
+          <p>
+            I am a <span className="text-foreground font-semibold">Forward Deployed AI Engineer, Software Developer, and Data Analyst</span> based in Singapore, pursuing an <span className="text-foreground font-semibold">MSc in Financial Technology from NTU</span>. I build practical systems that connect data, software, and AI.
+          </p>
+          <p>
+            My focus is on turning noisy operational signals, messy workflows, and emerging AI capabilities into tools that are useful, scalable, and easy for people to adopt. My professional experience spans IoT monitoring, full-stack development, analytics automation, and AI-enabled products across energy systems, banking operations, high-growth AI platforms, and regional logistics.
+          </p>
+          <p>
+            I am currently transitioning deeper into <span className="text-foreground font-semibold">AI Engineering, FinTech, and SaaS roles</span>, with a strong interest and technical focus in AI agents, RAG applications, automation pipelines, product analytics, and AI-powered business workflows.
+          </p>
+        </div>
       </div>
 
       {/* Stat row */}
@@ -52,15 +60,6 @@ export function Hero() {
         >
           Contact Me
         </a>
-      </div>
-
-      <div className="about-text hero-stagger space-y-5 text-base text-muted-foreground leading-relaxed max-w-2xl border-t border-border/40 pt-8">
-        <p>
-          I am a <span className="text-foreground font-semibold">Forward Deployed AI Engineer, Software Developer, and Data Analyst</span> based in Singapore, pursuing an <span className="text-foreground font-semibold">MSc in Financial Technology from NTU</span>, with professional experience across IoT monitoring, full-stack development, analytics automation, and AI-enabled products. My experience spans energy systems, banking operations, high-growth AI platforms, and regional logistics.
-        </p>
-        <p>
-          I am currently transitioning deeper into <span className="text-foreground font-semibold">AI Engineering, FinTech, and SaaS roles</span>, with a strong interest and technical focus in AI agents, RAG applications, automation pipelines, product analytics, and AI-powered business workflows.
-        </p>
       </div>
     </div>
   )
