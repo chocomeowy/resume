@@ -8,15 +8,15 @@ import { motion, useScroll, useSpring } from "framer-motion"
 import { cn } from "@/lib/utils"
 
 const navItems = [
-  { name: "About", href: "#about" },
   { name: "Projects", href: "#projects" },
+  { name: "About", href: "#about" },
   { name: "Experience", href: "#experience" },
   { name: "Skills", href: "#skills" },
   { name: "Connect", href: "#connect" },
 ]
 
 export function MobileHeader() {
-  const [activeSection, setActiveSection] = React.useState("about")
+  const [activeSection, setActiveSection] = React.useState("projects")
   const [hoveredIndex, setHoveredIndex] = React.useState<number | null>(null)
 
   const { scrollYProgress } = useScroll()

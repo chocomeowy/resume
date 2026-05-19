@@ -8,15 +8,15 @@ import { motion } from "framer-motion"
 import { cn } from "@/lib/utils"
 
 const navItems = [
-  { name: "About", href: "#about" },
   { name: "Projects", href: "#projects" },
+  { name: "About", href: "#about" },
   { name: "Experience", href: "#experience" },
   { name: "Skills", href: "#skills" },
   { name: "Connect", href: "#connect" },
 ]
 
 export function Sidebar() {
-  const [activeSection, setActiveSection] = React.useState("about")
+  const [activeSection, setActiveSection] = React.useState("projects")
 
   React.useEffect(() => {
     const observerOptions = {
