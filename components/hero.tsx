@@ -11,7 +11,7 @@ export function Hero() {
         <p className="hero-stagger font-mono text-[11px] text-accent tracking-[0.2em] uppercase">
           Portfolio
         </p>
-        <h2 className="hero-stagger font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight text-foreground">
+        <h2 className="hero-stagger font-display text-2xl sm:text-3xl lg:text-4.5xl font-extrabold tracking-tight leading-tight text-foreground">
           Applied AI Engineer, Software Developer &amp; Data Analyst
         </h2>
         <p className="hero-stagger text-base lg:text-lg text-muted-foreground leading-relaxed max-w-2xl">

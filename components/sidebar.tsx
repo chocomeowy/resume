@@ -59,7 +59,7 @@ export function Sidebar() {
         </div>
 
         {/* Name with gradient shimmer */}
-        <h1 className="name text-5xl xl:text-6xl font-extrabold tracking-tighter leading-[0.95] mb-3 font-display">
+        <h1 className="name text-5xl xl:text-6xl font-extrabold tracking-tighter leading-[0.95] mb-3 font-display hidden lg:block">
           <span className="gradient-name">Yong <br />Fah Jin</span>
         </h1>
         
