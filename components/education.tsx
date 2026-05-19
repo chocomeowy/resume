@@ -148,6 +148,14 @@ const education: Array<{
 }> = [
   {
     period: "Completed",
+    title: "MSc in Financial Technology (FinTech)",
+    company: "Nanyang Technological University (NTU)",
+    companyIcon: "🎓",
+    description: "Specialising in ML in finance, blockchain, and DeFi. Coursework: Quantitative Risk Modelling, Time-series Forecasting, and Quantitative Trading.",
+    tags: ["Machine Learning", "Quant Finance", "Blockchain"]
+  },
+  {
+    period: "Completed",
     title: "BSc Business, Second Upper Honours",
     company: "SIM / University of London",
     companyIcon: "📚",

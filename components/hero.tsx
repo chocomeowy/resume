@@ -24,7 +24,7 @@ export function Hero() {
         {[
           { value: "500+", label: "IoT Devices Scaled" },
           { value: "20+", label: "Dashboards Built" },
-          { value: "3+", label: "Tech Credentials" },
+          { value: "NTU", label: "MSc FinTech" },
         ].map((stat) => (
           <div key={stat.label} className="flex flex-col">
             <span className="font-display font-extrabold text-2xl text-foreground tracking-tight">{stat.value}</span>
@@ -56,7 +56,7 @@ export function Hero() {
 
       <div className="about-text hero-stagger space-y-5 text-base text-muted-foreground leading-relaxed max-w-2xl border-t border-border/40 pt-8">
         <p>
-          I am an <span className="text-foreground font-semibold">Applied AI Engineer, Software Developer, and Data Analyst</span> based in Singapore, with professional experience across IoT monitoring, full-stack development, analytics automation, and AI-enabled products. My experience spans energy systems, banking operations, high-growth AI platforms, and regional logistics.
+          I am an <span className="text-foreground font-semibold">Applied AI Engineer, Software Developer, and Data Analyst</span> based in Singapore, with an <span className="text-foreground font-semibold">MSc in Financial Technology from NTU</span> and professional experience across IoT monitoring, full-stack development, analytics automation, and AI-enabled products. My experience spans energy systems, banking operations, high-growth AI platforms, and regional logistics.
         </p>
         <p>
           I am currently transitioning deeper into <span className="text-foreground font-semibold">AI Engineering, FinTech, and SaaS roles</span>, with a strong interest and technical focus in AI agents, RAG applications, automation pipelines, product analytics, and AI-powered business workflows.
