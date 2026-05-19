@@ -16,7 +16,7 @@ A modern, responsive, and professional portfolio website built with **Next.js (A
 
 - **Fintech Aesthetic**: Professional blue-gray color palette tailored for the financial technology sector.
 - **Hero Section**: High-impact introduction focusing on Fintech, Data Analytics, and Technical Business Analysis.
-- **Education**: Detailed highlight of MSc in Fintech at Nanyang Technological University (NTU).
+- **Education**: Highlight of academic degrees and technical credentials from SMU, Heicoders, and General Assembly.
 - **Experience Grid**: Showcase of IoT specializing, remote monitoring (40-500 devices), and 20+ Grafana dashboards.
 - **Interactive Skills**: Categorized skills with focus highlights for Python and JavaScript.
 - **Resume Download**: Direct link to `/resume.pdf` for quick access.

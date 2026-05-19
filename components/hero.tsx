@@ -12,10 +12,10 @@ export function Hero() {
           Portfolio
         </p>
         <h2 className="hero-stagger font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight text-foreground">
-          Applied AI Engineer, Data Analytics &amp; Automation
+          Applied AI Engineer, Software Developer &amp; Data Analyst
         </h2>
         <p className="hero-stagger text-base lg:text-lg text-muted-foreground leading-relaxed max-w-2xl">
-          I build practical AI, data, and automation tools that turn messy information into structured insights, dashboards, and decision-ready workflows.
+          I build practical systems that connect data, software, and AI. My focus is on turning noisy operational signals, messy workflows, and emerging AI capabilities into tools that are useful, scalable, and easy for people to adopt.
         </p>
       </div>
 
@@ -24,7 +24,7 @@ export function Hero() {
         {[
           { value: "500+", label: "IoT Devices Scaled" },
           { value: "20+", label: "Dashboards Built" },
-          { value: "NTU", label: "MSc FinTech" },
+          { value: "3+", label: "Tech Credentials" },
         ].map((stat) => (
           <div key={stat.label} className="flex flex-col">
             <span className="font-display font-extrabold text-2xl text-foreground tracking-tight">{stat.value}</span>
@@ -56,10 +56,10 @@ export function Hero() {
 
       <div className="about-text hero-stagger space-y-5 text-base text-muted-foreground leading-relaxed max-w-2xl border-t border-border/40 pt-8">
         <p>
-          I am a <span className="text-foreground font-semibold">Singapore-based Applied AI, Data Analytics, and Automation practitioner</span> with a technical background in software development, production monitoring, and analytics. My experience spans energy, banking, AI-enabled platforms, and large-scale operations. I have built dashboards, automated reporting workflows, supported production monitoring, and translated operational complexity into actionable insights for business and technical stakeholders.
+          I am an <span className="text-foreground font-semibold">Applied AI Engineer, Software Developer, and Data Analyst</span> based in Singapore, with professional experience across IoT monitoring, full-stack development, analytics automation, and AI-enabled products. My experience spans energy systems, banking operations, high-growth AI platforms, and regional logistics.
         </p>
         <p>
-          I am currently pursuing an <span className="text-foreground font-semibold">MSc in Financial Technology at NTU</span> part-time, with a focus on digital banking, financial data, platform risk, and applied AI.
+          I am currently transitioning deeper into <span className="text-foreground font-semibold">AI Engineering, FinTech, and SaaS roles</span>, with a strong interest and technical focus in AI agents, RAG applications, automation pipelines, product analytics, and AI-powered business workflows.
         </p>
       </div>
     </div>

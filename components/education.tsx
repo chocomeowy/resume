@@ -138,15 +138,14 @@ const experiences = [
   }
 ]
 
-const education = [
-  {
-    period: "2024 - Present",
-    title: "MSc in Financial Technology (FinTech)",
-    company: "Nanyang Technological University (NTU)",
-    companyIcon: "🎓",
-    description: "Specialising in ML in finance, blockchain, and DeFi. Coursework: Quantitative Risk Modelling, Time-series Forecasting, and Quantitative Trading.",
-    tags: ["Machine Learning", "Quant Finance", "Blockchain"]
-  },
+const education: Array<{
+  period: string
+  title: string
+  company: string
+  companyIcon: string
+  description?: string
+  tags?: string[]
+}> = [
   {
     period: "Completed",
     title: "BSc Business, Second Upper Honours",
