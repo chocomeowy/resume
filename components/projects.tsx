@@ -23,7 +23,7 @@ const categoryColors: Record<string, string> = {
 const featuredProjects = [
   {
     title: "Narrative Velocity Tracker",
-    description: "AI-assisted trend intelligence dashboard that tracks emerging narratives, market signals, and momentum shifts.",
+    description: "AI trend intelligence dashboard that tracks emerging narratives and momentum shifts. Parses real-time queries to identify topic crossovers, signal changes, and key trend velocity scores.",
     category: "Applied AI / Trend Intelligence / Market Analytics",
     image: "/images/narrative_live.png",
     tags: ["Applied AI", "Market Intelligence", "Dashboards"],
@@ -31,7 +31,7 @@ const featuredProjects = [
   },
   {
     title: "AI Market Signal Intelligence Dashboard",
-    description: "Market intelligence dashboard concept that combines momentum indicators, valuation context, and options activity.",
+    description: "Market intelligence concept combining momentum indicators, valuation context, and AI reasoning. Automates scanning to output structured, live watchlists for financial research.",
     category: "FinTech / Applied AI / Market Analytics",
     image: "/images/market_live.png",
     tags: ["Python", "SQL", "Applied AI", "Financial Analytics"],
@@ -39,7 +39,7 @@ const featuredProjects = [
   },
   {
     title: "Morning Kaki",
-    description: "AI-powered daily companion concept combining LLM workflows, voice, reminders, and caregiver notification features.",
+    description: "AI daily companion concept designed for senior care. Combines LLM workflows, custom voice guides, caregiver notifications, and location triggers into an accessible desktop & mobile layout.",
     category: "AI Product Prototype / Hackathon",
     image: "/images/morning_live.jpg",
     tags: ["LLM APIs", "Voice AI", "Product Mockup"],
@@ -47,7 +47,7 @@ const featuredProjects = [
   },
   {
     title: "SG Food Guide by Manus",
-    description: "AI-assisted Singapore food discovery prototype organizing local dishes, stalls, locations, and map filters.",
+    description: "Location intelligence prototype built using AI research workflows. Automatically extracts and structures raw local food recommendations into interactive map coordinates, tags, and guides.",
     category: "AI-Assisted Research / Location Intelligence / Product Prototype",
     image: "/images/food_live.png",
     tags: ["AI-Assisted Research", "Location Intelligence", "UX"],
@@ -58,7 +58,7 @@ const featuredProjects = [
 const softwareProjects = [
   {
     title: "LayoverSG",
-    description: "Singapore Changi Airport transit itinerary planner. Curated, time-aware guides for travelers on stopovers.",
+    description: "Transit itinerary planner for Singapore Changi Airport. Generates optimized, time-aware travel schedules integrated with local transit routes and live schedules for stopover passengers.",
     category: "Public Utility",
     image: "/images/layover_live.png",
     tags: ["Next.js", "SEO", "Transit API"],
@@ -66,7 +66,7 @@ const softwareProjects = [
   },
   {
     title: "Causeway Cameras",
-    description: "Real-time border traffic monitoring. Integrates LTA DataMall live feeds for cross-border commuter planning.",
+    description: "Border traffic monitoring dashboard. Leverages live LTA telemetry camera feeds and traffic APIs to help commuters track live causeway queues and estimate travel times.",
     category: "Public Utility",
     image: "/images/causeway_live.png",
     tags: ["React", "LTA API", "Leaflet"],
@@ -74,7 +74,7 @@ const softwareProjects = [
   },
   {
     title: "Sakura Cards",
-    description: "Lore-faithful digital tarot reading application. Features interactive Clow and Sakura card spreads with dynamic mystical effects.",
+    description: "Lore-faithful digital tarot reading application. Features high-fidelity layout rendering, custom card spreads, and dynamic Framer Motion animations based on Cardcaptor Sakura.",
     category: "Entertainment",
     image: "/images/sakura_live.png",
     tags: ["React", "Framer Motion", "Lore-driven"],
@@ -82,7 +82,7 @@ const softwareProjects = [
   },
   {
     title: "BusTime SG",
-    description: "Minimalist Singapore bus arrival tracker. Save favorite stops and view live ETAs with a clean, low-latency UI.",
+    description: "High-performance bus arrival tracker. Integrates Singapore LTA arrival feeds to deliver real-time ETAs with localized search, distance sorting, and favorite stop caching.",
     category: "Commute",
     image: "/images/bus_live.png",
     tags: ["Next.js", "Geolocation", "Transit API"],
@@ -198,7 +198,7 @@ export function Projects() {
                 <h4 className="font-display font-bold text-lg text-foreground group-hover:text-accent transition-colors duration-300 mb-2">
                   {project.title}
                 </h4>
-                <p className="text-sm text-muted-foreground leading-relaxed transition-colors group-hover:text-foreground/80 line-clamp-2">
+                <p className="text-sm text-muted-foreground leading-relaxed transition-colors group-hover:text-foreground/80">
                   {project.description}
                 </p>
               </div>
@@ -246,7 +246,7 @@ export function Projects() {
                     <h4 className="font-display font-bold text-base text-foreground mb-1">
                       {project.title}
                     </h4>
-                    <p className="text-xs text-muted-foreground leading-relaxed line-clamp-2">
+                    <p className="text-xs text-muted-foreground leading-relaxed">
                       {project.description}
                     </p>
                   </div>
@@ -345,7 +345,7 @@ export function Projects() {
                 <h4 className="font-display font-bold text-lg text-foreground group-hover:text-accent transition-colors duration-300 mb-2">
                   {project.title}
                 </h4>
-                <p className="text-sm text-muted-foreground leading-relaxed transition-colors group-hover:text-foreground/80 line-clamp-2">
+                <p className="text-sm text-muted-foreground leading-relaxed transition-colors group-hover:text-foreground/80">
                   {project.description}
                 </p>
               </div>
@@ -393,7 +393,7 @@ export function Projects() {
                     <h4 className="font-display font-bold text-base text-foreground mb-1">
                       {project.title}
                     </h4>
-                    <p className="text-xs text-muted-foreground leading-relaxed line-clamp-2">
+                    <p className="text-xs text-muted-foreground leading-relaxed">
                       {project.description}
                     </p>
                   </div>
