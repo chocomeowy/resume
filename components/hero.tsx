@@ -12,11 +12,31 @@ export function Hero() {
           Portfolio
         </p>
         <h2 className="hero-stagger font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight text-foreground">
-          Applied AI Engineer, Software Developer &amp; Data Analyst
+          Forward Deployed AI Engineer
         </h2>
         <p className="hero-stagger text-base lg:text-lg text-muted-foreground leading-relaxed max-w-2xl">
           I build practical systems that connect data, software, and AI. My focus is on turning noisy operational signals, messy workflows, and emerging AI capabilities into tools that are useful, scalable, and easy for people to adopt.
         </p>
+      </div>
+
+      {/* Featured Dashboard Mockup above the fold */}
+      <div className="hero-stagger relative rounded-2xl border border-border/40 bg-background/30 backdrop-blur-md overflow-hidden group shadow-[0_20px_50px_rgba(0,0,0,0.3)] max-w-2xl hover:border-accent/30 transition-all duration-500">
+        {/* Glowing border element */}
+        <div className="absolute inset-0 bg-gradient-to-tr from-accent/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
+        <img
+          src="/hero_project_dashboard.png"
+          alt="Neural Nexus AI - AI Operations Dashboard Preview"
+          className="w-full h-auto object-cover opacity-90 group-hover:scale-[1.01] transition-transform duration-700 select-none"
+          draggable="false"
+        />
+        {/* Caption bar */}
+        <div className="absolute bottom-0 left-0 right-0 px-4 py-2.5 bg-background/80 border-t border-border/30 flex items-center justify-between text-xs backdrop-blur-md">
+          <span className="font-mono text-[10px] text-accent font-semibold tracking-wider uppercase flex items-center gap-1.5">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+            System Live Preview: Neural Nexus AI
+          </span>
+          <span className="text-muted-foreground font-mono text-[10px]">Applied AI Operations</span>
+        </div>
       </div>
 
       {/* Stat row */}
@@ -56,7 +76,7 @@ export function Hero() {
 
       <div className="about-text hero-stagger space-y-5 text-base text-muted-foreground leading-relaxed max-w-2xl border-t border-border/40 pt-8">
         <p>
-          I am an <span className="text-foreground font-semibold">Applied AI Engineer, Software Developer, and Data Analyst</span> based in Singapore, pursuing an <span className="text-foreground font-semibold">MSc in Financial Technology from NTU</span>, with professional experience across IoT monitoring, full-stack development, analytics automation, and AI-enabled products. My experience spans energy systems, banking operations, high-growth AI platforms, and regional logistics.
+          I am a <span className="text-foreground font-semibold">Forward Deployed AI Engineer, Software Developer, and Data Analyst</span> based in Singapore, pursuing an <span className="text-foreground font-semibold">MSc in Financial Technology from NTU</span>, with professional experience across IoT monitoring, full-stack development, analytics automation, and AI-enabled products. My experience spans energy systems, banking operations, high-growth AI platforms, and regional logistics.
         </p>
         <p>
           I am currently transitioning deeper into <span className="text-foreground font-semibold">AI Engineering, FinTech, and SaaS roles</span>, with a strong interest and technical focus in AI agents, RAG applications, automation pipelines, product analytics, and AI-powered business workflows.

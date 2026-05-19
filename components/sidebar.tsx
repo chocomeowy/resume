@@ -53,21 +53,17 @@ export function Sidebar() {
             <div className="absolute bottom-0 right-0 w-3.5 h-3.5 rounded-full bg-emerald-400 border-2 border-background shadow-[0_0_6px_rgba(52,211,153,0.6)]" />
           </div>
           <div className="badge flex items-center gap-2 font-mono text-[11px] text-accent tracking-[0.12em] uppercase px-3 py-1 bg-accent/10 border border-accent/20 rounded-full">
-            <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse-glow shadow-[0_0_10px_var(--accent)]" />
-            Available for new opportunities
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_10px_rgba(52,211,153,0.6)]" />
+            Forward Deployed Engineer
           </div>
         </div>
 
-        {/* Name with gradient shimmer */}
-        <h1 className="name text-5xl xl:text-6xl font-extrabold tracking-tighter leading-[0.95] mb-3 font-display">
-          <span className="gradient-name">Yong <br />Fah Jin</span>
+        {/* Title with gradient shimmer */}
+        <h1 className="name text-4.5xl xl:text-5xl font-extrabold tracking-tighter leading-[0.95] mb-4 font-display">
+          <span className="gradient-name">Forward <br />Deployed <br />AI Engineer</span>
         </h1>
         
-        <h2 className="title text-lg font-semibold text-foreground/90 mb-3 font-display tracking-tight">
-          Applied AI Engineer | Data Analytics &amp; Automation &amp; FinTech
-        </h2>
-        
-        <p className="tagline text-sm text-muted-foreground leading-relaxed max-w-[280px]">
+        <p className="tagline text-sm text-muted-foreground leading-relaxed max-w-[280px] mb-4">
           Building AI-assisted tools, dashboards, and research workflows across FinTech, automation, and applied data systems.
         </p>
 
