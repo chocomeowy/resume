@@ -14,14 +14,15 @@ A modern, responsive, and professional portfolio website built with **Next.js (A
 
 ## ✨ Features
 
-- **Fintech Aesthetic**: Professional blue-gray color palette tailored for the financial technology sector.
-- **Hero Section**: High-impact introduction focusing on Fintech, Data Analytics, and Technical Business Analysis.
-- **Education**: Detailed highlight of MSc in Fintech at Nanyang Technological University (NTU) and technical credentials.
-- **Experience Grid**: Showcase of IoT specializing, remote monitoring (40-500 devices), and 20+ Grafana dashboards.
-- **Interactive Skills**: Categorized skills with focus highlights for Python and JavaScript.
-- **Resume Download**: Direct link to `/resume.pdf` for quick access.
-- **Dynamic QR Code**: Mobile-friendly access point for your digital resume.
-- **Dark Mode**: Fully supported with a smooth toggle.
+- **Cosmic 3D WebGL Constellation Canvas**: A highly optimized standard Three.js particle system backdrop that rotates with physics-based mouse-tilt parallax and trigonometrically floats over time (dynamically adapting colors/blending between Light and Dark modes).
+- **Projects-First Layout Flow**: Restructured sections sequence to place the Projects showcase directly under the About introduction, highlighting core product capabilities micro-seconds after load, followed by detailed Experience and Education history.
+- **Premium Interaction Systems**: Fluid magnetic navigation links, morphing active tab highlights, and physics-driven spring cards.
+- **Mobile Swipable project Carousels**: Viewport-adaptive rendering that converts the vertical projects list on mobile screens into a swipable horizontal deck with Framer Motion liquid pager dots.
+- **Sticky Mobile HUD**: Scroll-linked read progress indicator bar paired with a sweeping diagonal metallic shine header logo ("Fah Jin").
+- **Education & Graduate Candidature**: Accurate ongoing MSc in FinTech at Nanyang Technological University (NTU), BSc in Business, and specialized credentials (SMU Advanced Python & ML, Heicoders GenAI, General Assembly Software Engineering).
+- **Optimized Mobile Viewport**: Hides redundant Sidebar containers completely on mobile devices to preserve pristine spacing and page depth, relying on the compact sticky mobile header.
+- **Persistent CV & Social Integration**: Seamless download links for `/Yong_Fah_Jin_CV.pdf` and elegant icon bindings.
+- **Dark Mode**: Fully supported with next-themes integration and high-precision WebGL theme shifting.
 
 ## 🛠️ Getting Started
 
