@@ -4,9 +4,19 @@ import * as React from "react"
 import * as THREE from "three"
 import { useTheme } from "next-themes"
 
-export function InteractiveCanvas() {
+interface InteractiveCanvasProps {
+  activeSection: string
+}
+
+export function InteractiveCanvas({ activeSection }: InteractiveCanvasProps) {
   const containerRef = React.useRef<HTMLDivElement>(null)
   const { resolvedTheme } = useTheme()
+
+  // Track active section via Ref to prevent tearing down the WebGL scene on change
+  const activeSectionRef = React.useRef(activeSection)
+  React.useEffect(() => {
+    activeSectionRef.current = activeSection
+  }, [activeSection])
 
   React.useEffect(() => {
     if (!containerRef.current) return
@@ -27,31 +37,23 @@ export function InteractiveCanvas() {
 
     // Device-specific properties for responsiveness
     const isMobile = window.innerWidth < 768
-    const particleCount = isMobile ? 350 : 800
-    const connectionDistance = isMobile ? 1.5 : 1.8
+    const particleCount = isMobile ? 350 : 700 // Slight performance buffer for connection lines
     const scale = isMobile ? 0.7 : 1.0
 
     // Geometry and particle properties
     const geometry = new THREE.BufferGeometry()
     const positions = new Float32Array(particleCount * 3)
     const initialPositions = new Float32Array(particleCount * 3)
-    const velocities = new Float32Array(particleCount * 3)
     const colors = new Float32Array(particleCount * 3)
 
-    // Setup theme-based colors
-    const isDark = resolvedTheme === "dark"
-    const colorPrimary = isDark ? new THREE.Color("#0ea5e9") : new THREE.Color("#2563eb") // Cyan vs Indigo
-    const colorSecondary = isDark ? new THREE.Color("#8b5cf6") : new THREE.Color("#7c3aed") // Purple vs Violet
-
+    // Pre-initialize particles in a random sphere distribution so startup is clean
     const radius = 5 * scale
-
-    // Generate random positions inside a sphere using spherical coordinates
     for (let i = 0; i < particleCount; i++) {
       const u = Math.random()
       const v = Math.random()
       const theta = u * 2.0 * Math.PI
       const phi = Math.acos(2.0 * v - 1.0)
-      const r = radius * (0.8 + 0.2 * Math.random()) // Slight volume variance
+      const r = radius * (0.8 + 0.2 * Math.random())
 
       const x = r * Math.sin(phi) * Math.cos(theta)
       const y = r * Math.sin(phi) * Math.sin(theta)
@@ -65,17 +67,10 @@ export function InteractiveCanvas() {
       initialPositions[i * 3 + 1] = y
       initialPositions[i * 3 + 2] = z
 
-      // Velocity for subtle floating movements
-      velocities[i * 3] = (Math.random() - 0.5) * 0.015
-      velocities[i * 3 + 1] = (Math.random() - 0.5) * 0.015
-      velocities[i * 3 + 2] = (Math.random() - 0.5) * 0.015
-
-      // Gradient color based on position
-      const mixRatio = (x + radius) / (2 * radius)
-      const particleColor = new THREE.Color().copy(colorPrimary).lerp(colorSecondary, mixRatio)
-      colors[i * 3] = particleColor.r
-      colors[i * 3 + 1] = particleColor.g
-      colors[i * 3 + 2] = particleColor.b
+      // Startup color fallback
+      colors[i * 3] = 0.5
+      colors[i * 3 + 1] = 0.5
+      colors[i * 3 + 2] = 0.5
     }
 
     geometry.setAttribute("position", new THREE.BufferAttribute(positions, 3))
@@ -97,6 +92,7 @@ export function InteractiveCanvas() {
     const texture = new THREE.CanvasTexture(canvas)
 
     // Points Material
+    const isDark = resolvedTheme === "dark"
     const pointsMaterial = new THREE.PointsMaterial({
       size: isMobile ? 0.15 : 0.22,
       map: texture,
@@ -114,7 +110,7 @@ export function InteractiveCanvas() {
     const lineMaterial = new THREE.LineBasicMaterial({
       vertexColors: true,
       transparent: true,
-      opacity: isDark ? 0.12 : 0.06,
+      opacity: isDark ? 0.14 : 0.08,
       blending: isDark ? THREE.AdditiveBlending : THREE.NormalBlending,
       depthWrite: false,
     })
@@ -125,11 +121,8 @@ export function InteractiveCanvas() {
 
     // Interactive mouse state
     const mouse = { x: 0, y: 0, targetX: 0, targetY: 0 }
-    let lastMouseX = 0
-    let lastMouseY = 0
 
     const handleMouseMove = (event: MouseEvent) => {
-      // Map normalized coordinates from -1 to 1
       mouse.targetX = (event.clientX / window.innerWidth) * 2 - 1
       mouse.targetY = -(event.clientY / window.innerHeight) * 2 + 1
     }
@@ -144,6 +137,120 @@ export function InteractiveCanvas() {
     window.addEventListener("mousemove", handleMouseMove)
     window.addEventListener("touchmove", handleTouchMove)
 
+    // Palette generator for the 3D sections
+    const getSectionColors = (section: string) => {
+      if (section === "projects") {
+        return {
+          primary: isDark ? new THREE.Color("#0ea5e9") : new THREE.Color("#2563eb"), // Cyan vs Blue
+          secondary: isDark ? new THREE.Color("#8b5cf6") : new THREE.Color("#7c3aed"), // Purple vs Violet
+        }
+      } else if (section === "about") {
+        return {
+          primary: isDark ? new THREE.Color("#10b981") : new THREE.Color("#059669"), // Emerald vs Forest
+          secondary: isDark ? new THREE.Color("#06b6d4") : new THREE.Color("#0891b2"), // Cyan vs Teal
+        }
+      } else if (section === "experience") {
+        return {
+          primary: isDark ? new THREE.Color("#f59e0b") : new THREE.Color("#d97706"), // Amber vs Bronze
+          secondary: isDark ? new THREE.Color("#f43f5e") : new THREE.Color("#e11d48"), // Rose vs Crimson
+        }
+      } else if (section === "skills") {
+        return {
+          primary: isDark ? new THREE.Color("#3b82f6") : new THREE.Color("#1d4ed8"), // Blue vs Navy
+          secondary: isDark ? new THREE.Color("#6366f1") : new THREE.Color("#4f46e5"), // Indigo vs Royal
+        }
+      } else { // connect
+        return {
+          primary: isDark ? new THREE.Color("#d946ef") : new THREE.Color("#c026d3"), // Fuchsia vs Dark Fuchsia
+          secondary: isDark ? new THREE.Color("#8b5cf6") : new THREE.Color("#7c3aed"), // Purple vs Violet
+        }
+      }
+    }
+
+    // Mathematical calculations for morphing shapes
+    const getTargetPosition = (i: number, time: number, section: string) => {
+      const radius = 5.0 * scale
+
+      if (section === "projects") {
+        // Sphere
+        const theta = (i * 0.15) + time * 0.05
+        const phi = Math.acos(-1 + (2 * i) / particleCount)
+        const r = radius * (0.85 + 0.15 * Math.sin(time * 0.2 + i * 0.1))
+        
+        return {
+          x: r * Math.sin(phi) * Math.cos(theta),
+          y: r * Math.sin(phi) * Math.sin(theta),
+          z: r * Math.cos(phi)
+        }
+      } else if (section === "about") {
+        // Torus (Donut)
+        const u = (i / particleCount) * 2.0 * Math.PI * 4 + time * 0.08
+        const v = (i / particleCount) * 2.0 * Math.PI * 18 + time * 0.25
+        const R = 4.2 * scale
+        const r = 1.3 * scale * (1 + 0.1 * Math.sin(time * 0.4 + i * 0.08))
+        return {
+          x: (R + r * Math.cos(v)) * Math.cos(u),
+          y: (R + r * Math.cos(v)) * Math.sin(u),
+          z: r * Math.sin(v)
+        }
+      } else if (section === "experience") {
+        // Double Helix (Vertical DNA)
+        const isStrandA = i % 2 === 0
+        const t = (i / particleCount) * 2.0 * Math.PI * 3.5 + time * 0.2
+        const angle = isStrandA ? t : t + Math.PI
+        const helixRadius = 2.3 * scale * (1 + 0.08 * Math.sin(time * 0.35 + i * 0.05))
+        const height = 9 * scale
+        return {
+          x: helixRadius * Math.cos(angle),
+          y: ((i / particleCount) - 0.5) * height,
+          z: helixRadius * Math.sin(angle)
+        }
+      } else if (section === "skills") {
+        // Atomic Orbit Rings
+        const plane = i % 4
+        const angle = (i / particleCount) * 2.0 * Math.PI * 3 + time * (plane === 0 ? 0.2 : plane === 1 ? -0.25 : plane === 2 ? 0.18 : -0.3)
+        const orbitRadius = (4.0 + 0.3 * Math.sin(time * 0.4 + i * 0.05)) * scale
+        
+        if (plane === 0) { // XY plane
+          return {
+            x: orbitRadius * Math.cos(angle),
+            y: orbitRadius * Math.sin(angle),
+            z: 0
+          }
+        } else if (plane === 1) { // YZ plane
+          return {
+            x: 0,
+            y: orbitRadius * Math.cos(angle),
+            z: orbitRadius * Math.sin(angle)
+          }
+        } else if (plane === 2) { // ZX plane
+          return {
+            x: orbitRadius * Math.sin(angle),
+            y: 0,
+            z: orbitRadius * Math.cos(angle)
+          }
+        } else { // Tilted plane
+          const cosA = Math.cos(angle)
+          const sinA = Math.sin(angle)
+          return {
+            x: orbitRadius * cosA * Math.cos(Math.PI / 4),
+            y: orbitRadius * sinA,
+            z: orbitRadius * cosA * Math.sin(Math.PI / 4)
+          }
+        }
+      } else {
+        // Connect - Conical Vortex
+        const t = (i / particleCount)
+        const angle = t * 2.0 * Math.PI * 5 - time * 0.4
+        const vortexRadius = (t * 5.0 + 0.4) * scale
+        return {
+          x: vortexRadius * Math.cos(angle),
+          y: (t - 0.5) * 8.5 * scale,
+          z: vortexRadius * Math.sin(angle)
+        }
+      }
+    }
+
     // Animation Loop variables
     const startTime = performance.now()
     let animationFrameId: number
@@ -156,56 +263,76 @@ export function InteractiveCanvas() {
       const positionsAttr = geometry.attributes.position as THREE.BufferAttribute
       const currentPositions = positionsAttr.array as Float32Array
 
+      const colorsAttr = geometry.attributes.color as THREE.BufferAttribute
+      const currentColors = colorsAttr.array as Float32Array
+
       // Smooth mouse coordinate interpolation (lerp)
       mouse.x += (mouse.targetX - mouse.x) * 0.08
       mouse.y += (mouse.targetY - mouse.y) * 0.08
 
       // Rotate group towards cursor
-      particleSystem.rotation.y = time * 0.04 + mouse.x * 0.35
-      particleSystem.rotation.x = mouse.y * 0.35
+      particleSystem.rotation.y = time * 0.03 + mouse.x * 0.25
+      particleSystem.rotation.x = mouse.y * 0.25
       lineMesh.rotation.copy(particleSystem.rotation)
 
-      // Dynamic wave distortion and float simulation
+      // Fetch dynamic settings from ref
+      const currentSection = activeSectionRef.current
+      const sectionColors = getSectionColors(currentSection)
+
+      // Connection lines spacing optimizations based on active shape density
+      let connectionDistance = isMobile ? 1.3 : 1.6
+      if (currentSection === "about") connectionDistance = isMobile ? 0.9 : 1.1
+      else if (currentSection === "experience") connectionDistance = isMobile ? 0.7 : 0.9
+      else if (currentSection === "skills") connectionDistance = isMobile ? 0.6 : 0.8
+      else if (currentSection === "connect") connectionDistance = isMobile ? 0.8 : 1.0
+
+      // Particle physics & mathematical shape lerp
       for (let i = 0; i < particleCount; i++) {
         const xIdx = i * 3
         const yIdx = i * 3 + 1
         const zIdx = i * 3 + 2
 
-        // Float movement
-        initialPositions[xIdx] += velocities[xIdx]
-        initialPositions[yIdx] += velocities[yIdx]
-        initialPositions[zIdx] += velocities[zIdx]
+        // Get target coordinate for current section shape
+        const target = getTargetPosition(i, time, currentSection)
 
-        // Keep inside sphere volume boundary
-        const dist = Math.sqrt(
-          initialPositions[xIdx] ** 2 +
-          initialPositions[yIdx] ** 2 +
-          initialPositions[zIdx] ** 2
-        )
-        if (dist > radius * 1.1 || dist < radius * 0.7) {
-          velocities[xIdx] *= -1
-          velocities[yIdx] *= -1
-          velocities[zIdx] *= -1
-        }
+        // Seamless glide morphing towards target coordinate
+        initialPositions[xIdx] += (target.x - initialPositions[xIdx]) * 0.05
+        initialPositions[yIdx] += (target.y - initialPositions[yIdx]) * 0.05
+        initialPositions[zIdx] += (target.z - initialPositions[zIdx]) * 0.05
 
-        // Apply interactive wave ripples based on trigonometric waves
-        const wave = Math.sin(time * 1.2 + initialPositions[xIdx] * 0.4) * 0.08
-        currentPositions[xIdx] = initialPositions[xIdx] + wave
-        currentPositions[yIdx] = initialPositions[yIdx] + Math.cos(time * 0.8 + initialPositions[yIdx] * 0.4) * 0.08
-        currentPositions[zIdx] = initialPositions[zIdx]
+        // Micro ripples and natural wave offsets
+        const waveX = Math.sin(time * 1.5 + initialPositions[xIdx] * 0.4) * 0.05
+        const waveY = Math.cos(time * 1.2 + initialPositions[yIdx] * 0.4) * 0.05
+        const waveZ = Math.sin(time * 1.0 + initialPositions[zIdx] * 0.4) * 0.05
+
+        currentPositions[xIdx] = initialPositions[xIdx] + waveX
+        currentPositions[yIdx] = initialPositions[yIdx] + waveY
+        currentPositions[zIdx] = initialPositions[zIdx] + waveZ
+
+        // Dynamic gradient color calculations
+        const mixRatio = (currentPositions[xIdx] + radius) / (2 * radius)
+        const targetColor = new THREE.Color().copy(sectionColors.primary).lerp(sectionColors.secondary, THREE.MathUtils.clamp(mixRatio, 0, 1))
+
+        // Lerp color changes for smooth palette morphing
+        currentColors[xIdx] += (targetColor.r - currentColors[xIdx]) * 0.05
+        currentColors[xIdx + 1] += (targetColor.g - currentColors[xIdx + 1]) * 0.05
+        currentColors[xIdx + 2] += (targetColor.b - currentColors[xIdx + 2]) * 0.05
       }
       positionsAttr.needsUpdate = true
+      colorsAttr.needsUpdate = true
 
-      // Dynamic connection lines generation (recalculated every frame)
+      // Dynamic connection lines constellation builder
       const linePositions: number[] = []
       const lineColors: number[] = []
 
-      for (let i = 0; i < particleCount; i++) {
+      // Performance check: stride lines comparison dynamically to preserve INP
+      const step = isMobile ? 2 : 1
+      for (let i = 0; i < particleCount; i += step) {
         const x1 = currentPositions[i * 3]
         const y1 = currentPositions[i * 3 + 1]
         const z1 = currentPositions[i * 3 + 2]
 
-        for (let j = i + 1; j < particleCount; j++) {
+        for (let j = i + 1; j < particleCount; j += step) {
           const x2 = currentPositions[j * 3]
           const y2 = currentPositions[j * 3 + 1]
           const z2 = currentPositions[j * 3 + 2]
@@ -216,9 +343,8 @@ export function InteractiveCanvas() {
             linePositions.push(x1, y1, z1)
             linePositions.push(x2, y2, z2)
 
-            // Connect colors matching parent nodes
-            lineColors.push(colors[i * 3], colors[i * 3 + 1], colors[i * 3 + 2])
-            lineColors.push(colors[j * 3], colors[j * 3 + 1], colors[j * 3 + 2])
+            lineColors.push(currentColors[i * 3], currentColors[i * 3 + 1], currentColors[i * 3 + 2])
+            lineColors.push(currentColors[j * 3], currentColors[j * 3 + 1], currentColors[j * 3 + 2])
           }
         }
       }

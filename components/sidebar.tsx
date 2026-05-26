@@ -15,28 +15,11 @@ const navItems = [
   { name: "Connect", href: "#connect" },
 ]
 
-export function Sidebar() {
-  const [activeSection, setActiveSection] = React.useState("projects")
+interface SidebarProps {
+  activeSection: string
+}
 
-  React.useEffect(() => {
-    const observerOptions = {
-      threshold: 0.2,
-      rootMargin: '0px 0px -10% 0px'
-    }
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setActiveSection(entry.target.id)
-        }
-      })
-    }, observerOptions)
-
-    const sections = document.querySelectorAll("section[id]")
-    sections.forEach((section) => observer.observe(section))
-
-    return () => observer.disconnect()
-  }, [])
+export function Sidebar({ activeSection }: SidebarProps) {
 
   return (
     <div className="flex flex-col justify-between h-full relative z-10">

@@ -15,8 +15,11 @@ const navItems = [
   { name: "Connect", href: "#connect" },
 ]
 
-export function MobileHeader() {
-  const [activeSection, setActiveSection] = React.useState("projects")
+interface MobileHeaderProps {
+  activeSection: string
+}
+
+export function MobileHeader({ activeSection }: MobileHeaderProps) {
   const [hoveredIndex, setHoveredIndex] = React.useState<number | null>(null)
 
   const { scrollYProgress } = useScroll()
@@ -25,26 +28,6 @@ export function MobileHeader() {
     damping: 30,
     restDelta: 0.001
   })
-
-  React.useEffect(() => {
-    const observerOptions = {
-      threshold: 0.15,
-      rootMargin: "0px 0px -25% 0px"
-    }
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setActiveSection(entry.target.id)
-        }
-      })
-    }, observerOptions)
-
-    const sections = document.querySelectorAll("section[id]")
-    sections.forEach((section) => observer.observe(section))
-
-    return () => observer.disconnect()
-  }, [])
 
   return (
     <header className="lg:hidden sticky top-0 z-50 w-full border-b border-border/40 bg-background/80 backdrop-blur-md">

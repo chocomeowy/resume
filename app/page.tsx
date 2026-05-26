@@ -11,6 +11,8 @@ import { MobileHeader } from "@/components/mobile-header"
 import { InteractiveCanvas } from "@/components/interactive-canvas"
 
 export default function Home() {
+  const [activeSection, setActiveSection] = React.useState("projects")
+
   React.useEffect(() => {
     const observerOptions = {
       threshold: 0.1,
@@ -27,6 +29,23 @@ export default function Home() {
     }, observerOptions)
 
     document.querySelectorAll(".section-reveal").forEach((el) => sectionObserver.observe(el))
+
+    // Active section observer for sidebar, mobile header, and canvas background
+    const activeObserverOptions = {
+      threshold: 0.2,
+      rootMargin: "0px 0px -10% 0px"
+    }
+
+    const activeObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id)
+        }
+      })
+    }, activeObserverOptions)
+
+    const sections = document.querySelectorAll("main section[id]")
+    sections.forEach((section) => activeObserver.observe(section))
 
     // Hero stagger
     const staggerObserver = new IntersectionObserver((entries) => {
@@ -46,6 +65,7 @@ export default function Home() {
 
     return () => {
       sectionObserver.disconnect()
+      activeObserver.disconnect()
       staggerObserver.disconnect()
     }
   }, [])
@@ -58,14 +78,14 @@ export default function Home() {
 
       {/* Interactive 3D WebGL Constellation Asset */}
       <div className="fixed inset-0 w-full h-full pointer-events-none z-0 opacity-20 dark:opacity-15 mix-blend-normal dark:mix-blend-screen overflow-hidden">
-        <InteractiveCanvas />
+        <InteractiveCanvas activeSection={activeSection} />
       </div>
 
-      <MobileHeader />
+      <MobileHeader activeSection={activeSection} />
       <div className="relative z-10 max-w-[1200px] mx-auto px-6 lg:px-12">
         <div className="flex flex-col lg:flex-row gap-0 min-h-screen relative">
           <aside className="hidden lg:block lg:w-[380px] lg:sticky lg:top-0 h-fit lg:h-screen pt-8 lg:pt-10 xl:pt-12 pb-6 lg:pb-6 lg:pr-12 z-20 lg:overflow-y-auto scrollbar-none">
-            <Sidebar />
+            <Sidebar activeSection={activeSection} />
           </aside>
           
           <main className="flex-1 pt-12 lg:pt-24 pb-24 lg:pl-16 space-y-32 lg:space-y-40">
