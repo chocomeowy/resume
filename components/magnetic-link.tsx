@@ -59,6 +59,24 @@ export function MagneticLink({ children, className, href, onClick }: MagneticLin
     scale.set(1)
   }
 
+  // Determine display style from className if possible, default to inline-block
+  let displayStyle: any = "inline-block"
+  if (className) {
+    if (className.includes("inline-flex")) {
+      displayStyle = "inline-flex"
+    } else if (className.includes("flex")) {
+      displayStyle = "flex"
+    } else if (className.includes("inline-grid")) {
+      displayStyle = "inline-grid"
+    } else if (className.includes("grid")) {
+      displayStyle = "grid"
+    } else if (className.includes("block") && !className.includes("inline-block")) {
+      displayStyle = "block"
+    } else if (className.includes("hidden")) {
+      displayStyle = "none"
+    }
+  }
+
   if (href) {
     return (
       <motion.a
@@ -73,7 +91,7 @@ export function MagneticLink({ children, className, href, onClick }: MagneticLin
           x: springX,
           y: springY,
           scale: springScale,
-          display: "inline-block",
+          display: displayStyle,
         }}
       >
         {children}
@@ -92,10 +110,11 @@ export function MagneticLink({ children, className, href, onClick }: MagneticLin
         x: springX,
         y: springY,
         scale: springScale,
-        display: "inline-block",
+        display: displayStyle,
       }}
     >
       {children}
     </motion.div>
   )
 }
+
