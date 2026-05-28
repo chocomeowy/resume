@@ -112,13 +112,15 @@ function SpotlightProjectCard({ project, idx, variants }: { project: any; idx: n
 
       {/* Content */}
       <div className="p-6 relative z-10">
-        <div className="flex items-start justify-between gap-3 mb-3">
-          <span className={`text-[10px] font-mono uppercase tracking-widest px-2 py-0.5 rounded-full border font-semibold ${categoryColors[project.category] ?? "text-accent bg-accent/10 border-accent/20"}`}>
-            {project.category}
-          </span>
-          <div className="flex flex-wrap justify-end gap-1.5">
+        <div className="flex flex-col gap-3 mb-4">
+          <div className="flex flex-wrap gap-2">
+            <span className={`text-[10px] font-mono uppercase tracking-widest px-2 py-0.5 rounded-full border font-semibold ${categoryColors[project.category] ?? "text-accent bg-accent/10 border-accent/20"}`}>
+              {project.category}
+            </span>
+          </div>
+          <div className="flex flex-wrap gap-2">
             {project.tags.map((tag: string) => (
-              <span key={tag} className="text-[9px] font-mono text-muted-foreground bg-white/5 border border-white/10 px-1.5 py-0.5 rounded uppercase transition-colors group-hover:text-foreground group-hover:border-accent/20">
+              <span key={tag} className="text-[9px] font-mono text-muted-foreground bg-white/5 border border-white/10 px-2.5 py-1 rounded uppercase transition-colors group-hover:text-foreground group-hover:border-accent/20">
                 {tag}
               </span>
             ))}
