@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import { cn } from "@/lib/utils"
+import { SpotlightCard } from "@/components/spotlight-card"
 
 interface TimelineItemProps {
   period: string
@@ -32,8 +33,8 @@ function TimelineItem({ period, title, company, companyIcon, description, bullet
         </div>
       </div>
 
-      {/* Card with shimmer */}
-      <div className="shimmer-card relative p-6 rounded-2xl bg-bg-card/40 border border-border/40 backdrop-blur-md hover:bg-bg-card/60 hover:border-accent/40 transition-all duration-500 shadow-sm hover:shadow-[0_12px_40px_rgba(0,0,0,0.18)] hover:-translate-y-0.5">
+      {/* Card with spotlight and shimmer */}
+      <SpotlightCard className="p-6 backdrop-blur-md hover:bg-bg-card/60 hover:border-accent/40 shadow-sm hover:shadow-[0_12px_40px_rgba(0,0,0,0.18)] hover:-translate-y-0.5">
         <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-4">
           <div className="flex items-start gap-3">
             {/* Company icon badge */}
@@ -81,7 +82,7 @@ function TimelineItem({ period, title, company, companyIcon, description, bullet
             ))}
           </div>
         )}
-      </div>
+      </SpotlightCard>
     </div>
   )
 }
@@ -209,7 +210,7 @@ export function Education() {
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {education.map((edu, i) => (
-            <div key={i} className="shimmer-card group p-8 rounded-2xl bg-bg-card/40 border border-border/40 backdrop-blur-md hover:border-accent/40 hover:shadow-[0_12px_40px_rgba(0,0,0,0.15)] hover:-translate-y-0.5 transition-all duration-500 flex flex-col justify-between">
+            <SpotlightCard key={i} className="p-8 backdrop-blur-md hover:border-accent/40 hover:shadow-[0_12px_40px_rgba(0,0,0,0.15)] hover:-translate-y-0.5 flex flex-col justify-between">
               <div>
                 <div className="flex items-center justify-between gap-4 mb-5">
                   <div className="w-10 h-10 rounded-xl bg-accent/10 border border-accent/20 flex items-center justify-center text-lg shadow-[0_0_10px_var(--accent-glow)]">
@@ -239,7 +240,7 @@ export function Education() {
                   ))}
                 </div>
               )}
-            </div>
+            </SpotlightCard>
           ))}
         </div>
       </div>
@@ -253,9 +254,9 @@ export function Education() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {credentials.map((cred, i) => (
-            <div
+            <SpotlightCard
               key={i}
-              className="shimmer-card group p-6 rounded-2xl bg-bg-card/40 border border-border/40 backdrop-blur-md hover:border-accent/40 hover:shadow-[0_12px_40px_rgba(0,0,0,0.15)] hover:-translate-y-0.5 transition-all duration-500 flex flex-col justify-between"
+              className="p-6 backdrop-blur-md hover:border-accent/40 hover:shadow-[0_12px_40px_rgba(0,0,0,0.15)] hover:-translate-y-0.5 flex flex-col justify-between"
             >
               <div>
                 <div className="flex items-center justify-between gap-4 mb-4">
@@ -276,7 +277,7 @@ export function Education() {
                   </p>
                 )}
               </div>
-            </div>
+            </SpotlightCard>
           ))}
         </div>
       </div>

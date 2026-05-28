@@ -3,6 +3,7 @@
 import * as React from "react"
 import { Button, buttonVariants } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
+import { SpotlightCard } from "@/components/spotlight-card"
 
 const connectLinks = [
   {
@@ -75,27 +76,29 @@ export function Connect() {
             href={link.href}
             target="_blank"
             rel="noopener"
-            className={cn(
-              "group shimmer-card p-5 bg-bg-card/40 border border-border/40 rounded-2xl transition-all duration-300 flex items-center gap-4 hover:-translate-y-1",
-              link.glow
-            )}
+            className="block group hover:-translate-y-1 transition-all duration-300"
           >
-            <div className={cn(
-              "w-10 h-10 rounded-xl border flex items-center justify-center flex-shrink-0 transition-all duration-300",
-              link.iconColor
+            <SpotlightCard className={cn(
+              "p-5 flex items-center gap-4 hover:border-accent/40 bg-bg-card/40",
+              link.glow
             )}>
-              {link.icon}
-            </div>
-            <div className="min-w-0">
-              <div className="text-[13px] font-semibold text-foreground">{link.name}</div>
-              <div className="text-[11px] font-mono text-muted-foreground group-hover:text-foreground transition-colors duration-300 truncate">{link.sub}</div>
-            </div>
-            {/* Arrow */}
-            <div className="ml-auto text-muted-foreground/30 group-hover:text-accent group-hover:translate-x-0.5 transition-all duration-300 flex-shrink-0">
-              <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M7 17L17 7M17 7H7M17 7v10" />
-              </svg>
-            </div>
+              <div className={cn(
+                "w-10 h-10 rounded-xl border flex items-center justify-center flex-shrink-0 transition-all duration-300",
+                link.iconColor
+              )}>
+                {link.icon}
+              </div>
+              <div className="min-w-0">
+                <div className="text-[13px] font-semibold text-foreground">{link.name}</div>
+                <div className="text-[11px] font-mono text-muted-foreground group-hover:text-foreground transition-colors duration-300 truncate">{link.sub}</div>
+              </div>
+              {/* Arrow */}
+              <div className="ml-auto text-muted-foreground/30 group-hover:text-accent group-hover:translate-x-0.5 transition-all duration-300 flex-shrink-0">
+                <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M7 17L17 7M17 7H7M17 7v10" />
+                </svg>
+              </div>
+            </SpotlightCard>
           </a>
         ))}
       </div>

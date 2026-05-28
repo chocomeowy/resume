@@ -9,6 +9,7 @@ import { Skills } from "@/components/skills"
 import { Connect } from "@/components/connect"
 import { MobileHeader } from "@/components/mobile-header"
 import { InteractiveCanvas } from "@/components/interactive-canvas"
+import { ScrollLine } from "@/components/scroll-line"
 
 export default function Home() {
   const [activeSection, setActiveSection] = React.useState("projects")
@@ -88,7 +89,10 @@ export default function Home() {
             <Sidebar activeSection={activeSection} />
           </aside>
           
-          <main className="flex-1 pt-12 lg:pt-24 pb-24 lg:pl-16 space-y-32 lg:space-y-40">
+          <main className="flex-1 pt-12 lg:pt-24 pb-24 lg:pl-16 space-y-32 lg:space-y-40 relative">
+            {/* Interactive scroll-driven connection path line */}
+            <ScrollLine />
+
             <section id="projects" className="section-reveal">
               <div className="font-mono text-[11px] text-accent tracking-[0.2em] uppercase mb-12 flex items-center gap-4">
                 Projects

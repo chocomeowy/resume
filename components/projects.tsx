@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import Image from "next/image"
-import { motion } from "framer-motion"
+import { motion, useMotionTemplate, useMotionValue } from "framer-motion"
 
 const categoryColors: Record<string, string> = {
   Productivity:   "text-violet-400 bg-violet-400/10 border-violet-400/20",
@@ -18,6 +18,107 @@ const categoryColors: Record<string, string> = {
   "Applied AI / Trend Intelligence / Market Analytics": "text-cyan-400 bg-cyan-400/10 border-cyan-400/20",
   "FinTech / Applied AI / Market Analytics": "text-amber-400 bg-amber-400/10 border-amber-400/20",
   "AI-Assisted Research / Location Intelligence / Product Prototype": "text-emerald-400 bg-emerald-400/10 border-emerald-400/20",
+}
+
+function SpotlightProjectCard({ project, idx, variants }: { project: any; idx: number; variants: any }) {
+  const mouseX = useMotionValue(0)
+  const mouseY = useMotionValue(0)
+
+  const handleMouseMove = React.useCallback(({ currentTarget, clientX, clientY }: React.MouseEvent) => {
+    const { left, top } = currentTarget.getBoundingClientRect()
+    mouseX.set(clientX - left)
+    mouseY.set(clientY - top)
+  }, [mouseX, mouseY])
+
+  return (
+    <motion.a
+      href={project.link}
+      target="_blank"
+      rel="noopener"
+      custom={idx}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-60px" }}
+      variants={variants}
+      onMouseMove={handleMouseMove}
+      className="shimmer-card group block relative rounded-2xl overflow-hidden bg-bg-card border border-border/40 hover:border-accent/40 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_24px_60px_rgba(0,0,0,0.35)]"
+    >
+      {/* Background Spotlight Glow */}
+      <motion.div
+        className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0"
+        style={{
+          background: useMotionTemplate`
+            radial-gradient(
+              350px circle at ${mouseX}px ${mouseY}px,
+              var(--accent-glow) 0%,
+              transparent 80%
+            )
+          `,
+        }}
+      />
+      {/* Border Spotlight Glow */}
+      <motion.div
+        className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-0"
+        style={{
+          background: useMotionTemplate`
+            radial-gradient(
+              250px circle at ${mouseX}px ${mouseY}px,
+              var(--accent-border) 0%,
+              transparent 80%
+            )
+          `,
+          padding: "1px",
+          WebkitMask: "linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)",
+          WebkitMaskComposite: "xor",
+          maskComposite: "exclude",
+        }}
+      />
+
+      {/* Image Container */}
+      <div className="relative aspect-[16/10] overflow-hidden border-b border-border/20 z-10">
+        <Image
+          src={project.image}
+          alt={project.title}
+          fill
+          sizes="(max-width: 768px) 100vw, 50vw"
+          className="object-cover transition-transform duration-700 group-hover:scale-110"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-bg-surface/80 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-500" />
+
+        {/* View Project Overlay */}
+        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+          <div className="px-6 py-2.5 bg-accent text-accent-foreground rounded-full text-xs font-bold uppercase tracking-widest translate-y-4 group-hover:translate-y-0 transition-transform duration-500 shadow-[0_0_20px_var(--accent-glow)]">
+            View Live Site
+          </div>
+        </div>
+      </div>
+
+      {/* Content */}
+      <div className="p-6 relative z-10">
+        <div className="flex items-start justify-between gap-3 mb-3">
+          <span className={`text-[10px] font-mono uppercase tracking-widest px-2 py-0.5 rounded-full border font-semibold ${categoryColors[project.category] ?? "text-accent bg-accent/10 border-accent/20"}`}>
+            {project.category}
+          </span>
+          <div className="flex flex-wrap justify-end gap-1.5">
+            {project.tags.map((tag: string) => (
+              <span key={tag} className="text-[9px] font-mono text-muted-foreground bg-white/5 border border-white/10 px-1.5 py-0.5 rounded uppercase transition-colors group-hover:text-foreground group-hover:border-accent/20">
+                {tag}
+              </span>
+            ))}
+          </div>
+        </div>
+        <h4 className="font-display font-bold text-lg text-foreground group-hover:text-accent transition-colors duration-300 mb-2">
+          {project.title}
+        </h4>
+        <p className="text-sm text-muted-foreground leading-relaxed transition-colors group-hover:text-foreground/80">
+          {project.description}
+        </p>
+      </div>
+
+      {/* Bottom accent bar on hover */}
+      <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-accent/0 via-accent to-accent/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10" />
+    </motion.a>
+  )
 }
 
 const featuredProjects = [
@@ -150,62 +251,12 @@ export function Projects() {
         {/* Desktop View: Standard Grid with Spring Staggered Reveal */}
         <div className="hidden md:grid grid-cols-1 md:grid-cols-2 gap-6">
           {softwareProjects.map((project, idx) => (
-            <motion.a
+            <SpotlightProjectCard
               key={idx}
-              href={project.link}
-              target="_blank"
-              rel="noopener"
-              custom={idx}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-60px" }}
+              project={project}
+              idx={idx}
               variants={cardVariants}
-              className="shimmer-card group block relative rounded-2xl overflow-hidden bg-bg-card border border-border/40 hover:border-accent/40 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_24px_60px_rgba(0,0,0,0.35)]"
-            >
-              {/* Image Container */}
-              <div className="relative aspect-[16/10] overflow-hidden border-b border-border/20">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-bg-surface/80 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-500" />
-
-                {/* View Project Overlay */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  <div className="px-6 py-2.5 bg-accent text-accent-foreground rounded-full text-xs font-bold uppercase tracking-widest translate-y-4 group-hover:translate-y-0 transition-transform duration-500 shadow-[0_0_20px_var(--accent-glow)]">
-                    View Live Site
-                  </div>
-                </div>
-              </div>
-
-              {/* Content */}
-              <div className="p-6">
-                <div className="flex items-start justify-between gap-3 mb-3">
-                  <span className={`text-[10px] font-mono uppercase tracking-widest px-2 py-0.5 rounded-full border font-semibold ${categoryColors[project.category] ?? "text-accent bg-accent/10 border-accent/20"}`}>
-                    {project.category}
-                  </span>
-                  <div className="flex flex-wrap justify-end gap-1.5">
-                    {project.tags.map(tag => (
-                      <span key={tag} className="text-[9px] font-mono text-muted-foreground bg-white/5 border border-white/10 px-1.5 py-0.5 rounded uppercase transition-colors group-hover:text-foreground group-hover:border-accent/20">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-                <h4 className="font-display font-bold text-lg text-foreground group-hover:text-accent transition-colors duration-300 mb-2">
-                  {project.title}
-                </h4>
-                <p className="text-sm text-muted-foreground leading-relaxed transition-colors group-hover:text-foreground/80">
-                  {project.description}
-                </p>
-              </div>
-
-              {/* Bottom accent bar on hover */}
-              <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-accent/0 via-accent to-accent/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            </motion.a>
+            />
           ))}
         </div>
 
@@ -297,62 +348,12 @@ export function Projects() {
         {/* Desktop View: Standard Grid with Spring Staggered Reveal */}
         <div className="hidden md:grid grid-cols-1 md:grid-cols-2 gap-6">
           {featuredProjects.map((project, idx) => (
-            <motion.a
+            <SpotlightProjectCard
               key={idx}
-              href={project.link}
-              target="_blank"
-              rel="noopener"
-              custom={idx}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: "-60px" }}
+              project={project}
+              idx={idx}
               variants={cardVariants}
-              className="shimmer-card group block relative rounded-2xl overflow-hidden bg-bg-card border border-border/40 hover:border-accent/40 transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_24px_60px_rgba(0,0,0,0.35)]"
-            >
-              {/* Image Container */}
-              <div className="relative aspect-[16/10] overflow-hidden border-b border-border/20">
-                <Image
-                  src={project.image}
-                  alt={project.title}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-bg-surface/80 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-500" />
-
-                {/* View Project Overlay */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                  <div className="px-6 py-2.5 bg-accent text-accent-foreground rounded-full text-xs font-bold uppercase tracking-widest translate-y-4 group-hover:translate-y-0 transition-transform duration-500 shadow-[0_0_20px_var(--accent-glow)]">
-                    View Live Site
-                  </div>
-                </div>
-              </div>
-
-              {/* Content */}
-              <div className="p-6">
-                <div className="flex items-start justify-between gap-3 mb-3">
-                  <span className={`text-[10px] font-mono uppercase tracking-widest px-2 py-0.5 rounded-full border font-semibold ${categoryColors[project.category] ?? "text-accent bg-accent/10 border-accent/20"}`}>
-                    {project.category}
-                  </span>
-                  <div className="flex flex-wrap justify-end gap-1.5">
-                    {project.tags.map(tag => (
-                      <span key={tag} className="text-[9px] font-mono text-muted-foreground bg-white/5 border border-white/10 px-1.5 py-0.5 rounded uppercase transition-colors group-hover:text-foreground group-hover:border-accent/20">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-                <h4 className="font-display font-bold text-lg text-foreground group-hover:text-accent transition-colors duration-300 mb-2">
-                  {project.title}
-                </h4>
-                <p className="text-sm text-muted-foreground leading-relaxed transition-colors group-hover:text-foreground/80">
-                  {project.description}
-                </p>
-              </div>
-
-              {/* Bottom accent bar on hover */}
-              <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-accent/0 via-accent to-accent/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-            </motion.a>
+            />
           ))}
         </div>
 
