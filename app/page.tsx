@@ -37,7 +37,7 @@ export default function Home() {
 
     // Active section observer for sidebar, mobile header, and canvas background
     const activeObserverOptions = {
-      threshold: 0.2,
+      threshold: 0.08,
       rootMargin: "0px 0px -10% 0px"
     }
 
@@ -99,7 +99,7 @@ export default function Home() {
 
             <section id="projects" className="section-reveal">
               <div className="font-mono text-[11px] text-accent tracking-[0.2em] uppercase mb-12 flex items-center gap-4">
-                <span className="liquid-glare-title">Projects</span>
+                Projects
                 <div className="h-px flex-1 bg-gradient-to-r from-accent/30 to-transparent" />
               </div>
               <Projects />
@@ -111,7 +111,7 @@ export default function Home() {
             
             <section id="experience" className="section-reveal">
               <div className="font-mono text-[11px] text-accent tracking-[0.2em] uppercase mb-12 flex items-center gap-4">
-                <span className="liquid-glare-title">Experience</span>
+                Experience
                 <div className="h-px flex-1 bg-gradient-to-r from-accent/30 to-transparent" />
               </div>
               <Education />
@@ -119,7 +119,7 @@ export default function Home() {
             
             <section id="skills" className="section-reveal">
               <div className="font-mono text-[11px] text-accent tracking-[0.2em] uppercase mb-12 flex items-center gap-4">
-                <span className="liquid-glare-title">Skills & Expertise</span>
+                Skills & Expertise
                 <div className="h-px flex-1 bg-gradient-to-r from-accent/30 to-transparent" />
               </div>
               <Skills />
@@ -127,7 +127,7 @@ export default function Home() {
             
             <section id="connect" className="section-reveal">
               <div className="font-mono text-[11px] text-accent tracking-[0.2em] uppercase mb-12 flex items-center gap-4">
-                <span className="liquid-glare-title">Get in Touch</span>
+                Get in Touch
                 <div className="h-px flex-1 bg-gradient-to-r from-accent/30 to-transparent" />
               </div>
               <Connect />

@@ -124,7 +124,7 @@ function SpotlightProjectCard({ project, idx, variants }: { project: any; idx: n
             ))}
           </div>
         </div>
-        <h4 className="font-display font-bold text-lg text-foreground group-hover:text-accent transition-colors duration-300 mb-2 liquid-glare-title">
+        <h4 className="font-display font-bold text-lg text-foreground group-hover:text-accent transition-colors duration-300 mb-2">
           {project.title}
         </h4>
         <p className="text-sm text-muted-foreground leading-relaxed transition-colors group-hover:text-foreground/80">
@@ -258,7 +258,7 @@ export function Projects() {
     <div className="space-y-16">
       {/* ─── Software Projects Section ─── */}
       <div>
-        <h3 className="font-display font-bold text-2xl text-foreground mb-3 liquid-glare-title">
+        <h3 className="font-display font-bold text-2xl text-foreground mb-3">
           Software Projects
         </h3>
         <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl mb-6">
@@ -355,7 +355,7 @@ export function Projects() {
 
       {/* ─── Featured Projects Section ─── */}
       <div>
-        <h3 className="font-display font-bold text-2xl text-foreground mb-3 liquid-glare-title">
+        <h3 className="font-display font-bold text-2xl text-foreground mb-3">
           Featured AI, Data &amp; FinTech Projects
         </h3>
         <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl mb-6">

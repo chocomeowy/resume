@@ -42,7 +42,7 @@ function TimelineItem({ period, title, company, companyIcon, description, bullet
               {companyIcon}
             </div>
             <div>
-              <h3 className="text-xl font-bold text-foreground font-display tracking-tight group-hover:text-accent transition-colors duration-300 liquid-glare-title">
+              <h3 className="text-xl font-bold text-foreground font-display tracking-tight group-hover:text-accent transition-colors duration-300">
                 {title}
               </h3>
               <div className="text-accent/90 font-bold text-sm tracking-wide mt-1 uppercase">{company}</div>
@@ -220,7 +220,7 @@ export function Education() {
                     {edu.period}
                   </span>
                 </div>
-                <h3 className="text-lg font-bold text-foreground font-display mb-2 group-hover:text-accent transition-colors duration-300 liquid-glare-title">{edu.title}</h3>
+                <h3 className="text-lg font-bold text-foreground font-display mb-2 group-hover:text-accent transition-colors duration-300">{edu.title}</h3>
                 <div className="text-sm font-semibold text-accent/80 mb-4">{edu.company}</div>
                 {edu.description && (
                   <p className="text-sm text-muted-foreground leading-relaxed mb-6">
@@ -267,7 +267,7 @@ export function Education() {
                     Certified
                   </span>
                 </div>
-                <h4 className="text-base font-bold text-foreground font-display mb-1.5 group-hover:text-accent transition-colors duration-300 liquid-glare-title">
+                <h4 className="text-base font-bold text-foreground font-display mb-1.5 group-hover:text-accent transition-colors duration-300">
                   {cred.title}
                 </h4>
                 <div className="text-xs font-semibold text-accent/80 mb-3">{cred.issuer}</div>
