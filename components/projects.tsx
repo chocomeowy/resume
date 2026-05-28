@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import Image from "next/image"
-import { motion, useMotionTemplate, useMotionValue } from "framer-motion"
+import { motion, useMotionTemplate, useMotionValue, useScroll, useTransform, useSpring } from "framer-motion"
 
 const categoryColors: Record<string, string> = {
   Productivity:   "text-violet-400 bg-violet-400/10 border-violet-400/20",
@@ -21,6 +21,17 @@ const categoryColors: Record<string, string> = {
 }
 
 function SpotlightProjectCard({ project, idx, variants }: { project: any; idx: number; variants: any }) {
+  const cardRef = React.useRef<HTMLAnchorElement>(null)
+  
+  // Track viewport relative scroll coordinates
+  const { scrollYProgress } = useScroll({
+    target: cardRef as any,
+    offset: ["start end", "end start"]
+  })
+
+  const springProgress = useSpring(scrollYProgress, { stiffness: 90, damping: 25 })
+  const y = useTransform(springProgress, [0, 1], ["-12%", "12%"])
+
   const mouseX = useMotionValue(0)
   const mouseY = useMotionValue(0)
 
@@ -32,6 +43,7 @@ function SpotlightProjectCard({ project, idx, variants }: { project: any; idx: n
 
   return (
     <motion.a
+      ref={cardRef as any}
       href={project.link}
       target="_blank"
       rel="noopener"
@@ -74,19 +86,24 @@ function SpotlightProjectCard({ project, idx, variants }: { project: any; idx: n
         }}
       />
 
-      {/* Image Container */}
+      {/* Image Container with dynamic scroll parallax */}
       <div className="relative aspect-[16/10] overflow-hidden border-b border-border/20 z-10">
-        <Image
-          src={project.image}
-          alt={project.title}
-          fill
-          sizes="(max-width: 768px) 100vw, 50vw"
-          className="object-cover transition-transform duration-700 group-hover:scale-110"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-bg-surface/80 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-500" />
+        <motion.div
+          className="absolute inset-0 w-full h-full"
+          style={{ y, scale: 1.15 }}
+        >
+          <Image
+            src={project.image}
+            alt={project.title}
+            fill
+            sizes="(max-width: 768px) 100vw, 50vw"
+            className="object-cover"
+          />
+        </motion.div>
+        <div className="absolute inset-0 bg-gradient-to-t from-bg-surface/80 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-500 z-10" />
 
         {/* View Project Overlay */}
-        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+        <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20">
           <div className="px-6 py-2.5 bg-accent text-accent-foreground rounded-full text-xs font-bold uppercase tracking-widest translate-y-4 group-hover:translate-y-0 transition-transform duration-500 shadow-[0_0_20px_var(--accent-glow)]">
             View Live Site
           </div>
@@ -107,7 +124,7 @@ function SpotlightProjectCard({ project, idx, variants }: { project: any; idx: n
             ))}
           </div>
         </div>
-        <h4 className="font-display font-bold text-lg text-foreground group-hover:text-accent transition-colors duration-300 mb-2">
+        <h4 className="font-display font-bold text-lg text-foreground group-hover:text-accent transition-colors duration-300 mb-2 liquid-glare-title">
           {project.title}
         </h4>
         <p className="text-sm text-muted-foreground leading-relaxed transition-colors group-hover:text-foreground/80">
@@ -241,7 +258,7 @@ export function Projects() {
     <div className="space-y-16">
       {/* ─── Software Projects Section ─── */}
       <div>
-        <h3 className="font-display font-bold text-2xl text-foreground mb-3">
+        <h3 className="font-display font-bold text-2xl text-foreground mb-3 liquid-glare-title">
           Software Projects
         </h3>
         <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl mb-6">
@@ -338,7 +355,7 @@ export function Projects() {
 
       {/* ─── Featured Projects Section ─── */}
       <div>
-        <h3 className="font-display font-bold text-2xl text-foreground mb-3">
+        <h3 className="font-display font-bold text-2xl text-foreground mb-3 liquid-glare-title">
           Featured AI, Data &amp; FinTech Projects
         </h3>
         <p className="text-sm text-muted-foreground leading-relaxed max-w-2xl mb-6">

@@ -15,6 +15,10 @@ export default function Home() {
   const [activeSection, setActiveSection] = React.useState("projects")
 
   React.useEffect(() => {
+    document.documentElement.setAttribute("data-active-section", activeSection)
+  }, [activeSection])
+
+  React.useEffect(() => {
     const observerOptions = {
       threshold: 0.1,
       rootMargin: "0px 0px -50px 0px"
@@ -95,7 +99,7 @@ export default function Home() {
 
             <section id="projects" className="section-reveal">
               <div className="font-mono text-[11px] text-accent tracking-[0.2em] uppercase mb-12 flex items-center gap-4">
-                Projects
+                <span className="liquid-glare-title">Projects</span>
                 <div className="h-px flex-1 bg-gradient-to-r from-accent/30 to-transparent" />
               </div>
               <Projects />
@@ -107,7 +111,7 @@ export default function Home() {
             
             <section id="experience" className="section-reveal">
               <div className="font-mono text-[11px] text-accent tracking-[0.2em] uppercase mb-12 flex items-center gap-4">
-                Experience
+                <span className="liquid-glare-title">Experience</span>
                 <div className="h-px flex-1 bg-gradient-to-r from-accent/30 to-transparent" />
               </div>
               <Education />
@@ -115,7 +119,7 @@ export default function Home() {
             
             <section id="skills" className="section-reveal">
               <div className="font-mono text-[11px] text-accent tracking-[0.2em] uppercase mb-12 flex items-center gap-4">
-                Skills & Expertise
+                <span className="liquid-glare-title">Skills & Expertise</span>
                 <div className="h-px flex-1 bg-gradient-to-r from-accent/30 to-transparent" />
               </div>
               <Skills />
@@ -123,7 +127,7 @@ export default function Home() {
             
             <section id="connect" className="section-reveal">
               <div className="font-mono text-[11px] text-accent tracking-[0.2em] uppercase mb-12 flex items-center gap-4">
-                Get in Touch
+                <span className="liquid-glare-title">Get in Touch</span>
                 <div className="h-px flex-1 bg-gradient-to-r from-accent/30 to-transparent" />
               </div>
               <Connect />

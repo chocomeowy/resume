@@ -53,8 +53,48 @@
   --radius-4xl: calc(var(--radius) * 2.6);
 }
 
+/* Registered custom properties to enable smooth transitions on scroll theme morphs */
+@property --accent {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: #2563eb;
+}
+@property --accent-glow {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: rgba(37, 99, 235, 0.15);
+}
+@property --accent-border {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: rgba(37, 99, 235, 0.2);
+}
+@property --orb-1 {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: rgba(37, 99, 235, 0.08);
+}
+@property --orb-2 {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: rgba(139, 92, 246, 0.06);
+}
+@property --orb-3 {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: rgba(14, 165, 233, 0.05);
+}
+
 @layer base {
   :root {
+    transition: 
+      --accent 0.8s cubic-bezier(0.4, 0, 0.2, 1), 
+      --accent-glow 0.8s cubic-bezier(0.4, 0, 0.2, 1), 
+      --accent-border 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+      --orb-1 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+      --orb-2 0.8s cubic-bezier(0.4, 0, 0.2, 1),
+      --orb-3 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+
     --background: #f8fafc;
     --foreground: #0f172a;
     --card: #ffffff;
@@ -350,4 +390,129 @@ body::after {
   mix-blend-mode: overlay;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
 }
+
+/* ─── Section Theme Morph Mappings - Light Mode ──────────────── */
+:root[data-active-section="projects"] {
+  --accent: #2563eb;
+  --accent-glow: rgba(37, 99, 235, 0.15);
+  --accent-border: rgba(37, 99, 235, 0.2);
+  --orb-1: rgba(37, 99, 235, 0.08);
+  --orb-2: rgba(139, 92, 246, 0.06);
+  --orb-3: rgba(14, 165, 233, 0.05);
+}
+:root[data-active-section="about"] {
+  --accent: #059669; /* Forest */
+  --accent-glow: rgba(5, 150, 105, 0.15);
+  --accent-border: rgba(5, 150, 105, 0.2);
+  --orb-1: rgba(5, 150, 105, 0.08);
+  --orb-2: rgba(8, 145, 178, 0.06); /* Teal */
+  --orb-3: rgba(6, 182, 212, 0.05);
+}
+:root[data-active-section="experience"] {
+  --accent: #d97706; /* Bronze */
+  --accent-glow: rgba(217, 119, 6, 0.15);
+  --accent-border: rgba(217, 119, 6, 0.2);
+  --orb-1: rgba(217, 119, 6, 0.08);
+  --orb-2: rgba(225, 29, 72, 0.06); /* Crimson */
+  --orb-3: rgba(244, 63, 94, 0.05);
+}
+:root[data-active-section="skills"] {
+  --accent: #1d4ed8; /* Navy */
+  --accent-glow: rgba(29, 78, 216, 0.15);
+  --accent-border: rgba(29, 78, 216, 0.2);
+  --orb-1: rgba(29, 78, 216, 0.08);
+  --orb-2: rgba(79, 70, 229, 0.06); /* Royal */
+  --orb-3: rgba(99, 102, 241, 0.05);
+}
+:root[data-active-section="connect"] {
+  --accent: #c026d3; /* Dark Fuchsia */
+  --accent-glow: rgba(192, 38, 211, 0.15);
+  --accent-border: rgba(192, 38, 211, 0.2);
+  --orb-1: rgba(192, 38, 211, 0.08);
+  --orb-2: rgba(124, 58, 237, 0.06); /* Violet */
+  --orb-3: rgba(139, 92, 246, 0.05);
+}
+
+/* ─── Section Theme Morph Mappings - Dark Mode ───────────────── */
+.dark[data-active-section="projects"] {
+  --accent: #0ea5e9; /* Cyan */
+  --accent-glow: rgba(14, 165, 233, 0.18);
+  --accent-border: rgba(14, 165, 233, 0.25);
+  --orb-1: rgba(14, 165, 233, 0.12);
+  --orb-2: rgba(139, 92, 246, 0.08);
+  --orb-3: rgba(56, 189, 248, 0.06);
+}
+.dark[data-active-section="about"] {
+  --accent: #10b981; /* Emerald */
+  --accent-glow: rgba(16, 185, 129, 0.18);
+  --accent-border: rgba(16, 185, 129, 0.25);
+  --orb-1: rgba(16, 185, 129, 0.12);
+  --orb-2: rgba(6, 182, 212, 0.08); /* Cyan */
+  --orb-3: rgba(8, 145, 178, 0.06);
+}
+.dark[data-active-section="experience"] {
+  --accent: #f59e0b; /* Amber */
+  --accent-glow: rgba(245, 158, 11, 0.18);
+  --accent-border: rgba(245, 158, 11, 0.25);
+  --orb-1: rgba(245, 158, 11, 0.12);
+  --orb-2: rgba(244, 63, 94, 0.08); /* Rose */
+  --orb-3: rgba(225, 29, 72, 0.06);
+}
+.dark[data-active-section="skills"] {
+  --accent: #3b82f6; /* Blue */
+  --accent-glow: rgba(59, 130, 246, 0.18);
+  --accent-border: rgba(59, 130, 246, 0.25);
+  --orb-1: rgba(59, 130, 246, 0.12);
+  --orb-2: rgba(99, 102, 241, 0.08); /* Indigo */
+  --orb-3: rgba(79, 70, 229, 0.06);
+}
+.dark[data-active-section="connect"] {
+  --accent: #d946ef; /* Fuchsia */
+  --accent-glow: rgba(217, 70, 239, 0.18);
+  --accent-border: rgba(217, 70, 239, 0.25);
+  --orb-1: rgba(217, 70, 239, 0.12);
+  --orb-2: rgba(139, 92, 246, 0.08); /* Purple */
+  --orb-3: rgba(124, 58, 237, 0.06);
+}
+
+/* ─── Chrome Liquid Glare Typography ───────────────────────── */
+.liquid-glare-title {
+  position: relative;
+  display: inline-block;
+  color: var(--foreground);
+  background: linear-gradient(
+    120deg,
+    var(--foreground) 30%,
+    rgba(255, 255, 255, 0.8) 40%,
+    rgba(255, 255, 255, 0.8) 45%,
+    var(--foreground) 55%
+  );
+  background-size: 250% 100%;
+  background-position: 0% center;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  transition: background-position 0.6s cubic-bezier(0.16, 1, 0.3, 1), color 0.6s ease;
+}
+
+.liquid-glare-title:hover {
+  background-position: 100% center;
+}
+
+.dark .liquid-glare-title {
+  background: linear-gradient(
+    120deg,
+    var(--foreground) 35%,
+    rgba(255, 255, 255, 0.95) 43%,
+    var(--accent) 48%,
+    var(--accent) 52%,
+    rgba(255, 255, 255, 0.95) 57%,
+    var(--foreground) 65%
+  );
+  background-size: 250% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
 
