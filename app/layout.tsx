@@ -20,8 +20,22 @@ const dmMono = DM_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://fahjin.vercel.app"),
   title: "Yong Fah Jin | Applied AI, Data Analytics & FinTech",
   description: "Singapore-based portfolio for applied AI engineering, data analytics, automation, market intelligence, and FinTech product analytics.",
+  openGraph: {
+    title: "Yong Fah Jin | Applied AI, Data Analytics & FinTech",
+    description: "Singapore-based portfolio for applied AI engineering, data analytics, automation, market intelligence, and FinTech product analytics.",
+    url: "https://fahjin.vercel.app",
+    siteName: "Yong Fah Jin Portfolio",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Yong Fah Jin | Applied AI, Data Analytics & FinTech",
+    description: "Singapore-based portfolio for applied AI engineering, data analytics, automation, market intelligence, and FinTech product analytics.",
+  },
 };
 
 export default function RootLayout({
