@@ -12,11 +12,11 @@ export function Hero() {
           Portfolio
         </p>
         <h2 className="hero-stagger font-display text-2xl sm:text-3xl lg:text-4.5xl font-extrabold tracking-tight leading-tight text-foreground">
-          Applied AI Engineer, Software Developer &amp; Data Analyst
+          AI Solution Architect | Software Developer
         </h2>
         <div className="hero-stagger space-y-4 text-base lg:text-lg text-muted-foreground leading-relaxed max-w-2xl">
           <p>
-            I am a <span className="text-foreground font-semibold">Forward Deployed AI Engineer, Software Developer, and Data Analyst</span> based in Singapore, pursuing an <span className="text-foreground font-semibold">MSc in Financial Technology from NTU</span>. I build practical systems that connect data, software, and AI.
+            I am an <span className="text-foreground font-semibold">AI Solution Architect &amp; Software Developer</span> based in Singapore, pursuing an <span className="text-foreground font-semibold">MSc in Financial Technology from NTU</span>. I build practical systems that connect data, software, and AI.
           </p>
           <p>
             My focus is on turning noisy operational signals, messy workflows, and emerging AI capabilities into tools that are useful, scalable, and easy for people to adopt. My professional experience spans IoT monitoring, full-stack development, analytics automation, and AI-enabled products across energy systems, banking operations, high-growth AI platforms, and regional logistics.

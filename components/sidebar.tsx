@@ -37,7 +37,7 @@ export function Sidebar({ activeSection }: SidebarProps) {
           </div>
           <div className="badge flex items-center gap-2 font-mono text-[11px] text-accent tracking-[0.12em] uppercase px-3 py-1 bg-accent/10 border border-accent/20 rounded-full">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse shadow-[0_0_10px_rgba(52,211,153,0.6)]" />
-            Forward Deployed Engineer
+            AI Solution Architect
           </div>
         </div>
 
@@ -47,7 +47,7 @@ export function Sidebar({ activeSection }: SidebarProps) {
         </h1>
         
         <h2 className="title text-lg font-semibold text-foreground/90 mb-3 font-display tracking-tight leading-tight">
-          Forward Deployed AI Engineer, Software Developer &amp; Data Analyst
+          AI Solution Architect | Software Developer
         </h2>
         
         <p className="tagline text-sm text-muted-foreground leading-relaxed max-w-[280px] mb-4">
